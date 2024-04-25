@@ -30,21 +30,7 @@ app.use(express.urlencoded({ limit: "5mb", extended: false }));
 
 //! -----------------> RUTAS
 const UserRoutes = require("./src/api/routes/User.routes");
-
 app.use("/api/v1/users/", UserRoutes);
-
-const AdminRoutes = require("./src/api/routes/Admin.routes");
-app.use("/api/v1/admin/", AdminRoutes);
-
-const MessageRoutes = require("./src/api/routes/Message.routes");
-
-app.use("/api/v1/messages/", MessageRoutes);
-
-const MovieRoutes = require("./src/api/routes/Movie.routes");
-app.use("/api/v1/movies/", MovieRoutes);
-
-const CharacterRoutes = require("./src/api/routes/Character.routes");
-app.use("/api/v1/characters/", CharacterRoutes);
 
 //! --------------- generamos un error de cuando no see encuentre la ruta
 app.use("*", (req, res, next) => {

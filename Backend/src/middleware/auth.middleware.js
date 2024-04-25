@@ -34,8 +34,8 @@ const isAuthAdmin = async (req, res, next) => {
     req.user = await User.findById(decoded.id);
 
     // pongo un requisito mas y es que sea admin
-    if (req.user.rol !== "admin") {
-      return next(new Error("Unauthorized, not admin"));
+    if (req.user.rol !== "monitor") {
+      return next(new Error("Unauthorized, not monitor"));
     }
     next();
   } catch (error) {
