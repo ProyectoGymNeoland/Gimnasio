@@ -31,7 +31,8 @@ app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: false }));
 
 //? Rutas:
-
+const UserRoutes = require("./src/api/routes/User.routes");
+app.use("/api/v1/users/", UserRoutes);
 //? ERRORES GENERALES Y RUTA NO ENCONTRADA:
 
 app.use("*", (req, res, next) => {
