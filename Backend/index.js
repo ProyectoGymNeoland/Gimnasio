@@ -12,8 +12,8 @@ dotenv.config();
 connect();
 
 //? Configuración cloudinary:
-
 const { configCloudinary } = require("./src/middleware/files.middleware");
+
 configCloudinary();
 //! -----------------VARIABLES CONSTANTES --> PORT
 
@@ -22,7 +22,6 @@ const PORT = process.env.PORT;
 //? CORS:
 
 const cors = require("cors");
-const { connect } = require("./src/utils/connectDB");
 
 app.use(cors());
 
