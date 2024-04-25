@@ -236,9 +236,9 @@ const registerWithRedirect = async (req, res, next) => {
   }
 };
 
-/// ------------------------------------------------------------------------------------
-/// --------------------CONTROLADOR DE ENVIAR EL CODE  ---------------------------------
-///-------------------------------------------------------------------------------------
+//! ------------------------------------------------------------------------------------
+//? --------------------CONTROLADOR DE ENVIAR EL CODE  ---------------------------------
+//!-------------------------------------------------------------------------------------
 
 const sendMailRedirect = async (req, res, next) => {
   try {
@@ -250,6 +250,7 @@ const sendMailRedirect = async (req, res, next) => {
     // ---------------------------CONFIGURAMOS NODEMAILER -----------------------------------
     const emailEnv = process.env.EMAIL;
     const password = process.env.PASSWORD;
+
     // --> 1) Configuramos el transporter de nodemailer
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -258,6 +259,7 @@ const sendMailRedirect = async (req, res, next) => {
         pass: password,
       },
     });
+
     // --> 2) creamos las opciones del envio del email
     const mailOptions = {
       from: emailEnv,
@@ -265,6 +267,7 @@ const sendMailRedirect = async (req, res, next) => {
       subject: "Confirmation code",
       text: `tu codigo es ${userDB.confirmationCode}, gracias por confiar en nosotros ${userDB.name}`,
     };
+
     // --> 3) enviamos el correo y gestionamos el error o el ok del envio
     transporter.sendMail(mailOptions, function (error, info) {
       if (error) {
@@ -341,61 +344,74 @@ const resendCode = async (req, res, next) => {
 //! ------------------------------------------------------------------------
 
 const checkNewUser = async (req, res, next) => {
-  /* Pasos a seguir:
-  1) -> email y el codigo de confirmacion
-  2) -> buscar el user en la bdo con el email 
-  3) -> comparar los codigos
-  4) -> hacer un update y cambiar la clave check
 
 
-  Error: 
-   -> el email no exista  en el back
-   -> los codigos no son iguales
-   -> que falle la update
-  */
+/*Cuando el usuario se registre recibirá un código al email y se le enviará 
+automáticamente en el front (despues de darle al botón de register) a una 
+pantalla donde tendrá que confirmar el código.  Este controlador hace justo 
+esa comprobación:
+...Si el usuario no introduce bien el código, borramos al usuario de la DB.
+...Si lo introduce correctamente le cambiamos en el back el check a true, 
+para indicar  que ha pasado la verificación.
+  
+Pare realizar este paso necesitamos:
+  
+        1) -> email y el codigo de confirmacion
+        2) -> buscar el user en la bdo con el email 
+        3) -> comparar los codigos
+        4) -> hacer un update y cambiar la clave check
 
-  try {
-    //! nos traemos de la req.body el email y codigo de confirmation
+Se producirá un error cuando: 
+        
+        1) el email no exista  en el back
+        2) los codigos no son iguales
+        3) que falle la update
+  
+*/
+
+  try { // Esto sirve para traer de la req.body el email y codigo de confirmation/
+
     const { email, confirmationCode } = req.body;
-
     const userExists = await User.findOne({ email });
 
-    if (!userExists) {
-      //!No existe----> 404 de no se encuentra
+    if (!userExists) {  // si no existe----> 404 de no se encuentra
+
       return res.status(404).json("User not found");
-    } else {
-      // cogemos que comparamos que el codigo que recibimos por la req.body y el del userExists es igual
-      if (confirmationCode === userExists.confirmationCode) {
+
+
+    } else { // en esta parte comparamos que el codigo que recibimos por la req.body y el del userExists es igual*/
+      
+      if (confirmationCode === userExists.confirmationCode) 
+      
+      {
+
+
         try {
-          await userExists.updateOne({ check: true });
-
-          //! hacer un test para ver si a actualizado la clave
-
-          // hacemos un testeo de que este user se ha actualizado correctamente, hacemos un findOne
-          const updateUser = await User.findOne({ email });
-
-          // este finOne nos sirve para hacer un ternario que nos diga si la propiedad vale true o false
+     await userExists.updateOne({ check: true }); // Con esta utilidad hacemos un test para ver si a actualizado 
+     //la clave y después hace un testeo de que este user se ha actualizado correctamente, después hago findOne
+      
+     
+          const updateUser = await User.findOne({ email }); // este finOne nos sirve para hacer un ternario que nos
+          //diga si la propiedad vale true o false
           return res.status(200).json({
             testCheckOk: updateUser.check == true ? true : false,
           });
         } catch (error) {
           return res.status(404).json(error.message);
         }
-      } else {
-        ///! el else de cuando los codigos no son iguales
-        try {
-          /// En caso dec equivocarse con el codigo lo borramos de la base datos y lo mandamos al registro
-          await User.findByIdAndDelete(userExists._id);
 
-          // borramos la imagen
-          deleteImgCloudinary(userExists.image);
 
-          // devolvemos un 200 con el test de ver si el delete se ha hecho correctamente
+      } else {  // el else de cuando los codigos no son iguales
+        try { // En caso de que el codigo sea incorrecto lo borramos de la base datos y lo mandamos al registro
+      
+          await User.findByIdAndDelete(userExists._id); // con esto borramos la imagen
+         
+        deleteImgCloudinary(userExists.image); // si el delate se ha hecho bien mandamos un 200
           return res.status(200).json({
             userExists,
             check: false,
 
-            // test en el runtime sobre la eliminacion de este user
+            // test de eliminacion de este user
             delete: (await User.findById(userExists._id))
               ? "error delete user"
               : "ok delete user",
@@ -407,11 +423,11 @@ const checkNewUser = async (req, res, next) => {
         }
       }
     }
-  } catch (error) {
-    // siempre en el catch devolvemos un 500 con el error general
+  } catch (error) { // para devolver errores genrales 
     return next(setError(500, error.message || "General error check code"));
   }
 };
+
 
 //! -----------------------------------------------------------------------------
 //? --------------------------------LOGIN ---------------------------------------
