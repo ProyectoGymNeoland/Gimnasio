@@ -29,4 +29,6 @@ const ValoracionSchema = new mongoose.Schema(
   }
 );
 
-module.exports = ValoracionSchema;
+const Valoracion = mongoose.model("User", ValoracionSchema);
+
+module.exports = Valoracion;
