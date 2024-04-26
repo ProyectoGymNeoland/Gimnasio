@@ -23,7 +23,7 @@ const DaySchema = new Schema(
       required: false,
     },
 
-    fecha: { type: Date, required: true },
+    dates: { type: Date, required: true },
     type: {
       type: String,
       enum: ["Habil", "Finde", "Festivo"],

@@ -32,6 +32,6 @@ const ActivitiesSchema = new Schema(
   }
 );
 
-const Actividad = mongoose.model("Actividades", ActivitiesSchema);
+const Activities = mongoose.model("Activities", ActivitiesSchema);
 
-module.exports = Actividad;
+module.exports = Activities;

@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const MuroSchema = new mongoose.Schema(
+const WallSchema = new mongoose.Schema(
   {
     type: {
       type: String,
@@ -15,8 +15,8 @@ const MuroSchema = new mongoose.Schema(
     owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     image: [{ type: String }],
-    activity: { type: mongoose.Schema.Types.ObjectId, ref: "Actividades" },
-    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Menssage" }],
+    activity: { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
   },
 
   {
@@ -26,8 +26,8 @@ const MuroSchema = new mongoose.Schema(
 
 //! -------- con la definicion de datos y su esquema vamos a crear el modelo de datos
 
-const Muro = mongoose.model("Muro", MuroSchema);
+const Wall = mongoose.model("Wall", WallSchema);
 
 //! -------- exportar el modelo para que lo utilicen los controladores
 
-module.exports = Muro;
+module.exports = Wall;
