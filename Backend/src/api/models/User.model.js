@@ -30,6 +30,10 @@ const UserSchema = new mongoose.Schema(
       enum: ["hombre", "mujer", "otros"],
       required: true,
     },
+    edad: {
+      type: Number,
+      required: true,
+    },
     rol: {
       //Diferenciamos entre las distintas personas y sus respectivos roles que tienen acceso al gimnasio
       type: String,
