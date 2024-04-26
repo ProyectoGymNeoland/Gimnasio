@@ -34,6 +34,7 @@ const UserSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
+    reservas: [{ type: mongoose.Schema.Types.ObjectId, ref: "ActivityToDay" }],
     rol: {
       //Diferenciamos entre las distintas personas y sus respectivos roles que tienen acceso al gimnasio
       type: String,
@@ -53,6 +54,12 @@ const UserSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+
+    activityFav: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "ActivityToDay" },
+    ],
+    monitoresFav: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    murosLikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Muro" }],
   },
   {
     // esto es cuando se crea y se actualiza el objeto

@@ -17,8 +17,14 @@ const MenssageSchema = new Schema(
     owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     type: {
       type: String,
-      enum: ["private", "public"],
+      enum: ["private", "public", "review"],
       required: true,
+    },
+    rating: {
+      type: Number,
+      minLength: 0,
+      maxLength: 5,
+      require: true,
     },
     content: {
       type: String,
@@ -31,6 +37,7 @@ const MenssageSchema = new Schema(
 
     recipientUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    image: { type: String },
   },
   {
     timestamps: true,

@@ -17,12 +17,15 @@ const ActivitiesSchema = new Schema(
     spots: {
       type: Number,
       required: true,
-    },
+    }, // PLAZAS
     status: {
-      type: String,
+      type: Boolean,
       required: true,
-      enum: ["enabled", "disabled"],
     },
+    image: {
+      type: String,
+    },
+    like: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   {
     timestamps: true,

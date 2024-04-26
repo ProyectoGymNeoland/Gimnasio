@@ -1,19 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CalendarSchema = new Schema(
+const ActivityToDaySchema = new Schema(
   {
     activityId: { type: mongoose.Schema.Types.ObjectId, ref: "Activity" },
-    startDate: {
-      type: mongoose.Schema.Types.Date,
-      required: true,
-    },
-    endDate: {
-      type: mongoose.Schema.Types.Date,
-      required: true,
-    },
-    avaibleSpots: { type: Number },
+    avaibleSpots: { type: Number }, //PLAZAS DISPONIBLES
     monitorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    reservas: [{ type: mongoose.Schema.Types.ObjectId, ref: "user" }],
     room: { type: String, enum: ["sala verde", "sala roja"], required: false },
   },
   {
@@ -21,6 +14,7 @@ const CalendarSchema = new Schema(
   }
 );
 
-const Calendario = mongoose.model("Calendario", CalendarSchema);
+const  = mongoose.model("ActivityToDay", ActivityToDaySchema);
+const  = mongoose.model("ActivityToDay", ActivityToDaySchema);
 
-module.exports = Calendario;
+module.exports = ActivityToDay;
