@@ -29,11 +29,27 @@ app.use(express.json({ limit: "5mb" }));
 app.use(express.urlencoded({ limit: "5mb", extended: false }));
 
 //! -----------------> RUTAS
+
+const ActivitiesRoutes = require("./src/api/routes/Activities.routes");
+app.use("/api/v1/activities/", ActivitiesRoutes);
+
+const ActivityToDayRoutes = require("./src/api/routes/ActivityToDay.routes");
+app.use("/api/v1/activityToDay/", ActivityToDayRoutes);
+
+const ChatRoutes = require("./src/api/routes/Chat.routes");
+app.use("/api/v1/chat/", ChatRoutes);
+
+const DayRoutes = require("./src/api/routes/Day.routes");
+app.use("/api/v1/day/", DayRoutes);
+
+const MessageRoutes = require("./src/api/routes/Message.routes");
+app.use("/api/v1/message/", MessageRoutes);
+
 const UserRoutes = require("./src/api/routes/User.routes");
 app.use("/api/v1/users/", UserRoutes);
 
-const ActivityRoutes = require("./src/api/routes/User.routes");
-app.use("/api/v1/users/", UserRoutes);
+const WallRoutes = require("./src/api/routes/Wall.routes");
+app.use("/api/v1/wall/", WallRoutes);
 
 //! --------------- generamos un error de cuando no see encuentre la ruta
 app.use("*", (req, res, next) => {
