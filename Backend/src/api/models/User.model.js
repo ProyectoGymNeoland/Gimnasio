@@ -31,15 +31,18 @@ const UserSchema = new mongoose.Schema(
       required: true,
     },
     rol: {
+      //Diferenciamos entre las distintas personas y sus respectivos roles que tienen acceso al gimnasio
       type: String,
       enum: ["monitor", "user", "superadmin"],
       default: "user",
     },
     confirmationCode: {
+      //Envio de codigo de confirmacion al email
       type: Number,
       required: true,
     },
     check: {
+      //Comprobacion de registro del usuario
       type: Boolean,
       default: false,
     },
