@@ -15,7 +15,7 @@ const createMessage = async (req, res, next) => {
   
       const findUser = await User.findById(idRecipient);
       // const findMonitor = await User.findById(idRecipient);
-     
+    
   
       /**
        * cuando no lo encuentre devuelve un null y el que encuentre va a devolver el objeto encontrado
@@ -72,7 +72,7 @@ const createMessage = async (req, res, next) => {
                   } catch (error) {
                     return res.status(404).json({
                       error:
-                        "no hemos actualizado el user en la clave postedMenssages",
+                        "no hemos actualizado el user en la clave postedMessages",
                       idMessage: newMessage._id,
                     });
                   }
@@ -105,7 +105,7 @@ const createMessage = async (req, res, next) => {
                   } catch (error) {
                     return res.status(404).json({
                       error:
-                        "no hemos actualizado el user en la clave postedMenssages",
+                        "no hemos actualizado el user en la clave postedMessages",
                       idMessage: newMessage._id,
                     });
                   }
@@ -172,7 +172,7 @@ const createMessage = async (req, res, next) => {
                 } catch (error) {
                   return res.status(404).json({
                     error:
-                      "no hemos actualizado el user el dueño del mensaje en la clave postedMenssages y en la clave chats",
+                      "no hemos actualizado el user el dueño del mensaje en la clave postedMessages y en la clave chats",
                     idMessage: newMessage._id,
                   });
                 }
@@ -195,12 +195,45 @@ const createMessage = async (req, res, next) => {
             return res.status(404).json(error.message);
           }
         } else if (type == "public") {
-        
+          try {
+            await User.findByIdAndUpdate(req.user._id, {
+              $push: {
+                postedMessages: newMessage._id,
+              },
+            });
+  
+            try {
+              await User.findByIdAndUpdate(idRecipient, {
+                $push: {
+                  commentsPublicByOther: newMessage._id,
+                },
+              });
+  
+              return res.status(200).json({
+                userOwner: await User.findById(req.user._id).populate([
+                  {
+                    path: "chats",
+                    model: Chat,
+                    populate: "messages userOne userTwo",
+                  },
+                ]),
+                recipient: await User.findById(idRecipient),
+                comentario: newMessage._id,
+              });
+            } catch (error) {
+              return res.status(404).json({
+                error:
+                  "error catch update quien recibe el comentario  -  commentsPublicByOther",
+                message: error.message,
+              });
+            }
+          } catch (error) {
             return res.status(404).json({
               error:
                 "error catch update quien hace el comentario  -  postedMessages",
-              message: error.message,})
-       
+              message: error.message,
+            });
+          }
         } else {
           return res.status(404).json("no has puesto el tipo correctamente");
         }
@@ -238,6 +271,31 @@ const createMessage = async (req, res, next) => {
     }
   };
 
+  const getById = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+  
+      // Buscamos al usuario por su ID y nos traemos los dos tipos de comentarios que hace
+      const user = await User.findById(id, 'commentsPublicByOther postedMessages')
+        .populate('commentsPublicByOther')
+        .populate('postedMessages');
+  
+      if (!user) {
+      //si el usuariio no existe, lanzo error
+        return res.status(404).json({ error: 'Usuario no encontrado' });
+      }
+  
+      // Si existe, filtro los mensajes públicos y privados del usuario
+      const mensajesPublicos = user.commentsPublicByOther;
+      const mensajesPrivados = user.postedMessages;
+      
+      //los devuelvo con un json ya que está populados
+      return res.status(200).json({ mensajesPublicos, mensajesPrivados });
+    } catch (error) {
+      return res.status(404).json(error.message);
+    }
+  };
+  
 
 //   const deleteCharacter = async (req, res, next) => {
 //     try {
@@ -373,4 +431,75 @@ const createMessage = async (req, res, next) => {
 //     }
 //   };
 
-module.exports = { deleteMessagesByUser,createMessage };
+
+
+
+// const toggleLikeMuro = async (req, res, next) => {
+//   try {
+//     const { wallId } = req.params;
+//     // vamos a tener el middleware de auth por lo cual se crea req.user
+//     const { _id } = req.user;
+
+//     if (req.user.murosLikes.includes(wallId)) {
+//       try {
+//         await User.findByIdAndUpdate(_id, {
+//           $pull: { murosLikes: wallId },
+//         });
+
+//         try {
+//           await Wall.findByIdAndUpdate(wallId, {
+//             $pull: { likes: _id },
+//           });
+
+//           return res.status(200).json({
+//             action: "disliked",
+//             user: await User.findById(_id).populate("murosLikes"),
+//             wall: await Wall.findById(wallId).populate("likes"),
+//           });
+//         } catch (error) {
+//           return res.status(404).json({
+//             error: "no update wall - likes",
+//             message: error.message,
+//           });
+//         }
+//       } catch (error) {
+//         return res.status(404).json({
+//           error: "no update user-  murosLikes",
+//           message: error.message,
+//         });
+//       }
+//     } else {
+//       try {
+//         await User.findByIdAndUpdate(_id, {
+//           $push: { murosLikes: wallId },
+//         });
+
+//         try {
+//           await Wall.findByIdAndUpdate(wallId, {
+//             $push: { likes: _id },
+//           });
+
+//           return res.status(200).json({
+//             action: "like",
+//             user: await User.findById(_id).populate("murosLikes"),
+//             wall: await Wall.findById(wallId).populate("likes"),
+//           });
+//         } catch (error) {
+//           return res.status(404).json({
+//             error: "no update wall - likes",
+//             message: error.message,
+//           });
+//         }
+//       } catch (error) {
+//         return res.status(404).json({
+//           error: "no update user-  murosLikes",
+//           message: error.message,
+//         });
+//       }
+//     }
+//   } catch (error) {
+//     return res.status(404).json(error.message);
+//   }
+// };
+
+module.exports = { deleteMessagesByUser,createMessage, getById };

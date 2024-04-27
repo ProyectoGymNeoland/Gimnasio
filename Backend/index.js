@@ -36,9 +36,6 @@ app.use("/api/v1/activities/", ActivitiesRoutes);
 // const ActivityToDayRoutes = require("./src/api/routes/ActivityToDay.routes");
 // app.use("/api/v1/activityToDay/", ActivityToDayRoutes);
 
-// const ChatRoutes = require("./src/api/routes/Chat.routes");
-// app.use("/api/v1/chat/", ChatRoutes);
-
 // const DayRoutes = require("./src/api/routes/Day.routes");
 // app.use("/api/v1/day/", DayRoutes);
 
