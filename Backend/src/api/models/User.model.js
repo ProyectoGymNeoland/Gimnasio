@@ -60,6 +60,10 @@ const UserSchema = new mongoose.Schema(
     ],
     monitoresFav: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     murosLikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Muro" }],
+    chats: [{ type: mongoose.Schema.Types.ObjectId, ref: "Chat" }],
+    commentsPublicByOther: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Menssage" }],
+    postedMessages: [{ type: mongoose.Schema.Types.ObjectId, ref: "Menssage" }]
   },
   {
     // esto es cuando se crea y se actualiza el objeto
