@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
 
 const WallSchema = new mongoose.Schema(
   {
@@ -8,7 +7,7 @@ const WallSchema = new mongoose.Schema(
       enum: ["Empresa", "usuarios", "Publicidad"],
       required: true,
     },
-    fechaCaducidad: {
+    expirationDate: {
       type: Date,
       required: true,
     },
@@ -23,6 +22,9 @@ const WallSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+WallSchema.statics.findByUser = async function (userId) {
+  return this.find({ owner: userId }); // Busca los muros donde el campo "owner" coincide con el ID del usuario
+};
 
 //! -------- con la definicion de datos y su esquema vamos a crear el modelo de datos
 
