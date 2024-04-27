@@ -26,6 +26,9 @@ const ActivitiesSchema = new Schema(
       type: String,
     },
     like: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    activitiesFav: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
+    ],
   },
   {
     timestamps: true,

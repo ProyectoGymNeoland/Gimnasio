@@ -30,8 +30,8 @@ app.use(express.urlencoded({ limit: "5mb", extended: false }));
 
 //! -----------------> RUTAS
 
-// const ActivitiesRoutes = require("./src/api/routes/Activities.routes");
-// app.use("/api/v1/activities/", ActivitiesRoutes);
+const ActivitiesRoutes = require("./src/api/routes/Activities.routes");
+app.use("/api/v1/activities/", ActivitiesRoutes);
 
 // const ActivityToDayRoutes = require("./src/api/routes/ActivityToDay.routes");
 // app.use("/api/v1/activityToDay/", ActivityToDayRoutes);

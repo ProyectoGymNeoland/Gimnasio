@@ -57,7 +57,7 @@ const isAuthSuper = async (req, res, next) => {
 
     // pongo un requisito mas y es que sea admin
     if (req.user.rol !== "superadmin") {
-      return next(new Error("Unauthorized, not superadmin"));
+      return res.status(403).json({ error: "Prohíbido" });
     }
     next();
   } catch (error) {
