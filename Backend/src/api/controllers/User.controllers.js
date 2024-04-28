@@ -344,9 +344,7 @@ const resendCode = async (req, res, next) => {
 //! ------------------------------------------------------------------------
 
 const checkNewUser = async (req, res, next) => {
-
-
-/*Cuando el usuario se registre recibirá un código al email y se le enviará 
+  /*Cuando el usuario se registre recibirá un código al email y se le enviará 
 automáticamente en el front (despues de darle al botón de register) a una 
 pantalla donde tendrá que confirmar el código.  Este controlador hace justo 
 esa comprobación:
@@ -369,28 +367,24 @@ Se producirá un error cuando:
   
 */
 
-  try { // Esto sirve para traer de la req.body el email y codigo de confirmation/
+  try {
+    // Esto sirve para traer de la req.body el email y codigo de confirmation/
 
     const { email, confirmationCode } = req.body;
     const userExists = await User.findOne({ email });
 
-    if (!userExists) {  // si no existe----> 404 de no se encuentra
+    if (!userExists) {
+      // si no existe----> 404 de no se encuentra
 
       return res.status(404).json("User not found");
+    } else {
+      // en esta parte comparamos que el codigo que recibimos por la req.body y el del userExists es igual*/
 
-
-    } else { // en esta parte comparamos que el codigo que recibimos por la req.body y el del userExists es igual*/
-      
-      if (confirmationCode === userExists.confirmationCode) 
-      
-      {
-
-
+      if (confirmationCode === userExists.confirmationCode) {
         try {
-     await userExists.updateOne({ check: true }); // Con esta utilidad hacemos un test para ver si a actualizado 
-     //la clave y después hace un testeo de que este user se ha actualizado correctamente, después hago findOne
-      
-     
+          await userExists.updateOne({ check: true }); // Con esta utilidad hacemos un test para ver si a actualizado
+          //la clave y después hace un testeo de que este user se ha actualizado correctamente, después hago findOne
+
           const updateUser = await User.findOne({ email }); // este finOne nos sirve para hacer un ternario que nos
           //diga si la propiedad vale true o false
           return res.status(200).json({
@@ -399,14 +393,14 @@ Se producirá un error cuando:
         } catch (error) {
           return res.status(404).json(error.message);
         }
+      } else {
+        // el else de cuando los codigos no son iguales
+        try {
+          // En caso de que el codigo sea incorrecto lo borramos de la base datos y lo mandamos al registro
 
-
-      } else {  // el else de cuando los codigos no son iguales
-        try { // En caso de que el codigo sea incorrecto lo borramos de la base datos y lo mandamos al registro
-      
           await User.findByIdAndDelete(userExists._id); // con esto borramos la imagen
-         
-        deleteImgCloudinary(userExists.image); // si el delate se ha hecho bien mandamos un 200
+
+          deleteImgCloudinary(userExists.image); // si el delate se ha hecho bien mandamos un 200
           return res.status(200).json({
             userExists,
             check: false,
@@ -423,11 +417,11 @@ Se producirá un error cuando:
         }
       }
     }
-  } catch (error) { // para devolver errores genrales 
+  } catch (error) {
+    // para devolver errores genrales
     return next(setError(500, error.message || "General error check code"));
   }
 };
-
 
 //! -----------------------------------------------------------------------------
 //? --------------------------------LOGIN ---------------------------------------
@@ -881,12 +875,58 @@ const byGender = async (req, res, next) => {
 };
 
 //! -----------------------------------------------------------------------------
-//? ---------------------------------FOLLOW USER--------------------------------------
+//? --------------------------CAMBIAR ROL A MONITOR-----------------------------
 //! -----------------------------------------------------------------------------
 
+const changeRol = async (req, res, next) => {
+  try {
+    const { idUser, newRol } = req.params;
+    try {
+      await User.findByIdAndUpdate(idUser, { rol: newRol });
+
+      // test --------------------runtime ---------------
+      const updateUser = await User.findById(idUser);
+      if (updateUser.rol == newRol) {
+        return res.status(200).json({ updated: true });
+      } else {
+        return res.status(409).json({ updated: false });
+      }
+    } catch (error) {
+      return res.status(409).json(error.message);
+    }
+  } catch (error) {
+    return res.status(409).json(error.message);
+  }
+};
 //! -----------------------------------------------------------------------------
 //? ---------------------------------DELETE--------------------------------------
 //! -----------------------------------------------------------------------------
+
+const deleteUser = async (req, res, next) => {
+  const userId = req.params.userId;
+  try {
+    await Message.deleteMany({ owner: userId });
+    await Message.deleteMany({ recipientUser: userId });
+    await Chat.updateMany(
+      { $or: [{ userOne: userId }, { userTwo: userId }] },
+      { $pull: { messages: { recipientUser: userId } } }
+    );
+    await Chat.deleteMany({ userOne: userId });
+    await Chat.deleteMany({ userTwo: userId });
+    await User.findByIdAndDelete(userId);
+    await Activities.updateMany({ like: userId }, { $pull: { like: userId } });
+    res.status(200).json({
+      success: true,
+      message: "Mensajes del usuario eliminados correctamente.",
+    });
+  } catch (error) {
+    console.error("Error al eliminar sus mensajes:", error);
+    res.status(500).json({
+      success: false,
+      message: "Ocurrió un error al eliminar sus mensajes.",
+    });
+  }
+};
 
 module.exports = {
   registerLargo,
@@ -905,4 +945,6 @@ module.exports = {
   byId,
   byName,
   byGender,
+  changeRol,
+  deleteUser,
 };

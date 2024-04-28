@@ -18,9 +18,14 @@ const {
   byId,
   byName,
   byGender,
+  changeRol,
 } = require("../controllers/User.controllers");
 const { upload } = require("../../middleware/files.middleware");
-const { isAuth, isAuthAdmin } = require("../../middleware/auth.middleware");
+const {
+  isAuth,
+  isAuthAdmin,
+  isAuthSuper,
+} = require("../../middleware/auth.middleware");
 
 //!------------------------------------------------------------------------
 //?--------------------------------RUTAS SIN REDIRECT----------------------
@@ -39,6 +44,8 @@ UserRoutes.get("/", getAll);
 UserRoutes.get("/finById/:id", byId);
 UserRoutes.get("/finByName/:name", byName);
 UserRoutes.get("/finByGender/:gender/:name", byGender);
+UserRoutes.patch("/:idUser/rol/:newRol", [isAuthSuper], changeRol);
+
 //!------------------------------------------------------------------------
 //?--------------------------------RUTAS CON REDIRECT----------------------
 //!------------------------------------------------------------------------
