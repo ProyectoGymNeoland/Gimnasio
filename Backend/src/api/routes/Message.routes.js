@@ -5,7 +5,7 @@ const{
     createMessage, 
     deleteMessagesByUser, 
     getById,
-    toggleLikeMuro
+    toggleLikeWall
 }= require("../controllers/Message.controllers");
 const { isAuth } = require("../../middleware/auth.middleware");
 
@@ -13,7 +13,7 @@ const { isAuth } = require("../../middleware/auth.middleware");
 MessageRoutes.post("/:idRecipient", [isAuth], createMessage);
 MessageRoutes.delete('/:userId', deleteMessagesByUser);
 MessageRoutes.get("/findById/:id", getById);
-MessageRoutes.patch("/like/:wallId", [isAuth], toggleLikeMuro);
+MessageRoutes.patch("/like/:wallId", [isAuth], toggleLikeWall);
 
 
 module.exports = MessageRoutes;
