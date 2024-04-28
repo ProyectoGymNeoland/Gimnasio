@@ -55,11 +55,11 @@ const UserSchema = new mongoose.Schema(
       type: String,
     },
 
-    activityFav: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "ActivityToDay" },
+    activitiesFav: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
     ],
     monitoresFav: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    murosLikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Muro" }],
+    wallLikes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Wall" }],
     chats: [{ type: mongoose.Schema.Types.ObjectId, ref: "Chat" }],
     commentsPublicByOther: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Message" },

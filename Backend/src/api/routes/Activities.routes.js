@@ -11,6 +11,7 @@ const {
   getByType,
   update,
   toggleLikeActivity,
+  deleteActivity,
 } = require("../controllers/Activities.controllers");
 const ActivitiesRoutes = express.Router();
 
@@ -34,5 +35,6 @@ ActivitiesRoutes.get("/name/:name", [isAuth], getByName);
 ActivitiesRoutes.get("/type/:type", [isAuth], getByType);
 ActivitiesRoutes.put("/:id", [isAuth], upload.single("image"), update);
 ActivitiesRoutes.patch("/like/:id", [isAuth], toggleLikeActivity);
+ActivitiesRoutes.delete("/:id", [isAuthSuper], deleteActivity);
 
 module.exports = ActivitiesRoutes;

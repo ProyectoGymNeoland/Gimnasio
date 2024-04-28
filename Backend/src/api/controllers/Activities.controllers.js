@@ -14,6 +14,7 @@ const User = require("../models/User.model");
 const enumTypeActivityIsOk = require("../../utils/enumOk");
 const { default: isBoolean } = require("validator/lib/isBoolean");
 const { search } = require("../routes/Activities.routes");
+const ActivityToDay = require("../models/ActivityToDay.model");
 
 //! ------------------------------------------------------------------------
 //? ---------------------------CREAR ACTIVIDADES----------------------------
@@ -23,11 +24,7 @@ const createActivity = async (req, res, next) => {
   let catchImg = req.file?.path;
 
   try {
-    /*if (req.user.rol !== "superadmin") {
-      return res
-        .status(403)
-        .json({ error: "No estás autorizado para realizar esta acción" });
-    }*/
+    // esta acción solo puede hacerla el superadmin, por eso metemos el middelware en la ruta
     await Activities.syncIndexes();
 
     const { name, type } = req.body;
@@ -63,11 +60,6 @@ const createActivity = async (req, res, next) => {
 
 const toggleStatus = async (req, res, next) => {
   try {
-    /*if (req.user.rol !== "superadmin") {
-      return res
-        .status(403)
-        .json({ error: "No estás autorizado para realizar esta acción" });
-    } ---- lo quito porque en el middelware tengo isAuthAdmin*/
     await Activities.syncIndexes();
 
     const { idActivity } = req.params;
@@ -93,10 +85,6 @@ const toggleStatus = async (req, res, next) => {
 //? ------------------------------GET ALL-----------------------------------
 //! ------------------------------------------------------------------------
 
-//la diferencia es que es con find() y populamos las pelis. La dif con el anterior es que el find nos da un array,
-/*por lo que usamos length y que sea mayor que 0. Si es mayor que 0 mandamos un 200 y decimos todos los que 
-elementos character que hemos pedido.
-*/
 const getAll = async (req, res, next) => {
   try {
     let { status, name } = req.query;
@@ -250,25 +238,24 @@ const toggleLikeActivity = async (req, res, next) => {
   try {
     await Activities.syncIndexes();
 
-    const { id } = req.params;
-    // vamos a tener el middleware de auth por lo cual se crea req.user
+    const { id } = req.params; //id de la actividad
     const { _id } = req.user;
 
-    //! me quedo aquí porque mi user no tiene activitiesFav hacia mi modelo...
-    if (req.user.activitiesFav.includes(id)) {
+    if (req.user.activitiesFav?.includes(id)) {
+      //me daba error siempre porque la activitiesFav no existia en el objeto user, por eso le meto el ?
       try {
         await User.findByIdAndUpdate(_id, {
           $pull: { activitiesFav: id },
         });
         try {
           await Activities.findByIdAndUpdate(id, {
-            $pull: { likes: _id },
+            $pull: { like: _id },
           });
 
           return res.status(200).json({
             action: "disliked",
             user: await User.findById(_id).populate("activitiesFav"),
-            activity: await Activities.findById(id).populate("likes"),
+            activity: await Activities.findById(id).populate("like"),
           });
         } catch (error) {
           return res.status(404).json({
@@ -285,18 +272,18 @@ const toggleLikeActivity = async (req, res, next) => {
     } else {
       try {
         await User.findByIdAndUpdate(_id, {
-          $push: { activiesFav: id },
+          $push: { activitiesFav: id },
         });
 
         try {
           await Activities.findByIdAndUpdate(id, {
-            $push: { likes: _id },
+            $push: { like: _id },
           });
 
           return res.status(200).json({
             action: "like",
             user: await User.findById(_id).populate("activitiesFav"),
-            movie: await Activity.findById(id).populate("likes"),
+            activity: await Activities.findById(id).populate("like"),
           });
         } catch (error) {
           return res.status(404).json({
@@ -312,15 +299,64 @@ const toggleLikeActivity = async (req, res, next) => {
       }
     }
   } catch (error) {
-    return res.status(404).json(error.message);
+    return res.status(404).json({ error: error.message });
   }
 };
 
-/**
+//! ---------------------------------------------------------------------
+//? -------------------------------DELETE -------------------------------
+//! ---------------------------------------------------------------------
 
-9. toggleLike (all)
-11. delete (all)
+/**
+ * 1. actividades + imagen
+ * 2. actvidades favoritas en usuario
+ * 3. actividades del activity today
+ * 4. reservas de esa actividad - PENDIENTE
+ *
  */
+
+const deleteActivity = async (req, res, next) => {
+  try {
+    await Activities.syncIndexes();
+
+    const { id } = req.params; // id de la actividad que quiero eliminar se la paso por param
+    const activity = await Activities.findByIdAndDelete(id);
+
+    if (!activity) {
+      return res.status(404).json({ error: "Actividad no encontrada" });
+    }
+    if (await Activities.findById(id)) {
+      // si me la encuentra es que no se ha borrado
+      return res.status(409).json({ error: "Actividad no borrada" });
+    }
+    try {
+      await User.updateMany(
+        { activitiesFav: id },
+        { $pull: { activitiesFav: id } }
+      );
+      if (activity.image) {
+        deleteImgCloudinary(activity.image);
+      }
+
+      try {
+        await ActivityToDay.deleteMany({ activityId: id });
+        return res.status(200).json({ status: "Borrada con éxito" });
+      } catch (error) {
+        return res.status(409).json({
+          error: " ActivityToDay updateMany",
+          message: error.message,
+        });
+      }
+    } catch (error) {
+      return res.status(409).json({
+        error: " User updateMany  --  likes",
+        message: error.message,
+      });
+    }
+  } catch (error) {
+    return res.status(409).json({ error: error.message });
+  }
+};
 
 module.exports = {
   createActivity,
@@ -331,4 +367,5 @@ module.exports = {
   getByType,
   update,
   toggleLikeActivity,
+  deleteActivity,
 };
