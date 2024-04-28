@@ -33,11 +33,11 @@ app.use(express.urlencoded({ limit: "5mb", extended: false }));
 const ActivitiesRoutes = require("./src/api/routes/Activities.routes");
 app.use("/api/v1/activities/", ActivitiesRoutes);
 
-// const ActivityToDayRoutes = require("./src/api/routes/ActivityToDay.routes");
-// app.use("/api/v1/activityToDay/", ActivityToDayRoutes);
+const ActivityToDayRoutes = require("./src/api/routes/ActivityToDay.routes");
+app.use("/api/v1/activityToDay/", ActivityToDayRoutes);
 
-// const DayRoutes = require("./src/api/routes/Day.routes");
-// app.use("/api/v1/day/", DayRoutes);
+const DayRoutes = require("./src/api/routes/Day.routes");
+app.use("/api/v1/day/", DayRoutes);
 
 const MessageRoutes = require("./src/api/routes/Message.routes");
 app.use("/api/v1/message/", MessageRoutes);
