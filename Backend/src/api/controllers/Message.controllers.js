@@ -15,7 +15,8 @@ const createMessage = async (req, res, next) => {
     try {
       const { type, content } = req.body;
       const { idRecipient } = req.params; // id de a quien quiero hacer el comentario
-  
+      req.body.owner = req.user._id;
+
       const findUser = await User.findById(idRecipient);
   
       if (findUser) {
@@ -235,27 +236,24 @@ const createMessage = async (req, res, next) => {
 //? ----------------------------DELETE MESSAGE POR USUARIO-----------------------
 //! -----------------------------------------------------------------------------
 
-  const deleteMessagesByUser = async (req, res, next) => {
+const deleteMessagesByUser = async (req, res, next) => {
+     const userId = req.params.userId;
     try {
-      const { chatId, userId } = req.params;
-  
-      // Encontrar el chat por su iD
-      const chat = await Chat.findById(chatId);
-      if (!chat) {
-        return res.status(404).json({ error: "Chat no encontrado" });
-      }
-  
-      // Filtrar los mensajes del usuario en el chat
-      const messagesToDelete = chat.messages.filter(message => message.userId === userId);
-  
-      // Eliminar los mensajes del usuario del array de mensajes del chat
-      chat.messages = chat.messages.filter(message => message.userId !== userId);
-  
-      // Guardar el chat actualizado
-      await chat.save();
-  
-      // Eliminar los mensajes del usuario de la colección de mensajes
-      await Chat.deleteMany({ _id: { $in: messagesToDelete } });
+ // Obtener la lista de IDs de los mensajes del usuario
+    const user = await User.findById(userId);
+    const userMessageIds = user.postedMessages.map(message => message._id);
+
+ // Eliminar mensajes del usuario en el modelo User
+    await User.findByIdAndUpdate(userId, { $set: { postedMessages: [] } });
+
+ // Buscar y actualizar los chats para eliminar los mensajes del usuario
+    await Chat.updateMany(
+        { $or: [{ userOne: userId }, { userTwo: userId }] },
+        { $pull: { messages: { $in: userMessageIds } } }
+    );
+
+ // Eliminar los documentos de mensaje del usuario
+    await Message.deleteMany({ _id: { $in: userMessageIds } });
   
       return res.status(200).json("Mensajes del usuario eliminados exitosamente");
     } catch (error) {

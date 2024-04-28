@@ -11,7 +11,7 @@ const { isAuth } = require("../../middleware/auth.middleware");
 
 
 MessageRoutes.post("/:idRecipient", [isAuth], createMessage);
-MessageRoutes.delete('/:chatId/:userId', deleteMessagesByUser);
+MessageRoutes.delete('/:userId', deleteMessagesByUser);
 MessageRoutes.get("/findById/:id", getById);
 MessageRoutes.patch("/like/:wallId", [isAuth], toggleLikeMuro);
 
