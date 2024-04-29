@@ -140,7 +140,7 @@ const deleteActivityToDay = async (req, res, next) => {
     // Eliminar la actividad del día
     const deletedActivityToDay = await ActivityToDay.findByIdAndDelete(id);
 
-    if (deletedActivityToDay) {
+    if (!deletedActivityToDay) {
       return res.status(404).json({ message: "ActivityToDay not deleted" });
     }
     try {
