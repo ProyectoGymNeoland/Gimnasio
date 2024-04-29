@@ -159,6 +159,28 @@ const deleteWallByExpiration = async (req, res) => {
   }
 };
 
+//------------------------GET ALL--------------------------
+
+// Controlador para obtener todos los elementos del muro
+const getAllWalls = async (req, res) => {
+  try {
+    // Obtenemos todos los documentos de la colección Wall
+    const walls = await Wall.find();
+
+    // Si no hay muros, enviamos un mensaje de respuesta
+    if (walls.length === 0) {
+      return res.status(404).json({ message: "No walls found" });
+    }
+
+    // Si hay muros, los enviamos como respuesta
+    res.status(200).json({ walls });
+  } catch (error) {
+    // Si hay algún error, enviamos un mensaje de error
+    console.error("Error getting walls:", error);
+    res.status(500).json({ message: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   createWall,
   getByUser,
@@ -167,4 +189,5 @@ module.exports = {
   buscarActivitiesEnWall,
   deleteWall,
   deleteWallByExpiration,
+  getAllWalls,
 };
