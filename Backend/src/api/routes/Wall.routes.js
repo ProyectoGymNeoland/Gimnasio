@@ -9,6 +9,7 @@ const {
   getByDay,
   deleteWall,
   deleteWallByExpiration,
+  getAllWalls,
 } = require("../controllers/Wall.controllers");
 const { isAuthAdmin } = require("../../middleware/auth.middleware");
 
@@ -20,6 +21,7 @@ WallRoutes.get("/getByUser/:userId", getByUser);
 WallRoutes.get("/findByType/:type", getByType);
 WallRoutes.get("/findByActivitie/:wallId/activities", buscarActivitiesEnWall);
 WallRoutes.get("/findByDay", getByDay);
+WallRoutes.get("/getall", getAllWalls);
 WallRoutes.delete("/walls/:id", deleteWall);
 WallRoutes.delete("/paredesVencidas", deleteWallByExpiration);
 
