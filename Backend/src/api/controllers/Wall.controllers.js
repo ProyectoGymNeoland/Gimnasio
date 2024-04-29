@@ -118,10 +118,53 @@ const getByDay = async (req, res, next) => {
   }
 };
 
+//! -----------------------------------------------------------------------------
+//? ---------------------------------deleteWall----------------------------------
+//! -----------------------------------------------------------------------------
+
+const deleteWall = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    await Wall.findByIdAndDelete(id);
+    res.json({ mensaje: "Muro eliminado correctamente" });
+  } catch (error) {
+    console.error("Error al eliminar el muro:", error);
+    res.status(500).json({ mensaje: "Hubo un error al eliminar el muro" });
+  }
+};
+
+//! -----------------------------------------------------------------------------
+//? ---------------------------deleteWallByExpiration----------------------------
+//! -----------------------------------------------------------------------------
+
+const deleteWallByExpiration = async (req, res) => {
+  try {
+    const currentDate = new Date();
+    const paredesVencidas = await Wall.find({
+      expirationDate: { $lt: currentDate },
+    });
+    await Promise.all(
+      paredesVencidas.map(async (pared) => {
+        await Wall.deleteOne({ _id: pared._id });
+      })
+    );
+    res.status(200).json({
+      message: `${paredesVencidas.length} paredes vencidas eliminadas.`,
+    });
+  } catch (error) {
+    console.error("Error al eliminar las paredes vencidas:", error);
+    res
+      .status(500)
+      .json({ error: "Hubo un error al eliminar las paredes vencidas." });
+  }
+};
+
 module.exports = {
   createWall,
   getByUser,
   getByType,
   getByDay,
   buscarActivitiesEnWall,
+  deleteWall,
+  deleteWallByExpiration,
 };

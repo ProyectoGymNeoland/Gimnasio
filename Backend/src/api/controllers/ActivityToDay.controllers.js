@@ -62,7 +62,14 @@ const getActivityToDayById = async (req, res) => {
 const toggleBooking = async (req, res, next) => {
   try {
     const { idActivityToDay } = req.params;
-    const { _id } = req.user;
+    const { _id, rol } = req.user;
+
+    if (rol !== "user") {
+      return res
+        .status(403)
+        .json({ error: "Solo los usuarios pueden hacer reservas" });
+    }
+
     if (req.user.reservas.includes(idActivityToDay)) {
       try {
         await User.findByIdAndUpdate(_id, {
@@ -129,41 +136,49 @@ const toggleBooking = async (req, res, next) => {
 const deleteActivityToDay = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const activityToDay = await ActivityToDay.findByIdAndDelete(id);
-    if (activityToDay) {
-      const findByIdActivityToDay = await ActivityToDay.findById(id);
-      try {
-        const test = await Day.updateMany(
-          {
-            $or: [
-              { one: id },
-              { two: id },
-              { three: id },
-              { four: id },
-              { five: id },
-              { six: id },
-              { seven: id },
-              { eight: id },
-            ],
-          },
-          {
-            $unset: {
-              one: id,
-              two: id,
-              three: id,
-              four: id,
-              five: id,
-              six: id,
-              seven: id,
-              eight: id,
-            },
-          }
-          /*La función $pull se utiliza para eliminar elementos específicos de un array dentro de un documento. Sin embargo, en este caso, los campos no son arrays, son campos que contienen directamente el ID de la actividad.$unset se usa para eliminar campos completos de un documento, mientras que $pull se utiliza para eliminar elementos específicos de un array dentro de un documento.*/
-        );
-      } catch (error) {}
+
+    // Eliminar la actividad del día
+    const deletedActivityToDay = await ActivityToDay.findByIdAndDelete(id);
+
+    if (deletedActivityToDay) {
+      return res.status(404).json({ message: "ActivityToDay not deleted" });
     }
+    try {
+      // Actualizar los días que contienen la actividad eliminada
+      await Day.updateMany(
+        {
+          $or: [
+            { one: id },
+            { two: id },
+            { three: id },
+            { four: id },
+            { five: id },
+            { six: id },
+            { seven: id },
+            { eight: id },
+          ],
+        },
+        {
+          $unset: {
+            one: id,
+            two: id,
+            three: id,
+            four: id,
+            five: id,
+            six: id,
+            seven: id,
+            eight: id,
+          },
+        }
+      );
+      res.status(200).json({ message: "ActivityToDay deleted successfully" });
+    } catch (error) {
+      return res.status(500).json({ message: "Failed to update days" });
+    }
+
+    // Enviar respuesta exitosa
   } catch (error) {
-    return res.status(404).json(error.message);
+    next(error);
   }
 };
 const updateActivityToDay = async (req, res, next) => {

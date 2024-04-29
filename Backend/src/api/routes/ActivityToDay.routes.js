@@ -18,7 +18,11 @@ ActivityToDayRoutes.post(
 );
 ActivityToDayRoutes.get("/", getAllActivitiesToDay);
 ActivityToDayRoutes.get("/findById/:id", getActivityToDayById);
-ActivityToDayRoutes.patch("/:idActivityToDay", updateActivityToDay);
-ActivityToDayRoutes.patch("/booking/:idUser", [isAuth], toggleBooking);
+ActivityToDayRoutes.patch(
+  "/:idActivityToDay",
+  [isAuthSuper],
+  updateActivityToDay
+);
+ActivityToDayRoutes.patch("/booking/:idActivityToDay", [isAuth], toggleBooking);
 ActivityToDayRoutes.delete("/:id", [isAuthSuper], deleteActivityToDay);
 module.exports = ActivityToDayRoutes;

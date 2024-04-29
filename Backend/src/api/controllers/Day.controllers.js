@@ -24,47 +24,42 @@ const createDay = async (req, res, next) => {
     // Recorrer las actividades proporcionadas en el cuerpo de la solicitud
     for (let i = 1; i <= tramosToSelect; i++) {
       const activity = activities.find((act) => act.timeSlot === i);
-      if (!activity) {
-        return res
-          .status(400)
-          .json({ error: `Falta la actividad para el tramo ${i}` });
-      }
-      const { activityId } = activity;
-
-      // Buscar la actividad correspondiente en la base de datos
-      const activityToDay = await ActivityToDay.findById(activityId);
+      const activityToDay = activity
+        ? await ActivityToDay.findById(activity.activityId)
+        : null;
 
       // Asignar la actividad al tramo horario correspondiente del día
       switch (i) {
         case 1:
-          newDay.one = activityToDay._id;
+          newDay.one = activityToDay ? activityToDay._id : null;
           break;
         case 2:
-          newDay.two = activityToDay._id;
+          newDay.two = activityToDay ? activityToDay._id : null;
           break;
         case 3:
-          newDay.three = activityToDay._id;
+          newDay.three = activityToDay ? activityToDay._id : null;
           break;
         case 4:
-          newDay.four = activityToDay._id;
+          newDay.four = activityToDay ? activityToDay._id : null;
           break;
         case 5:
-          newDay.five = activityToDay._id;
+          newDay.five = activityToDay ? activityToDay._id : null;
           break;
         case 6:
-          newDay.six = activityToDay._id;
+          newDay.six = activityToDay ? activityToDay._id : null;
           break;
         case 7:
-          newDay.seven = activityToDay._id;
+          newDay.seven = activityToDay ? activityToDay._id : null;
           break;
         case 8:
-          newDay.eight = activityToDay._id;
+          newDay.eight = activityToDay ? activityToDay._id : null;
           break;
         default:
           // Manejar caso de tramo no válido
           break;
       }
     }
+
     const savedDay = await newDay.save();
     res.status(200).json(savedDay);
   } catch (error) {

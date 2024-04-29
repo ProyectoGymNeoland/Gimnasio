@@ -7,7 +7,7 @@ const {
   deleteDay,
 } = require("../controllers/Day.controllers");
 
-DayRoutes.post("/createDay", [isAuthSuper], createDay);
+DayRoutes.post("/createDay", createDay);
 DayRoutes.patch("/update/:idDay", [isAuthSuper], updateDay);
 DayRoutes.delete("/:idDay", [isAuthSuper], deleteDay);
 
