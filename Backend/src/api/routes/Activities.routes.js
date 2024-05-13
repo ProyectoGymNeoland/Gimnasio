@@ -29,7 +29,7 @@ ActivitiesRoutes.patch(
   toggleStatus
 );
 
-ActivitiesRoutes.get("/getAll", [isAuth], getAll);
+ActivitiesRoutes.get("/getAll", getAll);
 ActivitiesRoutes.get("/:id", [isAuth], getById);
 ActivitiesRoutes.get("/name/:name", [isAuth], getByName);
 ActivitiesRoutes.get("/type/:type", [isAuth], getByType);
