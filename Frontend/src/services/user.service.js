@@ -30,7 +30,7 @@ export const autoLoginUser = async (formData) => {
 
 //! ---------- RESEND CODE ---------- //
 
-export const resendCodeUser = async (formData) => {
+export const resendCodeConfirmationUser = async (formData) => {
     return APIGym.post("/users/resend", formData)
     .then((res) => res)
     .catch((error) => error);

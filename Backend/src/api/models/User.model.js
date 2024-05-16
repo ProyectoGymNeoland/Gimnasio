@@ -30,7 +30,7 @@ const UserSchema = new mongoose.Schema(
       enum: ["hombre", "mujer", "otros"],
       required: true,
     },
-    edad: {
+    age: {
       type: Number,
       required: true,
     },
