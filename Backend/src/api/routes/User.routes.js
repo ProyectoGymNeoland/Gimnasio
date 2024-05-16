@@ -36,14 +36,14 @@ UserRoutes.post("/registerUtil", upload.single("image"), registerUtil);
 UserRoutes.post("/resend", resendCode);
 UserRoutes.post("/check", checkNewUser);
 UserRoutes.post("/login", login);
-UserRoutes.post("/login/autologin", autoLogin);
-UserRoutes.patch("/forgotpassword", changePassword);
-UserRoutes.patch("/changepassword", [isAuth], modifyPassword);
+UserRoutes.post("/login/autoLogin", autoLogin);
+UserRoutes.patch("/forgotPassword", changePassword);
+UserRoutes.patch("/changePassword", [isAuth], modifyPassword);
 UserRoutes.patch("/update/update", [isAuth], upload.single("image"), update);
 UserRoutes.get("/", getAll);
-UserRoutes.get("/finById/:id", byId);
-UserRoutes.get("/finByName/:name", byName);
-UserRoutes.get("/finByGender/:gender/:name", byGender);
+UserRoutes.get("/findById/:id", byId);
+UserRoutes.get("/findByName/:name", byName);
+UserRoutes.get("/findByGender/:gender/:name", byGender);
 UserRoutes.patch("/:idUser/rol/:newRol", [isAuthSuper], changeRol);
 
 //!------------------------------------------------------------------------
