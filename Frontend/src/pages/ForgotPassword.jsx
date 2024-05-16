@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, Navigate } from "react-router-dom";
-import { useAuth } from "../context/authContext";
 import { forgotPasswordUser } from "../services/user.service";
 import { useErrorPassword } from "../hooks";
 
@@ -13,7 +12,6 @@ export const ForgotPassword = () => {
 const [ res, setRes ] = useState({});
 const [ send, setSend ] = useState(false);
 const [ okForgot, setOkForgot ] = useState(false);
-const { allUser, setAllUser, bridgeData } = useAuth();
 
 //! 2) hooks que gestiona los errores
     useEffect(() => {
@@ -23,7 +21,7 @@ useErrorPassword(res, setRes, setOkForgot)
 const formSubmit = async (formData) => {
         setSend(true);
         try {
-            const response = await forgotPasswordUser(formData.email);
+            const response = await forgotPasswordUser(formData);
             if (response.status === 200) {
                 setOkForgot(true);
             } else {
