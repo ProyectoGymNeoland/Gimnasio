@@ -1,11 +1,50 @@
-
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Link, Navigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
+import { forgotPasswordUser } from "../services/user.service";
+import { useErrorPassword } from "../hooks";
 
 export const ForgotPassword = () => {
+
+//! 1) crear los estados
+    const { register, handleSubmit } = useForm();
+
+const [ res, setRes ] = useState({});
+const [ send, setSend ] = useState(false);
+const [ okForgot, setOkForgot ] = useState(false);
+const { allUser, setAllUser, bridgeData } = useAuth();
+
+//! 2) hooks que gestiona los errores
+    useEffect(() => {
+useErrorPassword(res, setRes, setOkForgot)    
+    }, [res])
+
+const formSubmit = async (formData) => {
+        setSend(true);
+        try {
+            const response = await forgotPasswordUser(formData.email);
+            if (response.status === 200) {
+                setOkForgot(true);
+            } else {
+                setRes(response.data.message);
+            }
+        } catch (error) {
+            setRes("An error occurred. Please try again.");
+        }
+        setSend(false);
+    };
+
+
+ //! 3) estados de navegacion
+ if (okForgot) {
+    return <Navigate to="/login"/>
+}
   return  (
         <>
             <div className="form-wrap">
-            <h1>Sign In</h1>
-            <p>We are happy to see you again 💌</p>
+            <h1>Forgot Password</h1>
+            <p>Enter your email address to receive a password reset link</p>
             <form onSubmit={handleSubmit(formSubmit)}>
                 <div className="email_container form-group">
                 <input
