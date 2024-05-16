@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { App } from '../App'
 import { CheckCode, Dashboard, Login, Register } from '../pages'
+import App from '../App'
+import { ForgotPassword } from '../pages/ForgotPassword'
 
 export const router = createBrowserRouter([
     {
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard',
                 element: <Dashboard />,
+            },
+            {
+                path: '/forgotPassword',
+                element: <ForgotPassword />,
             },
         ]
     }

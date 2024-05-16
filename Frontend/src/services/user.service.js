@@ -13,7 +13,7 @@ export const registerUser = async (formData) => {
 
 //! ---------- LOGIN USER ---------- //
 
-export const loginUser = async (formData) => {
+export const loginUserService = async (formData) => {
     return APIGym.post("/users/login", formData)
     .then((res) => res)
     .catch((error) => error);

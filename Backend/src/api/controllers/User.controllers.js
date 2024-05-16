@@ -159,6 +159,8 @@ const registerUtil = async (req, res, next) => {
           }, 2500);
         }
       } catch (error) {
+       if (req.file) deleteImgCloudinary(catchImg);// añadimos esta línea para borrar la imagen si no se completa el register
+
         return res.status(404).json(error.message);
       }
     } else {

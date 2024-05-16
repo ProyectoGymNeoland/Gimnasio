@@ -59,7 +59,10 @@ export const CheckCode = () => {
                 email: parseUser.email,
             }
             setSend(true)
-            resResend(await resendCodeConfirmationUser(customFormData))
+            const response = await resendCodeConfirmationUser(customFormData);
+            setResResend(response);
+
+            //resResend(await resendCodeConfirmationUser(customFormData))
             setSend(false)
         } else {
             // entramos por el register 
@@ -67,7 +70,9 @@ export const CheckCode = () => {
                 email: allUser?.data?.user?.email,
             }
             setSend(true)
-            resResend(await resendCodeConfirmationUser(customFormData))
+            const response = await resendCodeConfirmationUser(customFormData);
+            setResResend(response);
+            //resResend(await resendCodeConfirmationUser(customFormData))
             setSend(false)
         }
     }
@@ -93,8 +98,14 @@ export const CheckCode = () => {
     }, [resResend])
 
     //! 3) estados de navegacion
-    if (okCheck) {
-        console.log("me he chekeado bien")
+   if (okCheck) {
+        // aqui vamos a hacer el autologin cuando el usuario viene del register
+        // cuando viene del login lo gestionamos en le useCheckCodeError
+        if(!localStorage.getItem('user')) {
+            useAutoLogin(allUser, login)
+        } else {
+            return <Navigate to="/dashboard"/>
+}
     }
 
     if (okDeleteUser) {
