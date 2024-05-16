@@ -1,1 +1,1 @@
-export * from './updateToken'
+export * from './updateToken';

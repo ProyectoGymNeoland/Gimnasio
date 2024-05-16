@@ -1,4 +1,4 @@
-import Swal from "sweetalert2/dist/sweetalert2.all.js";
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 export const useErrorRegister = (res, setRes, setOk) => {
   //!--- si la respuesta es ok --> res.status
@@ -8,8 +8,8 @@ export const useErrorRegister = (res, setRes, setOk) => {
   if (res?.status == 200) {
     setOk(() => true);
     Swal.fire({
-      title: "Registro hecho!",
-      icon: "success",
+      title: 'Registro hecho!',
+      icon: 'success',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -19,8 +19,8 @@ export const useErrorRegister = (res, setRes, setOk) => {
   // status 409 : user ya registrado
   if (res?.response?.status == 409) {
     Swal.fire({
-      title: "El email no es válido",
-      icon: "error",
+      title: 'El email no es válido',
+      icon: 'error',
       showConfirmButton: false,
       timer: 1500,
     });
@@ -28,11 +28,10 @@ export const useErrorRegister = (res, setRes, setOk) => {
   }
 
   // status 404 : contraseña formato erroneo
-  if (res?.response?.data?.includes("validation failed: password")) {
+  if (res?.response?.data?.includes('validation failed: password')) {
     Swal.fire({
-      title:
-        "Min 8 caracteres, 1 minúscula, 1 mayúscula, 1 número y 1 caracter especial",
-      icon: "error",
+      title: 'Min 8 caracteres, 1 minúscula, 1 mayúscula, 1 número y 1 caracter especial',
+      icon: 'error',
       showConfirmButton: false,
       timer: 3000,
     });
@@ -42,8 +41,8 @@ export const useErrorRegister = (res, setRes, setOk) => {
   // status 500 : internal server error
   if (res?.response?.status == 500) {
     Swal.fire({
-      title: "internal server error 500, inténtalo de nuevo",
-      icon: "error",
+      title: 'internal server error 500, inténtalo de nuevo',
+      icon: 'error',
       showConfirmButton: false,
       timer: 1500,
     });
