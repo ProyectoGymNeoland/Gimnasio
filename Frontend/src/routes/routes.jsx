@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { CheckCode, Dashboard, Login, Register } from '../pages'
+import { CheckCode, Dashboard, Login, Register, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 
@@ -27,6 +27,10 @@ export const router = createBrowserRouter([
             {
                 path: '/forgotPassword',
                 element: <ForgotPassword />,
+            },
+            {
+                path: '/update/update',
+                element: <UpdateUser />,
             },
         ]
     }

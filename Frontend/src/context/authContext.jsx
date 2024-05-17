@@ -56,6 +56,12 @@ export const AuthContextProvider = ({ children }) => {
         //<Navigate to='/login'>
     }
 
+  const updateUserContext = (data) => {
+        const updatedUser = { ...user, ...data };
+        localStorage.setItem('user', JSON.stringify(updatedUser));
+        setUser(updatedUser);
+    };
+
     //! constante que memoriza los datos del contexto
     const value = useMemo(() => ({
         user,
@@ -65,6 +71,7 @@ export const AuthContextProvider = ({ children }) => {
         allUser,
         setAllUser,
         bridgeData,
+        updateUserContext
     }), [user, allUser])
 
     //! esta funcion devuelve el contexto para usar en main
