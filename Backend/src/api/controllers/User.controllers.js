@@ -97,13 +97,14 @@ const registerLargo = async (req, res, next) => {
             });
           });
         } else {
+          if (req?.file) deleteImgCloudinary(catchImg);// añadimos esta línea para borrar la imagen si no se completa el register
           return res.status(404).json("error save user");
         }
       } catch (error) {
         return res.status(404).json(error.message);
       }
     } else {
-      if (req.file) deleteImgCloudinary(catchImg);
+      if (req?.file) deleteImgCloudinary(catchImg);
       return res.status(409).json("this user already exist");
     }
   } catch (error) {
