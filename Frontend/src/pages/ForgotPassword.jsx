@@ -15,22 +15,13 @@ const [ okForgot, setOkForgot ] = useState(false);
 
 //! 2) hooks que gestiona los errores
     useEffect(() => {
-useErrorPassword(res, setRes, setOkForgot)    
+    useErrorPassword(res, setRes, setOkForgot)    
     }, [res])
 
 const formSubmit = async (formData) => {
-        setSend(true);
-        try {
-            const response = await forgotPasswordUser(formData);
-            if (response.status === 200) {
-                setOkForgot(true);
-            } else {
-                setRes(response.data.message);
-            }
-        } catch (error) {
-            setRes("An error occurred. Please try again.");
-        }
-        setSend(false);
+      setSend(true);
+      setRes(await forgotPasswordUser(formData));
+      setSend(false);
     };
 
 

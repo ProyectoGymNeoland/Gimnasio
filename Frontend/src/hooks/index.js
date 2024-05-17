@@ -5,3 +5,5 @@ export * from './useResendCodeError'
 export * from './useAutoLogin'
 export * from './useResendCodeError'
 export * from './useErrorPassword'
+export * from "./useUpdateError"
+export * from "./useChangePasswordError"

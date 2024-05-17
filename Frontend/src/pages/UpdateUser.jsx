@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
 import { updateUser } from "../services/user.service";
 import { registerUser } from "../services/user.service";
-import { useErrorRegister } from "../hooks";
+import { useUpdateError } from "../hooks";
 import { useAuth } from "../context/authContext";
 import { Link, Navigate } from "react-router-dom";
 import { Uploadfile } from "../components";
@@ -47,7 +47,7 @@ export const UpdateUser = () => {
 
 //! 4) useEffects que gestionan la repuesta y manejan los errores
 useEffect(() => {
-    useErrorRegister(res, setRes, setOk, updateUserContext);
+    useUpdateError(res, setRes, setOk, updateUserContext);
     // si la res es ok llamamos a la funcion puente del contexto y le pasamos el parámetro ALLUSER
     if (res?.status == 200) bridgeData('ALLUSER')
 }, [res])
@@ -58,7 +58,7 @@ useEffect(() => {
 
  //! 5) estados de navegacion
  if (ok) {
-    //return <Navigate to="/verifyCode"/>
+    return <Navigate to="/login"/>
 }
 
     return (

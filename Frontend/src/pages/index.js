@@ -4,4 +4,4 @@ export * from './Login'
 export * from './Dashboard'
 export * from './ForgotPassword'
 export * from "./UpdateUser"
-export * from "./ModifyPassword"
+export * from "./ChangePassword"
