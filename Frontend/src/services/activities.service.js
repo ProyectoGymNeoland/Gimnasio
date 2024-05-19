@@ -30,7 +30,7 @@ export const toggleStatus = async (idActivity) => {
 
 export const getAllActivities = async () => {
   return APIGym.get('/activities/getAll')
-    .then((res) => console.log(res))
+    .then((res) => (res))
     .catch((error) => error);
 };
 
@@ -38,7 +38,7 @@ export const getAllActivities = async () => {
 
 export const getById = async (idActivity) => {
   return APIGym.get(`/activities/${idActivity}`)
-    .then((res) => console.log(res))
+    .then((res) => (res))
     .catch((error) => error);
 };
 
