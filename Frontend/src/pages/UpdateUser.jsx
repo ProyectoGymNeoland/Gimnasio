@@ -1,65 +1,63 @@
-import { useState, useEffect } from "react";
-import { useForm } from 'react-hook-form';
-import { updateUser } from "../services/user.service";
-import { registerUser } from "../services/user.service";
-import { useUpdateError } from "../hooks";
+import { useForm } from "react-hook-form";
+
 import { useAuth } from "../context/authContext";
-import { Link, Navigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Swal from "sweetalert2/dist/sweetalert2.all.js";
+import { updateUser } from "../services/user.service";
+import { useUpdateError } from "../hooks";
 import { Uploadfile } from "../components";
 
 export const UpdateUser = () => {
+  const { user, setUser, logout } = useAuth();
+  const { register, handleSubmit } = useForm();
+  const [res, setRes] = useState({});
+  const [send, setSend] = useState(false);
 
-    //! 1) crear los estados
-    const [ res, setRes ] = useState({});
-    const [ send, setSend ] = useState(false);
-    const [ ok, setOk ] = useState(false);
-    const { allUser, setAllUser, bridgeData, updateUserContext } = useAuth();
- 
-    //! 2) llamada al hook de react hook form
-    const { register, handleSubmit } = useForm();
+  //  ---> copiamos los datos que tenem os ahora mismo para ponerlo en el input como valor por defecto
+  const defaultData = {
+    name: user?.user,
+  };
 
-    //! 3) la funcion que gestiona los datos del formulario
-    const formSubmit = async (formData) => {
+  //! ------------ 1) La funcion que gestiona el formulario----
+  const formSubmit = (formData) => {
+    Swal.fire({
+      title: "Are you sure you want to change your data profile?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "rgb(73, 193, 162)",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "YES",
+    }).then(async (result) => {
+      if (result.isConfirmed) {
         const inputFile = document.getElementById("file-upload").files;
 
-        //* condicional para enviar los datos del formulario al backend tanto si hay subida imagen como si no
-        if (inputFile.lenght != 0) {
-            // si es diferente a 0 es que hay algo dentro de files
-            const customFormData = {
-                ...formData,
-                image: inputFile[0],
-            }
-            //llamada al backend
-            setSend(true);
-            setRes(await updateUser(customFormData));
-            setSend(false);
+        if (inputFile.length != 0) {
+          const custonFormData = {
+            ...formData,
+            image: inputFile[0],
+          };
+
+          setSend(true);
+          setRes(await updateUser(custonFormData));
+          setSend(false);
         } else {
-            // si no hay imagen solo hago una copia del formData
-            const customFormData = {
-                ...formData,
-            }
-            //llamada al backend
-            setSend(true);
-            setRes(await updateUser(customFormData));
-            setSend(false);
+          const custonFormData = {
+            ...formData,
+          };
+          setSend(true);
+          setRes(await updateUser(custonFormData));
+          setSend(false);
         }
-    }
+      }
+    });
+  };
 
-//! 4) useEffects que gestionan la repuesta y manejan los errores
-useEffect(() => {
-    useUpdateError(res, setRes, setOk, updateUserContext);
-    // si la res es ok llamamos a la funcion puente del contexto y le pasamos el parámetro ALLUSER
-    if (res?.status == 200) bridgeData('ALLUSER')
-}, [res])
+  //! -------------- 2 ) useEffect que gestiona la parte de la respuesta ------- customHook
 
-useEffect(() => {
-    console.log('allUser 🤡', allUser);
-}, [allUser])
-
- //! 5) estados de navegacion
- if (ok) {
-    return <Navigate to="/login"/>
-}
+  useEffect(() => {
+    console.log(res);
+    useUpdateError(res, setRes, setUser, logout);
+  }, [res]);
 
     return (
         <>

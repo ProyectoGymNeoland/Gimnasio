@@ -22,7 +22,10 @@ const ActivityToDay = require("../models/ActivityToDay.model");
 
 const createActivity = async (req, res, next) => {
   let catchImg = req.file?.path;
-
+  console.log(req.file);
+  if (!catchImg) {
+    catchImg = "https://pic.onlinewebfonts.com/svg/img_181369.png"; //aquí podemos poner por defecto al logo del gym
+}
   try {
     // esta acción solo puede hacerla el superadmin, por eso metemos el middelware en la ruta
     await Activities.syncIndexes();
@@ -50,6 +53,8 @@ const createActivity = async (req, res, next) => {
 
     return res.status(201).json(newActivity);
   } catch (error) {
+    if (req.file) deleteImgCloudinary(catchImg);
+
     next(error);
   }
 };

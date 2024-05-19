@@ -27,6 +27,7 @@ export const AuthContextProvider = ({ children }) => {
                 }
             }
         })
+  const [deleteUser, setDeleteUser] = useState(false);
 
         //! funcion puente - por si se pierde la info del register, por problemas de asincronia
         const bridgeData = (state) => {
@@ -56,11 +57,11 @@ export const AuthContextProvider = ({ children }) => {
         //<Navigate to='/login'>
     }
 
-  const updateUserContext = (data) => {
-        const updatedUser = { ...user, ...data };
-        localStorage.setItem('user', JSON.stringify(updatedUser));
-        setUser(updatedUser);
-    };
+//   const updateUserContext = (data) => {
+//         const updatedUser = { ...user, ...data };
+//         localStorage.setItem('user', JSON.stringify(updatedUser));
+//         setUser(updatedUser);
+//     };
 
     //! constante que memoriza los datos del contexto
     const value = useMemo(() => ({
@@ -70,9 +71,10 @@ export const AuthContextProvider = ({ children }) => {
         logout,
         allUser,
         setAllUser,
-        bridgeData,
-        updateUserContext
-    }), [user, allUser])
+        bridgeData, 
+        deleteUser,
+        setDeleteUser
+    }), [user, allUser, deleteUser])
 
     //! esta funcion devuelve el contexto para usar en main
     return <AuthContext.Provider value={value}> { children } </AuthContext.Provider>

@@ -1,0 +1,13 @@
+figure{
+    & img {
+        width: 250px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 5px;
+    }
+
+
+    & p h2 {
+        text-align: center;
+    }
+}

@@ -7,3 +7,5 @@ export * from './useResendCodeError'
 export * from './useErrorPassword'
 export * from "./useUpdateError"
 export * from "./useChangePasswordError"
+export * from "./useCreateActivityError"
+export * from "./useActivitiesFeedError"
