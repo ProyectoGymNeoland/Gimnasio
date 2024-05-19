@@ -30,7 +30,7 @@ ActivitiesRoutes.patch(
 );
 
 ActivitiesRoutes.get("/getAll", getAll);
-ActivitiesRoutes.get("/:id", [isAuth], getById);
+ActivitiesRoutes.get("/:id", getById);
 ActivitiesRoutes.get("/name/:name", [isAuth], getByName);
 ActivitiesRoutes.get("/type/:type", [isAuth], getByType);
 ActivitiesRoutes.put("/:id", [isAuth], upload.single("image"), update);
