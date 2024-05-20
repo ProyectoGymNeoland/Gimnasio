@@ -25,7 +25,7 @@ const createActivity = async (req, res, next) => {
   console.log(req.file);
   if (!catchImg) {
     catchImg = "https://pic.onlinewebfonts.com/svg/img_181369.png"; //aquí podemos poner por defecto al logo del gym
-}
+  }
   try {
     // esta acción solo puede hacerla el superadmin, por eso metemos el middelware en la ruta
     await Activities.syncIndexes();
@@ -147,7 +147,12 @@ const getByName = async (req, res, next) => {
   try {
     const { name } = req.params;
 
-    const allActivities = await Activities.find({ name }).populate("like");
+    // Con esto conseguimos que no importe mayúsculas y minúsculas en el input buscador
+    const regex = new RegExp(name, "i");
+
+    const allActivities = await Activities.find({ name: regex }).populate(
+      "like"
+    );
 
     if (allActivities.length > 0) {
       return res.status(200).json(allActivities);

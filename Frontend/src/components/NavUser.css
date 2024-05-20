@@ -34,10 +34,10 @@
   height: 20px;
 }
 
-body{
+/* body{
   justify-content: flex-end ;
   align-items: center;
-}
+} */
 
 .userInfo{
   display: flex;

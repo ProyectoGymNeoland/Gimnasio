@@ -1,0 +1,17 @@
+#busqueda {
+  display: block; 
+  margin: 20px auto; /* Centra el input horizontalmente con auto margin */
+  padding: 10px; 
+  width: 50%; 
+  max-width: 400px; 
+  font-size: 16px; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+  outline: none; 
+  transition: box-shadow 0.3s; 
+}
+
+#busqueda:focus {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* sombra focus */
+}
