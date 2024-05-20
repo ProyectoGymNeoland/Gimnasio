@@ -83,7 +83,7 @@ const toggleBooking = async (req, res, next) => {
           return res.status(200).json({
             action: "Quitar reserva",
             user: await User.findById(_id).populate("reservas"),
-            ActivitieToDay: await ActivityToDay.findById(
+            ActivityToDay: await ActivityToDay.findById(
               idActivityToDay
             ).populate("bookings"),
           });
@@ -112,7 +112,7 @@ const toggleBooking = async (req, res, next) => {
           return res.status(200).json({
             action: "Reserva realizada",
             user: await User.findById(_id).populate("reservas"),
-            ActivitieToDay: await ActivityToDay.findById(
+            ActivityToDay: await ActivityToDay.findById(
               idActivityToDay
             ).populate("bookings"),
           });
