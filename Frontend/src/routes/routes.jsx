@@ -3,6 +3,7 @@ import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, CrearAct
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
+import { NavUser } from '../components/NavUser'
 
 export const router = createBrowserRouter([
   {
@@ -68,6 +69,10 @@ export const router = createBrowserRouter([
       {
         path: '/activities/:idActivity',
         element: <ActivityDetailPage />,
+      },
+      {
+        path: '/profile',
+        element: <NavUser />,
       },
     ],
   },

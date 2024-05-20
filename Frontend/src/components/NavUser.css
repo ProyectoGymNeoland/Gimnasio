@@ -1,0 +1,50 @@
+.containerNavUser {
+  background-color: #2f7a67;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60vw;
+  border-radius: 20px;
+  margin-top: 5vh;
+  gap: 1rem;
+  margin-right: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+} 
+.navUser {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  gap:1rem;
+} 
+.button-navUser{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.iconNav{
+  width: 20px;
+  height: 20px;
+}
+
+body{
+  justify-content: flex-end ;
+  align-items: center;
+}
+
+.userInfo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(243, 175, 74);
+  width: 560px;
+  height: 400px;
+  border-radius: 20px;
+}
