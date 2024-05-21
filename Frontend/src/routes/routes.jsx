@@ -4,6 +4,7 @@ import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
 import { NavUser } from '../components/NavUser'
+import MessageComponent from '../pages/CreateMessage'
 
 export const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ export const router = createBrowserRouter([
       {
         path: '/profile',
         element: <NavUser />,
+      },
+      {
+        path: '/createMessage',
+        element: <MessageComponent />,
       },
     ],
   },
