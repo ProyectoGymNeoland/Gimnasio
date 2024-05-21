@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "./NavProfile.css";
-import { useDeleteUser } from "../hooks";
+//import { useDeleteUser } from "../hooks";
 import { useAuth } from "../context/authContext";
 
 export const NavProfile = () => {
@@ -23,13 +23,13 @@ export const NavProfile = () => {
         />
       </Link>
 
-      <img
+      {/* <img
         src="https://res.cloudinary.com/dq186ej4c/image/upload/v1686140226/eliminar_user_rmwoeg.png"
         alt="user delete button"
         className="iconNav iconDeleteUser"
         onClick={() => useDeleteUser(setUser, setDeleteUser)}
         // customhook que hace la peticion al servicio de delete User y setea el usuario a null en el contexto
-      />
+      /> */}
     </div>
   );
 };

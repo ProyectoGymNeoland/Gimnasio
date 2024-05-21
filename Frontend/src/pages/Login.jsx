@@ -27,6 +27,13 @@ export const Login = () => {
         useLoginError(res, setRes, login, setLoginOk)
     }, [res])
 
+
+    useEffect(() => {
+        setUser(() => null);
+        localStorage.removeItem('user');
+    }, []);
+
+
     //! 3) estados de navegacion
     if (loginOk) {
         if (res.data.user.check == false) {

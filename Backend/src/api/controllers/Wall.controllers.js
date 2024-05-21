@@ -43,7 +43,7 @@ const getByUser = async (req, res, next) => {
   try {
     const { userId } = req.params;
 
-    const wallByUser = await Wall.findByUser(userId);
+    const wallByUser = await Wall.find({ owner: userId });
     if (wallByUser) {
       return res.status(200).json(wallByUser);
     } else {
@@ -61,7 +61,7 @@ const getByUser = async (req, res, next) => {
 const getByType = async (req, res, next) => {
   try {
     const { type } = req.params;
-    const wallByType = await Wall.findByType(req.params.type);
+    const wallByType = await Wall.find({ type });
     if (wallByType) {
       return res.status(200).json(wallByType);
     } else {

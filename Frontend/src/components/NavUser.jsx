@@ -18,11 +18,6 @@ export const NavUser = () => {
                 </button>
             </Link>
 
-            <Link to="/profile/reviews">
-                <button className="btn" id="nav-likesWall"> Likes
-                </button>
-            </Link>
-
             <Link to="/profile/books">
                 <button className="btn" id="nav-books">Books
                 </button>
