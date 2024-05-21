@@ -32,10 +32,6 @@ const ActivitiesSchema = new Schema(
   }
 );
 
-ActivitiesSchema.statics.findByActivity = async function (activity) {
-  return this.find({ type: activity });
-};
-
 const Activities = mongoose.model("Activities", ActivitiesSchema);
 
 module.exports = Activities;

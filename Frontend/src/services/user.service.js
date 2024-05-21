@@ -129,3 +129,15 @@ export const changeRolUser = async (idUser, newRol, formData) => {
       .catch((error) => error);
   };
 
+
+//! ---------- DELETE USER ---------- //
+
+export const deleteUser = async (idUser) => {
+  return APIGym.delete(`/users/${idUser}`, {
+    headers: {
+      Authorization: `Bearer ${updateToken()}`,
+    },
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};

@@ -8,7 +8,7 @@ export const useUpdateError = (res, setRes, setUser, logout) => {
       for (let clave in item) {
         /** vamos a contar que cosas se han actualizado y cuales no -CUENTA LOS FALSE */
         if (item[clave] == false) {
-          contador++;
+         contador++;
         }
       }
     });

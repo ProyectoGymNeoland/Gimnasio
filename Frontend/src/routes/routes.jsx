@@ -1,8 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, CrearActivity, Dashboard, Login, Main, Register, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, CrearActivity, Dashboard, Login, Main, Profile, Register, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
+import { NavUser } from '../components/NavUser'
+import MessageComponent from '../pages/CreateMessage'
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +38,14 @@ export const router = createBrowserRouter([
       {
         path: '/forgotPassword',
         element: <ForgotPassword />,
+      },
+      {
+        path: '/profile/',
+        element: (
+          <Protected>
+            <Profile />
+          </Protected>
+        ),
       },
       {
         path: '/update/update',
@@ -72,6 +82,14 @@ export const router = createBrowserRouter([
       {
         path: '/home',
         element: <Main />,
+      },
+      {
+        path: '/profile',
+        element: <NavUser />,
+      },
+      {
+        path: '/createMessage',
+        element: <MessageComponent />,
       }
     ],
   },

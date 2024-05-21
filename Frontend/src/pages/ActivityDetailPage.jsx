@@ -5,8 +5,7 @@ import ActivityDetail from '../components/ActivityDetail';
 import { useActivityDetail } from '../hooks/useActivityDetail';
 
 export const ActivityDetailPage = () => {
-
-  const { idActivity } = useParams(); // Obtenemos el ID del cocktail de los parámetros de la URL
+  const { idActivity } = useParams(); // Obtenemos el ID de la actividad de los parámetros de la URL
   const [activity, setActivity] = useState(null);
   const [res, setRes] = useState({});
 

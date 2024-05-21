@@ -31,7 +31,7 @@ ActivitiesRoutes.patch(
 
 ActivitiesRoutes.get("/getAll", getAll);
 ActivitiesRoutes.get("/:id", getById);
-ActivitiesRoutes.get("/name/:name", [isAuth], getByName);
+ActivitiesRoutes.get("/name/:name", getByName);
 ActivitiesRoutes.get("/type/:type", [isAuth], getByType);
 ActivitiesRoutes.put("/:id", [isAuth], upload.single("image"), update);
 ActivitiesRoutes.patch("/like/:id", [isAuth], toggleLikeActivity);

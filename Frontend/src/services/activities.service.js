@@ -30,7 +30,7 @@ export const toggleStatus = async (idActivity) => {
 
 export const getAllActivities = async () => {
   return APIGym.get('/activities/getAll')
-    .then((res) => (res))
+    .then((res) => res)
     .catch((error) => error);
 };
 
@@ -38,7 +38,7 @@ export const getAllActivities = async () => {
 
 export const getById = async (idActivity) => {
   return APIGym.get(`/activities/${idActivity}`)
-    .then((res) => (res))
+    .then((res) => res)
     .catch((error) => error);
 };
 
@@ -46,17 +46,15 @@ export const getById = async (idActivity) => {
 
 export const getByName = async (name) => {
   return APIGym.get(`/activities/name/${name}`)
-    .then((res) => console.log(res))
+    .then((res) => res)
     .catch((error) => error);
 };
-
-//? Quitamos el middelware isAuth de la ruta??
 
 //! ------------- GET BY TYPE  --------------- //
 
 export const getByType = async (type) => {
   return APIGym.get(`/activities/type/${type}`)
-    .then((res) => console.log(res))
+    .then((res) => res)
     .catch((error) => error);
 };
 //? Quitamos el middelware isAuth de la ruta??

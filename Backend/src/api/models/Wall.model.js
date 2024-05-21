@@ -16,23 +16,14 @@ const WallSchema = new mongoose.Schema(
     image: [{ type: String }],
     activity: { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
+    days: [{ type: mongoose.Schema.Types.ObjectId, ref: "Day" }],
+    content: { type: String },
   },
 
   {
     timestamps: true,
   }
 );
-WallSchema.statics.findByUser = async function (userId) {
-  return this.find({ owner: userId }); // Busca los muros donde el campo "owner" coincide con el ID del usuario
-};
-
-WallSchema.statics.findByType = async function (type) {
-  return this.find({ type: type });
-};
-
-WallSchema.statics.findByActivity = async function (activity) {
-  return this.find({ type: activity });
-};
 
 //! -------- con la definicion de datos y su esquema vamos a crear el modelo de datos
 
