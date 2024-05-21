@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, CrearActivity, Dashboard, Login, Register, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, CrearActivity, Dashboard, Login, Main, Register, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
@@ -69,6 +69,10 @@ export const router = createBrowserRouter([
         path: '/activities/:idActivity',
         element: <ActivityDetailPage />,
       },
+      {
+        path: '/home',
+        element: <Main />,
+      }
     ],
   },
 ]);
