@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
-import './Nav.css'; 
+import './Main.css'; 
+import "./Nav.css"
+import { About } from "../components";
 
 export const Main = () =>{
     return (
@@ -7,7 +9,7 @@ export const Main = () =>{
         <div className="nav-container">
         <nav className="navbar">
             <ul>
-                <li><Link to="/about">About</Link></li>
+                <li><a href="#about">About</a></li>
                 <li><Link to="/muro">Muro</Link></li>
                 <li><Link to="/contacto">Contacto</Link></li>
                 <li><Link to="/login">Login</Link></li>
@@ -15,12 +17,12 @@ export const Main = () =>{
             </ul>
         </nav>
         </div>
-        <div>
+        <div className="main-container">
             <main className="main-content">
-                <h1>Pagina Main</h1>
+                <About />
             </main>
         </div>
-        <div>
+        <div className="footer-container">
             <footer className="footer">
                 <p>&copy; 2024 My Website. All rights reserved.</p>
             </footer>

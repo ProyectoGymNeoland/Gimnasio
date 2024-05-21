@@ -9,7 +9,7 @@ import MessageComponent from '../pages/CreateMessage'
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <App />,
+    element: <Main />,
     children: [
       {
         path: '/register',
