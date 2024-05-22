@@ -12,6 +12,10 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        index: true, // Ruta de índice
+        element: <Main />,
+      },
+      {
         path: '/register',
         element: <Register />,
       },
@@ -78,10 +82,6 @@ export const router = createBrowserRouter([
       {
         path: '/activities/:idActivity',
         element: <ActivityDetailPage />,
-      },
-      {
-        path: '/home',
-        element: <Main />,
       },
       {
         path: '/profile',

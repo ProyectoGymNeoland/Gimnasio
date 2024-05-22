@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import './Main.css'; 
+import './Home.css'; 
 import "./Nav.css"
 import { About } from "../components";
 
