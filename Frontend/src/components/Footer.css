@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Freeman", sans-serif;
+    text-decoration: none;
+}
+
+:root{
+    --color-esqueleto:#EFF3F5;
+} 
+footer{
+    width: 100vw;
+    padding: 50px 0px;
+    background-color:orange;
+
+
+ 
+}
+
+.container-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.box-footer{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    font-size: 20px;
+
+
+}
+
+.foto{
+    width: 200px;
+    }
+
+.terms{
+    max-width: 350px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: #7a7a7a;
+    font-size: 22px;
+}
+
+
+
+.title-footer{
+    margin-bottom: 30px;
+    color: #343434;
+    font-weight: 700;
+}
+
+.link-footer{
+    margin-top: 10px;
+    color: #7a7a7a;
+    font-weight: 600;
+}
+
+.text-footer{
+    margin-top: 10px;
+    color: #7a7a7a;
+    font-weight: 600;
+}
+
+.link-footer:hover{
+    opacity: 0.8;
+}
+
+
+
+.box-copyright{
+    max-width: 1200px;
+    margin: auto;
+    text-align: center;
+    padding: 0px 40px;
+
+}
+
+.copyright{
+    margin-top: 20px;
+    color: #7a7a7a;
+}
+
+.line{
+    border: none;
+    height: 1px;
+    background-color: #7a7a7a;
+}
