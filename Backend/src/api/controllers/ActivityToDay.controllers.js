@@ -5,7 +5,7 @@ const User = require("../models/User.model");
 
 const createActivityToDay = async (req, res, next) => {
   try {
-    const { activityId, avaibleSpots, monitorId, bookings } = req.body;
+    const { activityId, monitorId, bookings } = req.body;
     const idActivity = await Activities.findById(activityId).populate(
       "name type spots image"
     );
@@ -23,7 +23,7 @@ const createActivityToDay = async (req, res, next) => {
     }
     const newActivityToDay = new ActivityToDay({
       activityId,
-      avaibleSpots,
+      avaibleSpots:idActivity.spots,
       monitorId,
       bookings,
     });
@@ -62,14 +62,13 @@ const getActivityToDayById = async (req, res) => {
 const toggleBooking = async (req, res, next) => {
   try {
     const { idActivityToDay } = req.params;
-    const { _id, rol } = req.user;
-
-    if (rol !== "user") {
-      return res
-        .status(403)
-        .json({ error: "Solo los usuarios pueden hacer reservas" });
+    const { _id } = req.user;
+    const activityToDay = await ActivityToDay.findById(idActivityToDay);
+    if (activityToDay.bookings.length >= activityToDay.avaibleSpots) {
+          return res.status(404).json({
+          error: "no se puede realizar la reserva, no quedan plazas disponibles.",
+        });
     }
-
     if (req.user.reservas.includes(idActivityToDay)) {
       try {
         await User.findByIdAndUpdate(_id, {
@@ -78,12 +77,13 @@ const toggleBooking = async (req, res, next) => {
         try {
           await ActivityToDay.findByIdAndUpdate(idActivityToDay, {
             $pull: { bookings: _id },
+            $inc: { avaibleSpots: 1 },
           });
 
           return res.status(200).json({
             action: "Quitar reserva",
             user: await User.findById(_id).populate("reservas"),
-            ActivityToDay: await ActivityToDay.findById(
+            ActivitieToDay: await ActivityToDay.findById(
               idActivityToDay
             ).populate("bookings"),
           });
@@ -107,12 +107,13 @@ const toggleBooking = async (req, res, next) => {
         try {
           await ActivityToDay.findByIdAndUpdate(idActivityToDay, {
             $push: { bookings: _id },
+            $inc: { avaibleSpots: -1 },
           });
 
           return res.status(200).json({
             action: "Reserva realizada",
             user: await User.findById(_id).populate("reservas"),
-            ActivityToDay: await ActivityToDay.findById(
+            ActivitieToDay: await ActivityToDay.findById(
               idActivityToDay
             ).populate("bookings"),
           });
@@ -129,10 +130,12 @@ const toggleBooking = async (req, res, next) => {
         });
       }
     }
+  
   } catch (error) {
     return res.status(404).json(error.message);
   }
 };
+
 const deleteActivityToDay = async (req, res, next) => {
   try {
     const { id } = req.params;
