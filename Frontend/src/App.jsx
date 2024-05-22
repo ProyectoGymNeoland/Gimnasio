@@ -1,32 +1,22 @@
 import { Outlet } from 'react-router-dom';
 import './App.css';
-import { Link } from "react-router-dom"
+import { NavLink } from "react-router-dom";
+import { HeaderNav } from './components/HeaderNav';
+import Header from './components/Header';
 
 function App() {
   return (
-    
-       <>
-    <div className="nav-container">
-    <nav className="navbar">
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><Link to="/muro">Muro</Link></li>
-            <li><Link to="/contacto">Contacto</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/actividades">Actividades</Link></li>
-        </ul>
-    </nav>
-    </div>
-    <div className="main-container">
-        <main className="main-content">
-            <Outlet />
-        </main>
-    </div>
-    <div className="footer-container">
-        <footer className="footer">
-            <p>&copy; 2024 My Website. All rights reserved.</p>
-        </footer>
-    </div>
+<>
+    <Header>
+        <HeaderNav>
+        </HeaderNav>
+    </Header>
+    <main className="main-content main-container">
+        <Outlet />
+    </main>
+    <footer className="footer footer-container">
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
 </>
     
   );

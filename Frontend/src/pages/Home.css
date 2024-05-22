@@ -12,12 +12,11 @@ body {
 }
 
 .main-container {
-    margin-top: 60px; /* Ajusta este valor según la altura del navbar */
-    padding: 20px;
+    margin-top: 150px;
 }
 
 .main-content {
-    max-width: 1200px;
+    min-height: 100vh;
     margin: auto;
 }
 

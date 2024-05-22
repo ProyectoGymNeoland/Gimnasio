@@ -6,7 +6,7 @@ export const About = () => {
   
   return (//ponemos el id para que al hacer referencia a el en el enlace de la nav, nos redirija a este componente
     <div id="about" className='about-container' > 
-      <h1>About us..</h1>
+      <h1 className='aboutH1'>About us..</h1>
       <div className="contenedor">
             <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1716308909/female-bodybuilder-training-biceps-with-dumbbells_rhq38z.jpg"></img>
        

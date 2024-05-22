@@ -5,6 +5,7 @@ import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
 import { NavUser } from '../components/NavUser'
 import MessageComponent from '../pages/CreateMessage'
+import { Wall } from '../pages/Wall'
 
 export const router = createBrowserRouter([
   {
@@ -95,6 +96,11 @@ export const router = createBrowserRouter([
         path: '/contact',
         element: <Contact/>,
       },
+      {
+        path: '/wall',
+        element: <Wall/>,
+      },
+      
     ],
   },
 ]);

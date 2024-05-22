@@ -3,11 +3,16 @@
     margin-top: 20px; /* Margen superior para separar del header */
 }
 
+.aboutH1{
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 10px;
+}
+
 .contenedor {
     position: relative;
     width: 100%;
     max-width: 100%;
-    margin-top: 20px; /* Margen superior dentro del componente */
 }
 
 .image {
