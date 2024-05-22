@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Login, Main, Profile, Register, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Main, Profile, Register, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
