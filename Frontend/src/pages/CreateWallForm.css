@@ -1,0 +1,24 @@
+.create-wall-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.create-wall-form input, .create-wall-form select, .create-wall-form textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.create-wall-form button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.create-wall-form button:hover {
+  background-color: #0056b3;
+}
