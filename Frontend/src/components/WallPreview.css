@@ -1,0 +1,71 @@
+.wall-preview-container {
+    background-color: #f49e00;
+    padding: 20px;
+    text-align: center;
+}
+
+.wall-preview-container h2 {
+    margin-bottom: 20px;
+}
+
+.walls-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.wall-card {
+    color:black;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 22%;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.wall-card img {
+    width: 100%;
+    height: 150px; /* Fija la altura de la imagen */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor */
+    border-radius: 8px 8px 0 0;
+}
+
+.wall-card h3 {
+    background-color: #f49e00;
+    color: white;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.wall-card p {
+    padding: 10px;
+    margin: 0;
+}
+
+.wall-card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #f49e00;
+    font-size: 24px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .wall-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .wall-card {
+        width: 100%;
+    }
+}
