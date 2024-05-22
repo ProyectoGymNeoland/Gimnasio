@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, CrearActivity, Dashboard, Login, Main, Profile, Register, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Login, Main, Profile, Register, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
@@ -90,7 +90,11 @@ export const router = createBrowserRouter([
       {
         path: '/createMessage',
         element: <MessageComponent />,
-      }
+      },
+      {
+        path: '/contact',
+        element: <Contact/>,
+      },
     ],
   },
 ]);
