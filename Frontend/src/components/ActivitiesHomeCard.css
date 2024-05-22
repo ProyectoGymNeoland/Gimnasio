@@ -1,0 +1,49 @@
+/* src/components/ActivitiesHomeCard.css */
+.activities-home-card-container {
+  padding: 20px;
+  text-align: center;
+  margin-top: 25px;
+  max-width: 1200px;
+}
+
+.activities-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
+  grid-gap: 20px; /* Espacio entre las tarjetas */
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.activity-card {
+  cursor: pointer;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  width: 100%; /* Ajusta según el ancho del contenedor grid */
+  text-align: center;
+  transition: transform 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff; /* Fondo blanco para contraste */
+}
+
+.activity-card:hover {
+  transform: scale(1.05);
+}
+
+.activity-image {
+  width: 100%;
+  height: 150px; /* Ajusta según sea necesario */
+  object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor manteniendo el aspecto */
+}
+
+.activity-name {
+  padding: 10px;
+  font-size: 1.1em;
+  color: white; /* Texto negro */
+  background-color: black; /* Fondo blanco semitransparente */
+  width: 100%;
+  text-align: center;
+}
