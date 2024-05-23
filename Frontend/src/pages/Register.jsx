@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useForm } from 'react-hook-form';
-import './Register.css';
 import { registerUser } from "../services/user.service";
 import { useErrorRegister } from "../hooks";
 import { useAuth } from "../context/authContext";
