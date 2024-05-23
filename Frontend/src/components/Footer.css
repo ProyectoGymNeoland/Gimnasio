@@ -1,95 +1,84 @@
 @import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Freeman", sans-serif;
-    text-decoration: none;
+
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Freeman", sans-serif;
+  text-decoration: none;
 }
 
-:root{
-    --color-esqueleto:#EFF3F5;
+:root {
+    --color-esqueleto: #EFF3F5;
 } 
-footer{
+
+footer {
     width: 100vw;
-    padding: 50px 0px;
-    background-color:orange;
-
-
- 
+    padding: 15px 0;
+    background-color: orange;
 }
 
-.container-footer{
+.container-footer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     max-width: 1200px;
-    margin: auto;
-    margin-top: 100px;
+    margin: 10px auto 0;
 }
 
-.box-footer{
+.box-footer {
     display: flex;
     flex-direction: column;
-    padding: 40px;
-    font-size: 20px;
-
-
+    padding: 10px;
+    font-size: 15px;
+    height: 200px;
 }
 
-.foto{
-    width: 200px;
-    }
+.foto {
+    width: 125px;
+    height: 75px;
+    object-fit: cover;
+}
 
-.terms{
+.link-footer, .text-footer {
+    color: #7a7a7a;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.terms {
     max-width: 350px;
-    margin-top: 20px;
+    font-size: 15px;
     font-weight: 500;
-    color: #7a7a7a;
-    font-size: 22px;
+       color: #7a7a7a;
 }
 
-
-
-.title-footer{
-    margin-bottom: 30px;
-    color: #343434;
+.title-footer {
+    margin-bottom: 10px;
+    color: #333333;
     font-weight: 700;
+    font-size: 20px;
 }
 
-.link-footer{
-    margin-top: 10px;
-    color: #7a7a7a;
-    font-weight: 600;
-}
-
-.text-footer{
-    margin-top: 10px;
-    color: #7a7a7a;
-    font-weight: 600;
-}
-
-.link-footer:hover{
+.link-footer:hover {
     opacity: 0.8;
 }
 
-
-
-.box-copyright{
+.box-copyright {
     max-width: 1200px;
     margin: auto;
     text-align: center;
-    padding: 0px 40px;
-
+    padding: 0 40px;
 }
 
-.copyright{
+.copyright {
     margin-top: 20px;
     color: #7a7a7a;
+    font-size: 12px;
 }
 
-.line{
+.line {
     border: none;
     height: 1px;
     background-color: #7a7a7a;
