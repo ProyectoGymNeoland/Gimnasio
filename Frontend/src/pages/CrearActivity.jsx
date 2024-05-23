@@ -55,7 +55,7 @@ export const CrearActivity = () => {
       };
       //llamada al backend
       setSend(true);
-      setRes(await rcreateActivityService(customFormData));
+      setRes(await createActivityService(customFormData));
       setSend(false);
     }
   };
