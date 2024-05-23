@@ -10,13 +10,12 @@ const ActivityDetail = ({ activity }) => {
   return (
     <div className="activity-detail">
       <h1>{activity.name}</h1>
-      <p>{activity.description}</p>
       <p>Número de plazas: {activity.spots}</p>
       <p>Tipo de actividad: {activity.type}</p>
       <p>Status: {activity.status ? 'Disponible' : 'No disponible'}</p>
       <img src={activity.image} alt={activity.name} />
-      <h3>Descripción pendiente de añadir al formulario y al backend</h3>
-      
+      <h3>Te contamos en qué consiste</h3>
+      <p>{activity.description}</p>
     </div>
   );
 };

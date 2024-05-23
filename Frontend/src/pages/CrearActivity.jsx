@@ -55,7 +55,7 @@ export const CrearActivity = () => {
       };
       //llamada al backend
       setSend(true);
-      setRes(await createActivityService(customFormData));
+      setRes(await rcreateActivityService(customFormData));
       setSend(false);
     }
   };
@@ -112,6 +112,20 @@ export const CrearActivity = () => {
               {...register('spots', { required: true })}
             />
           </div>
+
+          <div className="descriptioncontainer form-group">
+            <label htmlFor="custom-input" className="custom-placeholder">
+              Descripción de la actividad
+            </label>
+            <textarea
+              className="input_activity"
+              id="description"
+              name="description"
+              autoComplete="false"
+              {...register('description', { required: true })}
+            ></textarea>
+          </div>
+          
           <div className="type  form-group">
             <label htmlFor="custom-input" className="custom-placeholder">
               Tipo de actividad

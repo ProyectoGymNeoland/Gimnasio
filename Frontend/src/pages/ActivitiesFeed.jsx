@@ -6,12 +6,14 @@ import Figure from '../components/FigureActivity';
 import './ActivitiesFeed.css';
 import { Input } from '../components/Input';
 import { useGetByNameError } from '../hooks';
+import { useAuth } from '../context/authContext';
 
 export const ActivitiesFeed = () => {
   const [activities, setActivities] = useState([]);
   const [res, setRes] = useState({});
   const [searchRes, setSearchRes] = useState({});
-  const [searchTerm, setSearchTerm] = useState(''); // Estado para el término de la búsqueda
+  const [searchTerm, setSearchTerm] = useState(''); // estado para el término de la búsqueda
+  const { user } = useAuth(); //cuando añado el toogleLike me traigo al user logueado con el contexto.
 
   useEffect(() => {
     (async () => {
@@ -27,9 +29,7 @@ export const ActivitiesFeed = () => {
     useGetByNameError(searchRes, setSearchRes, setActivities);
   }, [searchRes]);
 
-  useEffect(() => {
-    console.log(activities)
-  }, [activities]);
+  useEffect(() => {}, [activities]);
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
@@ -50,7 +50,14 @@ export const ActivitiesFeed = () => {
       <Input setValueInput={handleSearch} value={searchTerm} />
       <div id="containerActivitiesFeed">
         {activities.length > 0 &&
-          activities.map((activity) => <Figure activity={activity} key={activity._id} />)}
+          activities.map((activity) => (
+            <Figure
+              activity={activity}
+              key={activity._id}
+              user={user} //pasamos el usuario como prop
+              setActivities={setActivities}
+            />
+          ))}
         {activities.length === 0 && 'No se han encontrado actividades'}
       </div>
     </div>

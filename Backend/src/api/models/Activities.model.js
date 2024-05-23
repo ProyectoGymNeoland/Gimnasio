@@ -25,6 +25,11 @@ const ActivitiesSchema = new Schema(
     image: {
       type: String,
     },
+    description: {
+      type: String,
+      required: true,
+      trim: true,
+    },
     like: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },
   {

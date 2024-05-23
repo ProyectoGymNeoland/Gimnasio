@@ -47,7 +47,7 @@ const createActivity = async (req, res, next) => {
     }
     //no hace falta poner el else porque si no se da la condición, directamente sigue al sgte pto.
 
-    const newActivity = new Activities(req.body);
+    const newActivity = new Activities({ ...req.body, image: catchImg });
 
     await newActivity.save();
 
@@ -102,7 +102,7 @@ const getAll = async (req, res, next) => {
       search.name = name;
     }*/
 
-    const allActivities = await Activities.find(search).populate("like");
+    const allActivities = await Activities.find(search);
 
     if (allActivities.length > 0) {
       return res.status(200).json(allActivities);
@@ -223,6 +223,12 @@ const update = async (req, res, next) => {
       image: req.file?.path ? catchImg : oldImg, // con un ternario le digo: si hay imagen la metes, y si no, dejas la old.
       name: req.body?.name ? req.body?.name : activity.name, //si recibo nombre me lo cambias, sino, te quedas con lo que tenías.
       spots: req.body?.spots ? req.body?.spots : activity.spots,
+      description: req.body?.description
+        ? req.body?.description
+        : activity.description,
+      type: req.body?.type ? req.body?.type : activity.type,
+      status:
+        req.body?.status !== undefined ? req.body?.status : activity.status,
     };
 
     try {
@@ -266,6 +272,7 @@ const toggleLikeActivity = async (req, res, next) => {
             action: "disliked",
             user: await User.findById(_id).populate("activitiesFav"),
             activity: await Activities.findById(id).populate("like"),
+            activityAll: await Activities.find(),
           });
         } catch (error) {
           return res.status(404).json({
@@ -294,6 +301,7 @@ const toggleLikeActivity = async (req, res, next) => {
             action: "like",
             user: await User.findById(_id).populate("activitiesFav"),
             activity: await Activities.findById(id).populate("like"),
+            activityAll: await Activities.find(),
           });
         } catch (error) {
           return res.status(404).json({
