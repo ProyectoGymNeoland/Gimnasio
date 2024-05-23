@@ -1,8 +1,11 @@
 import React from 'react'
 import "./Header.css"
 import { NavLink } from "react-router-dom";
+import { useAuth } from '../context/authContext';
 
 export const HeaderNav = () => {
+
+  const {user} = useAuth();  
   return (
     <div className='nav-container'> 
       <nav className='navbar'>
@@ -11,12 +14,12 @@ export const HeaderNav = () => {
           <li><NavLink to="/">About</NavLink></li>
           <li><NavLink to="/wall">Muro</NavLink></li>
           <li><NavLink to="/contact">Contacto</NavLink></li>
-          <li><NavLink to="/login">Login</NavLink></li>
           <li><NavLink to="/activities/feed">Actividades</NavLink></li>
           <li><NavLink to="/calendar">Calendario</NavLink></li>
           <li><NavLink to="/profile">
           <img src="https://res.cloudinary.com/dq186ej4c/image/upload/v1686125391/Change_User_icon-icons.com_55946_lypx2c.png" alt="go to ChangePassword" className="profileIconNav"/>
           </NavLink></li>
+          {user?.rol == "admin" || user?.rol == "monitor" && <li><NavLink to="/login">Logout</NavLink></li>}
         </ul>
       </nav>
     </div>
