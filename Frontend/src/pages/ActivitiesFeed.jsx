@@ -33,11 +33,14 @@ export const ActivitiesFeed = () => {
 
   useEffect(() => {
     if (searchTerm.trim() === '') {
-      return;
+      (async () => {
+        setSearchRes(await getAllActivities());
+      })();
+    } else {
+      (async () => {
+        setSearchRes(await getByName(searchTerm));
+      })();
     }
-    (async () => {
-      setSearchRes(await getByName(searchTerm));
-    })();
   }, [searchTerm]);
 
   const handleSearch = async (term) => {

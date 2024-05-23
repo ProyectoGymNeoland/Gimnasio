@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, UpdateActivity, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
@@ -78,6 +78,14 @@ export const router = createBrowserRouter([
         ),
       },
       {
+        path: '/activities/update/:id',
+        element: (
+          <Protected>
+            <UpdateActivity />
+          </Protected>
+        ),
+      },
+      {
         path: '/activities/feed',
         element: <ActivitiesFeed />,
       },
@@ -95,17 +103,16 @@ export const router = createBrowserRouter([
       },
       {
         path: '/contact',
-        element: <Contact/>,
+        element: <Contact />,
       },
       {
         path: '/wall',
-        element: <Wall/>,
+        element: <Wall />,
       },
       {
         path: '/createWallForm',
-        element: <CreateWallForm/>,
+        element: <CreateWallForm />,
       },
-      
     ],
   },
 ]);

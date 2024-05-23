@@ -43,10 +43,10 @@ export const UserProfileCard = ({ user }) => {
 
   return (
     <div className="user-profile">
-      <img src={user?.image} alt={user?.name} />
-      <h1>{user?.name}</h1>
-      <p>Edad: {user?.age}</p>
-      <p>Género: {user?.gender}</p>
+      <img src={user.image} alt={user?.name} />
+      <h1>{user.name}</h1>
+      <p>Edad: {user.age}</p>
+      <p>Género: {user.gender}</p>
       <Link to="/update/update">
         <button>Editar Perfil</button>
       </Link>
