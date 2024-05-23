@@ -18,23 +18,30 @@
   margin: 0;
   padding: 0;
   display: flex;
+  align-items: center;
 }
 
 .navbar li {
-  margin: 0 15px;
+  margin: 0 10px;
 }
 
 .navbar a {
   color: white;
   text-decoration: none;
-  padding: 14px 20px;
+  padding: 10px;
   display: block;
 }
 
 .navbar a:hover {
-  background-color: #575757;
+  color: orange;
 }
 
-.logoNav{
-  height: 70px;
+.logoNav {
+  height: 80px;
+}
+
+.profileIconNav {
+  height: 40px;
+  width: 40px;
+  margin-top: 10px;
 }

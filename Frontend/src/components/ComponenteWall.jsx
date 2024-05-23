@@ -2,8 +2,10 @@ import React, { useState } from 'react'
 import "./ComponenteWall.css"
 import { ButtonCreateWall } from './ButtonCreateWall';
 import { createWall } from '../services/wall.service';
+import { useAuth } from '../context/authContext';
 
 export const ComponenteWall = () => {
+  const {user} = useAuth()
   
   const [walls, setWalls] = useState([]);
 
@@ -23,7 +25,7 @@ export const ComponenteWall = () => {
   
   return (
     <div className='contenedor-wall'>
-      <ButtonCreateWall onCreateWall={handleCreateWall} />
+      {user?.rol == "admin" || user?.rol == "monitor" && <ButtonCreateWall onCreateWall={handleCreateWall} />}
       {walls.map((wall, index) => (
         <div
           key={index}

@@ -14,6 +14,9 @@ export const HeaderNav = () => {
           <li><NavLink to="/login">Login</NavLink></li>
           <li><NavLink to="/activities/feed">Actividades</NavLink></li>
           <li><NavLink to="/calendar">Calendario</NavLink></li>
+          <li><NavLink to="/profile">
+          <img src="https://res.cloudinary.com/dq186ej4c/image/upload/v1686125391/Change_User_icon-icons.com_55946_lypx2c.png" alt="go to ChangePassword" className="profileIconNav"/>
+          </NavLink></li>
         </ul>
       </nav>
     </div>
