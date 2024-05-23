@@ -3,6 +3,7 @@ import './App.css';
 import { NavLink } from "react-router-dom";
 import { HeaderNav } from './components/HeaderNav';
 import Header from './components/Header';
+import { Footer } from './components';
 
 function App() {
   return (
@@ -14,9 +15,8 @@ function App() {
     <main className="main-content main-container">
         <Outlet />
     </main>
-    <footer className="footer footer-container">
-        <p>&copy; 2024 My Website. All rights reserved.</p>
-    </footer>
+   <Footer/>
+    
 </>
     
   );
