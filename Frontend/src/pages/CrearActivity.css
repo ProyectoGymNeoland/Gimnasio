@@ -6,30 +6,19 @@
     padding: 0;
 }
 
-body {
-    font-family: "Raleway", sans-serif;
-    background: #000000;
-    color: #fff;
-    line-height: 1.8;
-}
-
-.parrafoLogin {
-    margin-bottom: 40px;
-}
-
 #imagen {
     display: block;
 }
 
-a {
-    text-decoration: none;
+a:hover {
+    color: #ff6464;
 }
 
 .form-wrap {
     margin: 2rem 0 2rem 0;
-    background: #f7fffa;
+    background:#fdefc4;
     padding: 15px 25px 30px;
-    color: #333;
+    color: #fff;
     border-radius: 5px;
 }
 
@@ -43,75 +32,20 @@ a {
 }
 
 .form-wrap .form-group label {
-    color: #2f7a67;
+    color: #fff;
     font-weight: normal;
 }
 
 .form-wrap .form-group input {
     width: 100%;
     padding: 10px;
-    border: #ddd 1px solid;
+    border: solid 2px #0D5FA6;
     border-radius: 5px;
     font-family: inherit;
     font-size: inherit;
-    caret-color: #2f7a67;
-    border: solid 2px #49c1a371;
-}
-
-.form-wrap .form-group input:focus {
-    outline-color: #49c1a2;
-}
-
-.form-wrap .btn {
-    width: 100%;
-    padding: 10px;
-    margin-top: 25px;
-    background: #2f7a67;
+    caret-color: #0D5FA6;
+    background: #0D5FA6;
     color: #fff;
-    cursor: pointer;
-    border: #2f7a67 1px solid;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: inherit;
-}
-
-.form-wrap .btn:hover {
-    background: #37a08e;
-    color: #f4f4f4;
-}
-
-.form-wrap .btn:focus {
-    outline-color: #37a08e;
-}
-
-.form-wrap .bottom-text {
-    line-height: 1.4;
-    margin-top: 15px;
-}
-
-.form-wrap .bottom-text a:hover {
-    text-decoration: underline;
-}
-
-.parrafoLogin {
-    text-align: center;
-    margin-top: 15px;
-}
-
-footer a {
-    color: #49c1a2;
-}
-
-footer a:hover {
-    color: #37a08e;
-}
-
-.btn:disabled {
-    background-color: navajowhite;
-}
-
-input[type="radio"] {
-    display: none;
 }
 
 .sexo {
@@ -124,16 +58,18 @@ input[type="radio"] {
 
 .sexo .hombre {
     border-radius: 3px 0 0 3px;
-    color: black !important;
+    background: #0D5FA6;
+    color: white !important;
 }
 
 .sexo .mujer {
     border-radius: 0 3px 3px 0;
-    color: black !important;
+    background: #0D5FA6;
+    color: white !important;
 }
 
 .label-radio {
-    background: #37a08e57;
+    background: #0D5FA6;
     color: #fff;
     padding: 10px;
     text-align: center;
@@ -142,20 +78,16 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked+.label-radio {
-    background: #2f7a67;
+    background: #0D5FA6;
     color: #fff !important;
 }
 
-a {
-    color: #49c1a2;
-}
-
 .anchorCustom {
-    color: #276052;
+    color: white;
 }
 
 .custom-placeholder {
-    width: 100%wp;
+    width: 100%;
     display: flex;
     justify-content: left;
     margin-bottom: 10px;
