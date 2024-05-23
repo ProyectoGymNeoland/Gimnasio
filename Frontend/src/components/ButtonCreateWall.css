@@ -1,5 +1,21 @@
-.boton-formulario{
+.contenedor-boton-formulario{
     position: absolute;
-    top: 80px;
-    right: 10px;
+    top: 90px;
+    right: 50px;
+    
 }
+
+.boton-formulario{
+    height: 40px;
+    width: 80px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    background-color: orange;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+
+.boton-formulario:hover {
+    transform: scale(0.95);
+    box-shadow: 5px 10px 10px rgba(177, 117, 5, 0.61);
+}
+

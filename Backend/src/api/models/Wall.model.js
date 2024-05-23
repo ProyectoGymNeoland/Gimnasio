@@ -13,7 +13,7 @@ const WallSchema = new mongoose.Schema(
     },
     owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     likes: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
-    image: [{ type: String }],
+    image: { type: String },
     activity: { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
     days: [{ type: mongoose.Schema.Types.ObjectId, ref: "Day" }],

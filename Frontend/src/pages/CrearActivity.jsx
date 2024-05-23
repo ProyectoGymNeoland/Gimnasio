@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import "./CrearActivity.css";
-
 import { Uploadfile } from "../components/Uploadfile";
 import { useCreateActivityError } from "../hooks/useCreateActivityError";
 import { Navigate } from "react-router-dom";
@@ -84,14 +83,7 @@ export const CrearActivity = () => {
             <label htmlFor="custom-input" className="custom-placeholder">
               Nombre de la actividad
             </label>
-            <input
-              className="input_activity"
-              type="text"
-              id="name"
-              name="name"
-              autoComplete="false"
-              {...register('name', { required: true })}
-            />
+            <input className="input_activity" type="text" id="name" name="name" autoComplete="false" {...register('name', { required: true })}/>
           </div>
 
           <div className="spotscontainer form-group">

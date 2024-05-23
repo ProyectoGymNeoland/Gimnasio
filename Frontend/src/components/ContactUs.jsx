@@ -55,7 +55,7 @@ import { useCreateContactError } from "../hooks";
         </div>
       
 
-        <div className="btn_container">
+        <div className="button">
         <button type="submit" disabled={send}
         style={{ background: send ? "#49c1a388" : "#49c1a2" }}>Enviar</button>
         </div>

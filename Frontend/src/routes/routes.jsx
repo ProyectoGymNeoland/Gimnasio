@@ -6,6 +6,7 @@ import { Protected, ProtectedCheckChildren } from '../components'
 import { NavUser } from '../components/NavUser'
 import MessageComponent from '../pages/CreateMessage'
 import { Wall } from '../pages/Wall'
+import { CreateWallForm } from '../pages/CreateWallForm'
 
 export const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
       {
         path: '/wall',
         element: <Wall/>,
+      },
+      {
+        path: '/createWallForm',
+        element: <CreateWallForm/>,
       },
       
     ],

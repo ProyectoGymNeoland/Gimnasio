@@ -4,7 +4,7 @@ import { APIGym } from './gym.config';
 //! ---------- CREATE WALL ---------- //
 
 export const createWall = async (formData) => {
-  return APIGym.post('/walls', formData, {
+  return APIGym.post('/wall/createWall', formData, {
     headers: { 'Content-Type': 'application/json', 
     Authorization: `Bearer ${updateToken()}`, },
   })
@@ -16,7 +16,7 @@ export const createWall = async (formData) => {
     //! ---------- GET BY USER ID ---------- //
 
 export const getWallByUser = async (userId) => {
-  return APIGym.get(`/walls/user/${userId}`)
+  return APIGym.get(`/wall/getByUser/${userId}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -25,7 +25,7 @@ export const getWallByUser = async (userId) => {
 //! ---------- GET BY ACTIVITY ---------- //
 
 export const getWallByActivity = async (wallId) => {
-  return APIGym.get(`/walls/activity/${wallId}`)
+  return APIGym.get(`/wall/findByActivitie/${wallId}/activities`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -33,7 +33,7 @@ export const getWallByActivity = async (wallId) => {
 //! ---------- GET BY TYPE ---------- //
 
 export const getWallByType = async (type) => {
-  return APIWall.get(`/walls/type/${type}`)
+  return APIWall.get(`/wall/findByType/${type}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -42,7 +42,7 @@ export const getWallByType = async (type) => {
 //! ---------- GET BY DAY ---------- //
 
 export const getWallByDay = async (day) => {
-  return APIGym.get(`/walls/day/${day}`)
+  return APIGym.get(`/wall/findByDay/${day}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -51,7 +51,7 @@ export const getWallByDay = async (day) => {
 //! ---------- DELETE WALL ---------- //
 
 export const deleteWall = async (id) => {
-  return APIGym.delete(`/walls/${id}`,{
+  return APIGym.delete(`/wall/${id}`,{
     headers: {Authorization: `Bearer ${updateToken()}`},
 })
     .then((res) => res)
@@ -61,7 +61,7 @@ export const deleteWall = async (id) => {
 //! ---------- GET ALL WALLS ---------- //
 
 export const getAllWalls = async () => {
-  return APIGym.get('/walls')
+  return APIGym.get('/wall/getall')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -70,7 +70,7 @@ export const getAllWalls = async () => {
 //! ---------- DELETE WALL BY EXPIRATION ---------- //
 
 export const deleteWallByExpiration = async () => {
-  return APIWall.delete('/walls/expired')
+  return APIWall.delete('/wall/paredesVencidas')
     .then((res) => res)
     .catch((error) => error);
 };
