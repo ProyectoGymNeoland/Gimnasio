@@ -54,7 +54,7 @@ export const CrearActivity = () => {
       };
       //llamada al backend
       setSend(true);
-      setRes(await rcreateActivityService(customFormData));
+      setRes(await createActivityService(customFormData));
       setSend(false);
     }
   };
@@ -70,13 +70,8 @@ export const CrearActivity = () => {
   // estados ok -- falta
   if (ok) {
     return <Navigate to="/activities/feed" />;
-
-    //console.log("Actividad creada");
   }
 
-  const handleToogle = () => {
-    toggleStatus('662d7aa61d0e8b8653d48526');
-  };
 
   return (
     <>
@@ -117,7 +112,7 @@ export const CrearActivity = () => {
               {...register('description', { required: true })}
             ></textarea>
           </div>
-          
+
           <div className="type  form-group">
             <label htmlFor="custom-input" className="custom-placeholder">
               Tipo de actividad

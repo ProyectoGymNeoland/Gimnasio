@@ -1,0 +1,276 @@
+@import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  font-family: 'Freeman', sans-serif;
+  color: #ffffff;
+  background-color: #242424;
+  margin: 0;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  background-color: black;
+}
+
+
+
+button {
+  font-family: 'Freeman', sans-serif;
+  font-size: 14px;
+ 
+  text-transform: uppercase;
+  margin-top: 5px;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  background-color: #0D5FA6 !important;
+  border: 5px solid transparent;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+button:hover {
+  border-color: #ff6464;
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button.btn {
+
+background: #0D5FA6 !important;
+}
+
+a {
+color: #F2BB16;
+}
+
+a.anchorCustom {
+ color: #993c3c;
+}
+
+/* span seria texto */
+span {
+ font-family: Arial, Helvetica, sans-serif;
+ font-size: small;
+ font-weight: 100;
+}
+
+/*cambiar los h1,h2,h3 por clase titulo*/
+h3, h2, h1 {
+  text-transform: uppercase;
+  font-size: medium;
+}
+
+h1 {
+  font-size: 2em;
+  text-transform: uppercase;
+  color: #F2BB16;
+  margin-bottom: 20px;
+}
+
+/* texto en cajas de descripción sobre blanco */
+p {
+  font-size: 1em;
+  color:  #0D5FA6;
+  margin-bottom: 20px;
+}
+
+/* cartas de info general - especificar nombre */
+.card {
+  background-color: #993c3c;
+}
+
+/* css para formularios */
+
+  .input_user {
+    width: 100%;
+    padding: 10px;
+    font-family: 'Freeman', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    color: #ffffff;
+    background-color:white;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+  }
+  
+  .input_user::placeholder {
+    color: #a0a0a0;
+  }
+  
+  .imput 
+  .custom-placeholder {
+    position: absolute;
+    top: -20px;
+    left: 10px;
+    font-size: 14px;
+    color: #a0a0a0;
+  }
+  
+  .sexo {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  .custom-placeholder {
+    margin-top: 10px;
+    color: #993c3c !important;
+    text-transform: uppercase;
+    
+
+  }
+  
+  .parrafoLogin {
+    color: white;
+  }
+
+
+  #imagen {
+    display: block;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form-wrap {
+    margin: 4rem 0 2rem 0;
+    background: #cde6fc;
+    padding: 15px 25px 30px;
+    color:#0D5FA6;
+    border-radius: 5px;
+}
+
+.form-wrap h1,
+.form-wrap p {
+    text-align: center;
+}
+
+.form-wrap .form-group {
+    margin-top: 15px;
+}
+
+.form-wrap .form-group label {
+    color: #0D5FA6;
+    font-weight: normal;
+}
+
+.form-wrap .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: #ddd 1px solid;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    caret-color: #0D5FA6;
+    border: solid 2px #0D5FA6;
+}
+
+.form-wrap .form-group input:focus {
+    outline-color: #0D5FA6;
+}
+
+.form-wrap .btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    background: #0D5FA6;
+    color: #fff;
+    cursor: pointer;
+    border: #0D5FA6 1px solid;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.form-wrap .btn:hover {
+    background: #0D5FA6;
+    color: #f4f4f4;
+}
+
+.form-wrap .btn:focus {
+    outline-color: #0D5FA6;
+}
+
+.form-wrap .bottom-text {
+    line-height: 1.4;
+    margin-top: 0px;
+}
+
+.form-wrap .bottom-text a:hover {
+    text-decoration: underline;
+}
+
+.parrafoLogin {
+    text-align: center;
+    margin-top: 15px;
+}
+
+button.btn {
+
+background: #0D5FA6 !important;
+}
+
+.btn:disabled {
+    background-color: navajowhite;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+.sexo {
+    display: flex;
+    flex-wrap: no-wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    
+}
+
+.sexo .hombre {
+    border-radius: 3px 0 0 3px;
+    color: white;
+}
+
+.sexo .mujer {
+    border-radius: 0 3px 3px 0;
+    color: white;
+}
+
+.sexo .otros {
+  border-radius: 0 3px 3px 0;
+  color: white !important;
+}
+
+.label-radio {
+    background: #0D5FA6;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    width: 49.5%;
+}
+
+input[type="radio"]:checked+.label-radio {
+    background: #0D5FA6;
+    color: #fff !important;
+}
+ textarea {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+ }
+ 

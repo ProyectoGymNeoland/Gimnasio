@@ -9,7 +9,7 @@ export const HeaderNav = () => {
   return (
     <div className='nav-container'> 
       <nav className='navbar'>
-        <img src='https://res.cloudinary.com/dpw6wsken/image/upload/v1716316187/logofinal_csiazn.png' alt='Logo de la Nav' className='logoNav'></img>
+        <img src='https://res.cloudinary.com/dpw6wsken/image/upload/v1716412046/logofinal-removebg-preview_fm3ppj.png' alt='Logo de la Nav' className='logoNav'></img>
         <ul>
           <li><NavLink to="/">About</NavLink></li>
           <li><NavLink to="/wall">Muro</NavLink></li>

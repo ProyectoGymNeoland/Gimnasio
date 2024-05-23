@@ -1,6 +1,6 @@
 .nav-container {
   width: 100%;
-  background-color: #333;
+  background-color: white;
   position: fixed;
   top: 0;
   left: 0;
@@ -26,7 +26,7 @@
 }
 
 .navbar a {
-  color: white;
+  color: #0D5FA6;
   text-decoration: none;
   padding: 10px;
   display: block;
