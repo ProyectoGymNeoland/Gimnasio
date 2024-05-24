@@ -21,9 +21,7 @@ const Figure = ({ activity, user, setActivities }) => {
       icon: 'info',
       title: 'Para guardar tus favoritos regístrate',
       html: `<a href="/login">Haz click aquí!</a>`,
-
-      showConfirmButton: false,
-      timer: 3000,
+      showConfirmButton: true,
     });
   };
 
@@ -49,9 +47,10 @@ const Figure = ({ activity, user, setActivities }) => {
         />
       )}
       {!user && (
-        <button onClick={handleLikeAnonymous}>
-          <span className="material-symbols-outlined">favorite</span>
-        </button>
+        <ToggleFavorite
+          handleLike={handleLikeAnonymous}
+          isFav={false}
+        />
       )}
     </figure>
   );
