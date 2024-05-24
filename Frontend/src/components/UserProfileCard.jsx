@@ -7,10 +7,7 @@ import { Link } from 'react-router-dom';
 import { useAuth } from '../context/authContext';
 
 export const UserProfileCard = ({ user }) => {
-  console.log('hola', user);
-  //   if (!user) {
-  //     return <div>Lorem ipsum...</div>;
-  //   }
+  const {logout} = useAuth();
   const [showEditForm, setShowEditForm] = useState(false);
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
 
@@ -36,11 +33,6 @@ export const UserProfileCard = ({ user }) => {
     });
   };
 
-  const handleLogout = () => {
-    const { logout } = useAuth();
-    logout();
-  };
-
   return (
     <div className="user-profile">
       <img src={user.image} alt={user?.name} />
@@ -54,7 +46,11 @@ export const UserProfileCard = ({ user }) => {
         <button>Cambiar Contraseña</button>
       </Link>
       <button onClick={handleDelete}>Eliminar Perfil</button>
-      <button onClick={handleLogout}>LogoutIcono</button>
+      <div>
+        <button onClick={logout} className="logout-button">
+          <span class="material-symbols-outlined">logout</span>
+        </button>
+      </div>
     </div>
   );
 };

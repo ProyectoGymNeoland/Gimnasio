@@ -2,7 +2,7 @@
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  padding: 20px;
+  padding-top: 150px;/*apaño momentáneo. ¡pte quitar!*/
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
