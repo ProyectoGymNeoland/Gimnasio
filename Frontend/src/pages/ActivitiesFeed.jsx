@@ -46,9 +46,9 @@ export const ActivitiesFeed = () => {
   const handleSearch = async (term) => {
     setSearchTerm(term);
   };
-
+//!añadir clase a div principal y actualizar css
   return (
-    <div>
+    <div className="activities-feed">
       <h1>Activities Feed</h1>
       <Input setValueInput={handleSearch} value={searchTerm} />
       <div id="containerActivitiesFeed">

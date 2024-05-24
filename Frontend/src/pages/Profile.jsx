@@ -1,4 +1,4 @@
-import { NavProfile, UserProfileCard } from '../components';
+import { NavProfile, NavUser, UserProfileCard } from '../components';
 import { useAuth } from '../context/authContext';
 import './Profile.css';
 
@@ -12,6 +12,7 @@ export const Profile = () => {
   return (
     <div>
       <UserProfileCard user={user} />
+      <NavUser/>
     </div>
   );
 };
