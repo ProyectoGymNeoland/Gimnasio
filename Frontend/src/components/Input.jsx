@@ -1,13 +1,14 @@
-import "./Input.css"
+import './Input.css';
 
-export const Input = ({ setValueInput, value }) => {
+export const Input = ({ setValueInput, value, id, placeholder }) => {
   return (
     <input
-      id="busqueda"
+      id={id}
       type="text"
       value={value}
       onChange={(e) => setValueInput(() => e.target.value)}
-      placeholder="Buscar actividad..."
+      placeholder={placeholder}
+      className="input-busqueda"
     />
   );
 };

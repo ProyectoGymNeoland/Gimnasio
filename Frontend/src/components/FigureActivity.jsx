@@ -5,6 +5,7 @@ import { useAuth } from '../context/authContext';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { useToggleLikeActivity } from '../hooks/useToggleLikeActivity';
+import { ToggleFavorite } from './ToggleFavorite';
 
 const Figure = ({ activity, user, setActivities }) => {
   const { login } = useAuth();
@@ -42,17 +43,10 @@ const Figure = ({ activity, user, setActivities }) => {
         </figcaption>
       </Link>
       {user && ( // Muestra el botón solo si el usuario está autenticado
-        <button onClick={handleLike}>
-          <span
-            className={
-              activity.like.includes(user._id)
-                ? 'material-symbols-outlined like'
-                : 'material-symbols-outlined'
-            }
-          >
-            favorite
-          </span>
-        </button>
+        <ToggleFavorite
+          handleLike={handleLike}
+          isFav={activity.like.includes(user._id) ? true : false}
+        />
       )}
       {!user && (
         <button onClick={handleLikeAnonymous}>

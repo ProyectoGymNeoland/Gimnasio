@@ -1,4 +1,4 @@
-#busqueda {
+.input-busqueda {
   display: block; 
   margin: 20px auto; /* Centra el input horizontalmente con auto margin */
   padding: 10px; 
@@ -12,6 +12,6 @@
   transition: box-shadow 0.3s; 
 }
 
-#busqueda:focus {
+.input-busqueda:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); /* sombra focus */
 }
