@@ -5,6 +5,7 @@ import { useAuth } from '../context/authContext';
 import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { useToggleLikeActivity } from '../hooks/useToggleLikeActivity';
+import { ToggleFavorite } from './ToggleFavorite';
 
 export const Figure = ({ activity, user, setActivities }) => {
   const { login } = useAuth();
@@ -20,9 +21,7 @@ export const Figure = ({ activity, user, setActivities }) => {
       icon: 'info',
       title: 'Para guardar tus favoritos regístrate',
       html: `<a href="/login">Haz click aquí!</a>`,
-
-      showConfirmButton: false,
-      timer: 3000,
+      showConfirmButton: true,
     });
   };
 
@@ -43,22 +42,16 @@ export const Figure = ({ activity, user, setActivities }) => {
       </Link>
       {console.log(activity)}
       {user && ( // Muestra el botón solo si el usuario está autenticado
-        <button onClick={handleLike}>
-          <span
-            className={
-              activity.like.includes(user._id)
-                ? 'material-symbols-outlined like'
-                : 'material-symbols-outlined'
-            }
-          >
-            favorite
-          </span>
-        </button>
+        <ToggleFavorite
+          handleLike={handleLike}
+          isFav={activity.like.includes(user._id) ? true : false}
+        />
       )}
       {!user && (
-        <button onClick={handleLikeAnonymous}>
-          <span className="material-symbols-outlined">favorite</span>
-        </button>
+        <ToggleFavorite
+          handleLike={handleLikeAnonymous}
+          isFav={false}
+        />
       )}
     </figure>
   );

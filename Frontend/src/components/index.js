@@ -15,4 +15,8 @@ export * from "./TestimonialsHomeCard.jsx"
 export * from "./GymServices"
 export * from "./Footer.jsx"
 export * from "./ChatComponent"
+<<<<<<< HEAD
 export * from "./FigureWalls"
+=======
+export * from "./ToggleFavorite.jsx"
+>>>>>>> b84e2406d742592bdef9d48301179084ca3fb9e1
