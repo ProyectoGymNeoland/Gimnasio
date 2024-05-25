@@ -7,6 +7,7 @@ import { NavUser } from '../components/NavUser'
 import MessageComponent from '../pages/CreateMessage'
 import { Wall } from '../pages/Wall'
 import { CreateWallForm } from '../pages/CreateWallForm'
+import { Calendar } from '../pages/Calendar' 
 
 export const router = createBrowserRouter([
   {
@@ -113,6 +114,10 @@ export const router = createBrowserRouter([
         path: '/createWallForm',
         element: <CreateWallForm />,
       },
-    ],
+      {
+        path: '/calendar',
+        element: <Calendar />,
+      },
+    ]
   },
 ]);
