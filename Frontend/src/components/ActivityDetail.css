@@ -1,0 +1,72 @@
+.activity-detail {
+  max-width: 600px; 
+  margin: 0 auto;
+  margin-top: 80px; /* APAÑO PARA QUE NO SE META DENTRO DEL HEADER */
+  padding: 15px; 
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+.activity-detail h1 {
+  font-size: 1.5em; /* Reduce el tamaño de la fuente */
+  margin-bottom: 15px; 
+  text-align: center;
+}
+
+.activity-detail h3 {
+   color: #F2BB16;
+}
+
+
+.activity-detail p {
+  margin: 8px 0; /* Reduce los márgenes */
+}
+
+.activity-detail .spots,
+.activity-detail .type {
+  font-weight: bold;
+}
+
+.activity-detail .status {
+  margin: 8px 0; /* Reduce los márgenes */
+}
+
+.activity-detail .status .available {
+  color: green;
+  font-weight: bold;
+}
+
+.activity-detail .status .not-available {
+  color: red;
+  font-weight: bold;
+}
+
+.activity-detail img {
+  width: 90%;
+  height: auto;
+  border-radius: 10px;
+  margin: 15px 0; /* Reduce el margen */
+}
+
+.activity-detail h3 {
+  font-size: 1.2em; /* Reduce el tamaño de la fuente */
+  margin-top: 20px;
+  text-align: center;
+}
+
+.activity-detail .description {
+  line-height: 1.4; /* Reduce la altura de línea */
+  text-align: justify;
+}
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 1.5em;
+  color: #ff0000;
+}
