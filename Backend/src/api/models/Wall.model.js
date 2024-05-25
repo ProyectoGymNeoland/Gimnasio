@@ -17,7 +17,7 @@ const WallSchema = new mongoose.Schema(
     activity: { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Message" }],
     days: [{ type: mongoose.Schema.Types.ObjectId, ref: "Day" }],
-    content: { type: String },
+    content: { type: String,},
     name: { type: String, required: true},
   },
 

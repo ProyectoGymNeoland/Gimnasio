@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { useActivitiesFeedError } from '../hooks/useActivitiesFeedError';
-import { getAllActivities, getByName } from '../services/activities.service';
-import './ActivitiesFeed.css';
-import { Input } from '../components/Input';
-import { useGetByNameError } from '../hooks';
-import { useAuth } from '../context/authContext';
-import { Figure } from '../components';
+import { getAllWalls, getWallByActivity } from '../services/wall.service';
 
-export const ActivitiesFeed = () => {
+import './ActivitiesFeed.css';
+import './WallFeed.css';
+import { Input } from '../components/Input';
+import { useAuth } from '../context/authContext';
+import { useWallsFeedError,  useWallByNameError } from '../hooks';
+import { FigureWalls } from '../components';
+import { ButtonCreateWall } from '../components/ButtonCreateWall';
+
+
+export const WallFeed = () => {
   const [activities, setActivities] = useState([]);
   const [res, setRes] = useState({});
   const [searchRes, setSearchRes] = useState({});
@@ -17,31 +20,34 @@ export const ActivitiesFeed = () => {
 
   useEffect(() => {
     (async () => {
-      setRes(await getAllActivities());
+      setRes(await getAllWalls());
     })();
   }, []);
 
   useEffect(() => {
-    useActivitiesFeedError(res, setRes, setActivities);
+    useWallsFeedError(res, setRes, setActivities);
   }, [res]);
 
   useEffect(() => {
-    useGetByNameError(searchRes, setSearchRes, setActivities);
+    useWallByNameError(searchRes, setSearchRes, setActivities);
   }, [searchRes]);
 
-  useEffect(() => {}, [activities]);
-
   useEffect(() => {
-    if (searchTerm.trim() === '') {
-      (async () => {
-        setSearchRes(await getAllActivities());
-      })();
-    } else {
-      (async () => {
-        setSearchRes(await getByName(searchTerm));
-      })();
-    }
-  }, [searchTerm]);
+    console.log(activities)
+  }, [activities]);
+
+
+  // useEffect(() => {
+  //   if (searchTerm.trim() === '') {
+  //     (async () => {
+  //       setSearchRes(await getAllWalls());
+  //     })();
+  //   } else {
+  //     (async () => {
+  //       setSearchRes(await getWallByActivity(searchTerm));
+  //     })();
+  //   }
+  // }, [searchTerm]);
 
   const handleSearch = async (term) => {
     setSearchTerm(term);
@@ -49,16 +55,15 @@ export const ActivitiesFeed = () => {
 //!añadir clase a div principal y actualizar css
   return (
     <div className="activities-feed">
-      <h1>Activities Feed</h1>
+      <h1>Wall Feed</h1>
       <Input setValueInput={handleSearch} value={searchTerm} />
       <div id="containerActivitiesFeed">
         {activities.length > 0 &&
-          activities.map((activity) => (
-            <Figure
-              activity={activity}
-              key={activity._id}
-              user={user} //pasamos el usuario como prop
-              setActivities={setActivities}
+          activities.map((wall) => (
+            <FigureWalls
+            wall={wall}
+            key={wall._id}
+            
             />
           ))}
         {activities.length === 0 && 'No se han encontrado actividades'}

@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import "./ComponenteWall.css"
+import "./ButtonCreateWall.css"
 import { ButtonCreateWall } from './ButtonCreateWall';
 import { createWall } from '../services/wall.service';
 import { useAuth } from '../context/authContext';
+import { WallFeed } from '../pages/WallFeed';
 
 export const ComponenteWall = () => {
   const {user} = useAuth()
@@ -25,8 +27,8 @@ export const ComponenteWall = () => {
   
   return (
     <div className='contenedor-wall'>
-      {user?.rol == "superadmin" || user?.rol == "monitor" && <ButtonCreateWall onCreateWall={handleCreateWall} />}
-      {walls.map((wall, index) => (
+      {(user?.rol == "superadmin" || user?.rol == "monitor" || user?.rol == "user") && (<ButtonCreateWall onCreateWall={handleCreateWall}></ButtonCreateWall>)}
+      {/* {walls.map((wall, index) => (
         <div
           key={index}
           className='wall-item'
@@ -35,7 +37,8 @@ export const ComponenteWall = () => {
           <h3>{wall.name}</h3>
           <p>{wall.content}</p>
         </div>
-      ))}
+      ))} */}
+              <WallFeed></WallFeed>
     </div>
   )
 }

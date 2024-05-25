@@ -1,11 +1,7 @@
-import { ButtonCreateWall } from "../components/ButtonCreateWall";
 import { ComponenteWall } from "../components/ComponenteWall";
-import { useAuth } from "../context/authContext";
-
+import { WallFeed } from "./WallFeed";
 
 export const Wall = () =>{
-
-  const {user} = useAuth()
 
     return (
       <>

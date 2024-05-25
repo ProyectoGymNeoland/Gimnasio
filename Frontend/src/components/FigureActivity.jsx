@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { useToggleLikeActivity } from '../hooks/useToggleLikeActivity';
 
-const Figure = ({ activity, user, setActivities }) => {
+export const Figure = ({ activity, user, setActivities }) => {
   const { login } = useAuth();
 
   const [res, setRes] = useState({});
@@ -41,6 +41,7 @@ const Figure = ({ activity, user, setActivities }) => {
           <p>{activity.type}</p>
         </figcaption>
       </Link>
+      {console.log(activity)}
       {user && ( // Muestra el botón solo si el usuario está autenticado
         <button onClick={handleLike}>
           <span
@@ -63,4 +64,3 @@ const Figure = ({ activity, user, setActivities }) => {
   );
 };
 
-export default Figure;

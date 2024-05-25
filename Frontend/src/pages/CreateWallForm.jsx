@@ -82,11 +82,11 @@ useEffect(() => {
             <input type="date" name="expirationDate"  {...register("expirationDate", { required: true })} />
             </div>
             <div className="user_container form-group">
-            {/* <input type="text" name="owner" placeholder="Monitor" {...register("owner", { required: true })} /> */}
             </div>
-            {/* <input type="text" name="image" placeholder="URL de la imagen" {...register("image", { required: true })} /> */}
             <Uploadfile />
+            <div className="user_container form-group">
             <textarea className="user_container form-group" name="content" placeholder="Contenido"  {...register("content", { required: true })}></textarea>
+            </div>
             <button
               className="btn"
               type="submit"

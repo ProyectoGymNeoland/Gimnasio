@@ -1,29 +1,36 @@
 //-------------------CREATE CONTROLLER---------------
-
-const mongoose = require("mongoose");
-const multer = require("multer");
 const Wall = require("../models/Wall.model");
 const Day = require("../models/Day.model");
-const User = require("../models/User.model");
-const Message = require("../models/Message.model");
-
-const upload = multer().none();
+const { upload, deleteImgCloudinary, configCloudinary } = require("../../middleware/files.middleware");
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const createWall = async (req, res) => {
-  // Extrae los datos necesarios del cuerpo de la solicitud (req.body) o de donde corresponda
-  const { type, name, expirationDate, owner, likes, image, activity, comments } =
-    req.body;
+  
+  const { type, name, expirationDate, owner, likes, activity, comments, content, days } = req.body;
 
   try {
+
+    let imageUrl = '';
+      if (req.file) {
+        const result = await cloudinary.uploader.upload(req.file.path);
+        imageUrl = result.secure_url;
+      }
+
     // Crea un nuevo documento de muro utilizando el modelo Wall y los datos proporcionados
     const nuevoWall = await Wall.create({
       type,
       expirationDate,
       owner,
       likes,
-      image,
+      image: imageUrl,
       activity,
       comments,
+      content,
+      days,
       name,
     });
 

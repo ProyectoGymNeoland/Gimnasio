@@ -19,9 +19,11 @@ export const HeaderNav = () => {
           <li><NavLink to="/profile">
           <img src="https://res.cloudinary.com/dq186ej4c/image/upload/v1686125391/Change_User_icon-icons.com_55946_lypx2c.png" alt="go to ChangePassword" className="profileIconNav"/>
           </NavLink></li>
-          {(user?.rol == "superadmin" || user?.rol == "monitor" || user?.rol == "user") && (<li><NavLink to="/login">Logout</NavLink></li>)}
+          {(user?.rol == "superadmin" || user?.rol == "monitor" || user?.rol == "user") && <li><NavLink to="/login">Logout</NavLink></li>}
         </ul>
       </nav>
     </div>
   )
 }
+
+

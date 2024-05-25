@@ -5,7 +5,7 @@ import { APIGym } from './gym.config';
 
 export const createWall = async (formData) => {
   return APIGym.post('/wall/createWall', formData, {
-    headers: { 'Content-Type': 'application/json', 
+    headers: { 'Content-Type': 'multipart/form-data', 
     Authorization: `Bearer ${updateToken()}`, },
   })
     .then((res) => res)
