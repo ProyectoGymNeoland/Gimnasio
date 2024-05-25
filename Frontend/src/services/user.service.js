@@ -117,6 +117,15 @@ export const getByGenderUser = async (gender, name) => {
       .catch((error) => error);
   };
 
+//! ---------- GET BY ROL USER ---------- //
+
+export const getByRolUser = async (rol) => {
+    return APIGym.get(`/users/findByRol/${rol}`)
+      .then((res) => res)
+      .catch((error) => error);
+  };
+
+  
 //! ---------- CHANGE ROL USER ---------- //
 
 export const changeRolUser = async (idUser, newRol, formData) => {

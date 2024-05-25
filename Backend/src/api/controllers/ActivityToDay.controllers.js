@@ -5,30 +5,33 @@ const User = require("../models/User.model");
 
 const createActivityToDay = async (req, res, next) => {
   try {
-    const { activityId, monitorId, bookings } = req.body;
-    const idActivity = await Activities.findById(activityId).populate(
-      "name type spots image"
-    );
+    const { activityId, monitorId, bookings,room } = req.body;
+    const idActivity = await Activities.findById(activityId)
     if (!idActivity) {
       return res.status(404).json({ message: "Activity not found" });
     }
-    const idMonitor = await User.findById(monitorId).populate(
-      "name gender rol image"
-    );
+    const idMonitor = await User.findById(monitorId)
 
     if (!idMonitor || idMonitor.rol !== "monitor") {
       return res.status(400).json({
         error: "El usuario no tiene el rol necesario para asociar la actividad",
       });
     }
-    const newActivityToDay = new ActivityToDay({
+
+const customBody={
       activityId,
       avaibleSpots:idActivity.spots,
       monitorId,
       bookings,
-    });
-    const savedActivityToDay = await newActivityToDay.save();
-    res.status(200).json(savedActivityToDay);
+      room,
+    }
+
+    const newActivityToDay = new ActivityToDay(customBody)
+      const savedActivityToDay = await newActivityToDay.save();
+      const findNewActivityToDay = await ActivityToDay.findById(savedActivityToDay._id).populate("activityId monitorId");
+      
+      res.status(findNewActivityToDay ? 200 : 404).json(findNewActivityToDay ? findNewActivityToDay: "Error no se ha creado");
+
   } catch (error) {
     return res.status(404).json({
       messege: "error en el creado del elemento",
@@ -39,7 +42,7 @@ const createActivityToDay = async (req, res, next) => {
 
 const getAllActivitiesToDay = async (req, res) => {
   try {
-    const activitiesToDay = await ActivityToDay.find();
+    const activitiesToDay = await ActivityToDay.find().populate("activityId monitorId")
     res.status(200).json(activitiesToDay);
   } catch (error) {
     res.status(500).json({ error: "Error al obtener las actividades del día" });
@@ -135,53 +138,49 @@ const toggleBooking = async (req, res, next) => {
     return res.status(404).json(error.message);
   }
 };
-
 const deleteActivityToDay = async (req, res, next) => {
   try {
     const { id } = req.params;
-
-    // Eliminar la actividad del día
-    const deletedActivityToDay = await ActivityToDay.findByIdAndDelete(id);
-
-    if (!deletedActivityToDay) {
-      return res.status(404).json({ message: "ActivityToDay not deleted" });
-    }
-    try {
-      // Actualizar los días que contienen la actividad eliminada
-      await Day.updateMany(
-        {
-          $or: [
-            { one: id },
-            { two: id },
-            { three: id },
-            { four: id },
-            { five: id },
-            { six: id },
-            { seven: id },
-            { eight: id },
-          ],
-        },
-        {
-          $unset: {
-            one: id,
-            two: id,
-            three: id,
-            four: id,
-            five: id,
-            six: id,
-            seven: id,
-            eight: id,
+    const activityToDay = await ActivityToDay.findByIdAndDelete(id);
+    if (activityToDay) {
+      return res.status(404).json("not deleted");
+    }else{
+      
+      try {
+         await ActivityToDay.findById(id);
+        await Day.updateMany(
+          {
+            $or: [
+              { one: id },
+              { two: id },
+              { three: id },
+              { four: id },
+              { five: id },
+              { six: id },
+              { seven: id },
+              { eight: id },
+            ],
           },
-        }
-      );
-      res.status(200).json({ message: "ActivityToDay deleted successfully" });
-    } catch (error) {
-      return res.status(500).json({ message: "Failed to update days" });
+          {
+            $unset: {
+              one: id,
+              two: id,
+              three: id,
+              four: id,
+              five: id,
+              six: id,
+              seven: id,
+              eight: id,
+            },
+          }
+          /*La función $pull se utiliza para eliminar elementos específicos de un array dentro de un documento. Sin embargo, en este caso, los campos no son arrays, son campos que contienen directamente el ID de la actividad.$unset se usa para eliminar campos completos de un documento, mientras que $pull se utiliza para eliminar elementos específicos de un array dentro de un documento.*/
+        );
+      } catch (error) {
+        return res.status(404).json(error.message);
+      }
     }
-
-    // Enviar respuesta exitosa
   } catch (error) {
-    next(error);
+    return res.status(404).json(error.message);
   }
 };
 const updateActivityToDay = async (req, res, next) => {

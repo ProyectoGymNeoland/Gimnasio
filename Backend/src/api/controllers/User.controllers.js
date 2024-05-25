@@ -878,6 +878,25 @@ const byGender = async (req, res, next) => {
 };
 
 //! -----------------------------------------------------------------------------
+//? ---------------------------------get By Rol----------------------------------
+//! -----------------------------------------------------------------------------
+
+const byRol = async (req, res, next) => {
+  try {
+    const getRolUser = await User.find({
+      rol: req.params.rol,
+    });
+    if (getRolUser) {
+      return res.status(200).json(getRolUser);
+    } else {
+      return res.status(404).json("monitores no encontrados");
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+//! -----------------------------------------------------------------------------
 //? --------------------------CAMBIAR ROL A MONITOR-----------------------------
 //! -----------------------------------------------------------------------------
 
@@ -948,6 +967,7 @@ module.exports = {
   byId,
   byName,
   byGender,
+  byRol,
   changeRol,
   deleteUser,
 };

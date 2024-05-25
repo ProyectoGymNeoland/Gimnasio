@@ -17,11 +17,7 @@ const DaySchema = new Schema(
       required: true,
     },
 
-    room: {
-      type: String,
-      num: ["sala verde", "sala roja"],
-      required: false,
-    },
+
 
     dates: { type: Date, required: true },
     type: {

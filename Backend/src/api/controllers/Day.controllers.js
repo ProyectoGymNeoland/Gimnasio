@@ -3,69 +3,76 @@ const Day = require("../models/Day.model");
 
 const createDay = async (req, res, next) => {
   try {
-    const { day, room, dates, type, activities } = req.body;
-    const newDay = new Day({ day, room, dates, type });
-    let tramosToSelect = 0;
-    switch (type) {
-      case "Habil":
-        tramosToSelect = 8;
-        break;
-      case "Finde":
-        tramosToSelect = 3;
-        break;
-      case "Festivo":
-        tramosToSelect = 5;
-        break;
-      default:
-        // Manejar caso de tipo no válido
-        break;
-    }
+    const { day, dates, type, one, two, three, four, five, six, seven, eight} = req.body;
 
-    // Recorrer las actividades proporcionadas en el cuerpo de la solicitud
-    for (let i = 1; i <= tramosToSelect; i++) {
-      const activity = activities.find((act) => act.timeSlot === i);
-      const activityToDay = activity
-        ? await ActivityToDay.findById(activity.activityId)
-        : null;
-
-      // Asignar la actividad al tramo horario correspondiente del día
-      switch (i) {
-        case 1:
-          newDay.one = activityToDay ? activityToDay._id : null;
-          break;
-        case 2:
-          newDay.two = activityToDay ? activityToDay._id : null;
-          break;
-        case 3:
-          newDay.three = activityToDay ? activityToDay._id : null;
-          break;
-        case 4:
-          newDay.four = activityToDay ? activityToDay._id : null;
-          break;
-        case 5:
-          newDay.five = activityToDay ? activityToDay._id : null;
-          break;
-        case 6:
-          newDay.six = activityToDay ? activityToDay._id : null;
-          break;
-        case 7:
-          newDay.seven = activityToDay ? activityToDay._id : null;
-          break;
-        case 8:
-          newDay.eight = activityToDay ? activityToDay._id : null;
-          break;
-        default:
-          // Manejar caso de tramo no válido
-          break;
+    if (type ==  "Habil" ){
+      const customDate = {
+        one, two, three, four, five, six, seven, eight,day, dates, type
       }
-    }
 
-    const savedDay = await newDay.save();
-    res.status(200).json(savedDay);
+      const newDay = new Day(customDate)
+      try {
+          const savedDay = await newDay.save();
+      const findNewDay = await Day.findById(savedDay._id).populate("one two three four five six seven eight")
+      
+      res.status(findNewDay ? 200 : 404).json(findNewDay ? findNewDay: "Error no se ha creado");
+        
+      } catch (error) {
+        return res.status(404).json({
+          message: "Error no se ha creado",
+          error: error
+        })
+        
+      }
+    }else if(type =="Finde"){
+
+      const customDate = {
+        one, two, three,day, dates, type
+      }
+
+      const newDay = new Day(customDate)
+      try {
+          const savedDay = await newDay.save();
+      const findNewDay = await Day.findById(savedDay._id).populate("one two three")
+      
+      res.status(findNewDay ? 200 : 404).json(findNewDay ? findNewDay: "Error no se ha creado");
+        
+      } catch (error) {
+        return res.status(404).json({
+          message: "Error no se ha creado",
+          error: error
+        })
+  
+      }
+    }else if(type =="Festivo"){
+
+      const customDate = {
+        one, two, three, four, five, day, dates, type
+      }
+
+      const newDay = new Day(customDate)
+      try {
+          const savedDay = await newDay.save();
+      const findNewDay = await Day.findById(savedDay._id).populate("one two three four five")
+      
+      res.status(findNewDay ? 200 : 404).json(findNewDay ? findNewDay: "Error no se ha creado");
+        
+      } catch (error) {
+        return res.status(404).json({
+          message: "Error no se ha creado",
+          error: error
+        })
+    
+      }
+    }else{
+      return res.status(404).json("el type no es correcto")
+    }
+    
   } catch (error) {
     next(error);
   }
 };
+
 const updateDay = async (req, res, next) => {
   try {
     const { idDay } = req.params; // ID del día por params

@@ -4,7 +4,7 @@ import { updateToken } from "../utils";
 //! ---------- CREATE DAY ---------- //
 
 export const createDay = async (dayData) => {
-  return APIGym.post('/days', dayData, {
+  return APIGym.post('/day/createDay', dayData, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${updateToken()}`,
@@ -17,7 +17,7 @@ export const createDay = async (dayData) => {
 //! ---------- UPDATE DAY ---------- //
 
 export const updateDay = async (idDay, dayData) => {
-  return APIGym.put(`/days/${idDay}`, dayData, {
+  return APIGym.put(`/day/update/${idDay}`, dayData, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${updateToken()}`,
@@ -30,7 +30,7 @@ export const updateDay = async (idDay, dayData) => {
 //! ---------- DELETE DAY ---------- //
 
 export const deleteDay = async (idDay) => {
-  return APIGym.delete(`/days/${idDay}`, {
+  return APIGym.delete(`/day/${idDay}`, {
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },
@@ -39,14 +39,3 @@ export const deleteDay = async (idDay) => {
     .catch((error) => error);
 };
 
-//! ---------- FIND DAY BY ID ---------- //
-
-export const findDayById = async (idDay) => {
-  return APIGym.get(`/days/findById/${idDay}`, {
-    headers: {
-      Authorization: `Bearer ${updateToken()}`,
-    },
-  })
-    .then((res) => res)
-    .catch((error) => error);
-};

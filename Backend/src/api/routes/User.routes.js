@@ -20,6 +20,7 @@ const {
   byGender,
   changeRol,
   deleteUser,
+  byRol,
 } = require("../controllers/User.controllers");
 const { upload } = require("../../middleware/files.middleware");
 const {
@@ -45,6 +46,7 @@ UserRoutes.get("/", getAll);
 UserRoutes.get("/findById/:id", byId);
 UserRoutes.get("/findByName/:name", byName);
 UserRoutes.get("/findByGender/:gender/:name", byGender);
+UserRoutes.get("/findByRol/:rol",byRol);
 UserRoutes.patch("/:idUser/rol/:newRol", [isAuthSuper], changeRol);
 UserRoutes.delete("/:id", [isAuth], deleteUser);
 
