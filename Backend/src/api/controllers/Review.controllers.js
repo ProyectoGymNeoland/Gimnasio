@@ -1,34 +1,33 @@
 const Review = require("../models/Review.model");
 const Activities = require("../models/Activities.model");
 
-// Crear una review
 const createReview = async (req, res) => {
-   try {
-     const { activityId } = req.params;
-     const { rating, content } = req.body;
-     const ownerId = req.user._id; // Asumiendo que el id del usuario viene del token de autenticación
+  try {
+    const { activityId } = req.params;
+    const { rating, content } = req.body;
+    const ownerId = req.user._id;
 
-     const review = new Review({
-       owner: ownerId,
-       activity: activityId,
-       rating,
-       content,
-     });
+    const review = new Review({
+      owner: ownerId,
+      activity: activityId,
+      rating,
+      content,
+    });
 
-     await review.save();
+    await review.save();
 
-     // Agregar la review a la actividad
-     await Activities.findByIdAndUpdate(activityId, {
-       $push: { reviews: review._id },
-     });
+    // Agrega la review a la actividad
+    await Activities.findByIdAndUpdate(activityId, {
+      $push: { reviews: review._id },
+    });
 
-     res.status(201).json(review);
-   } catch (error) {
-     res.status(500).json({ message: "Error creating review", error });
-   }
+    res.status(201).json(review);
+  } catch (error) {
+    res.status(500).json({ message: "Error creating review", error });
+  }
 };
 
-// Obtener todas las reviews de una actividad
+// Nos da todas las reviews de una actividad
 const getReviewsByActivity = async (req, res) => {
   try {
     const { activityId } = req.params;
@@ -38,7 +37,19 @@ const getReviewsByActivity = async (req, res) => {
       "name"
     );
 
-    res.status(200).json(reviews);
+    let totalRating = 0;
+    for (const review of reviews) {
+      totalRating += review.rating;
+    }
+
+    const averageRating = reviews.length > 0 ? totalRating / reviews.length : 0;
+
+    const resp = {
+      data: reviews,
+      avg: averageRating,
+    };
+
+    res.status(200).json(resp);
   } catch (error) {
     res.status(500).json({ message: "Error fetching reviews", error });
   }
@@ -47,5 +58,4 @@ const getReviewsByActivity = async (req, res) => {
 module.exports = {
   createReview,
   getReviewsByActivity,
-  // Otras funciones de controlador
 };

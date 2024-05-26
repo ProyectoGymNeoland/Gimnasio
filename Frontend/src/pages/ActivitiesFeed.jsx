@@ -6,7 +6,8 @@ import './ActivitiesFeed.css';
 import { Input } from '../components/Input';
 import { useGetByNameError } from '../hooks';
 import { useAuth } from '../context/authContext';
-import { Figure } from '../components';
+import Figure from '../components/FigureActivity';
+
 
 export const ActivitiesFeed = () => {
   const [activities, setActivities] = useState([]);

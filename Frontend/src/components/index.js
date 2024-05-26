@@ -2,7 +2,7 @@ export * from './Uploadfile'
 export * from "./ProtectedRoute/Protected"
 export * from "./ProtectedRoute/ProtectedCheckChildren"
 export * from "./ProtectedRoute/ProtectedSuperAdmin.jsx"
-export * from "./FigureActivity"
+export * from "./FigureActivity.jsx"
 export * from "./ActivityDetail"
 export * from "./NavUser"
 export * from "./Input"
@@ -23,6 +23,7 @@ export * from "./BtnDay.jsx"
 export * from "./WallDetail"
 export * from "./WallDetailPage"
 export * from "./ButtonSuperAdminPanel"
+export * from "./RatingStars.jsx"
 
 
 
