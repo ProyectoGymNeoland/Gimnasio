@@ -186,8 +186,37 @@ const deleteDay = async (req, res, next) => {
     return next(error);
   }
 };
+
+const getAllDay = async (req,res,next)=>{
+  try {
+    const days = await Day.find().populate("one two three four five six seven eight")
+   if (getAllDay.length === 0) {
+      return res.status(404).json("dias no encontrados");
+    } else return res.status(200).json({ data: days });
+  } catch (error) {
+    return next(error);
+  }
+
+} 
+
+const getByIdDay = async (req,res,next)=>{
+  const { id } = req.params;
+  try {
+    const day = await Day.findById(id).populate("one two three four five six seven eight");
+    if (!day) {
+      return res.status(404).json({ error: "Día no encontrado" });
+    }
+    res.status(200).json(day);
+  } catch (error) {
+    res.status(500).json({ error: "Error al obtener la actividad del día" });
+  }
+}
+
+
 module.exports = {
   createDay,
   updateDay,
   deleteDay,
+  getAllDay,
+  getByIdDay,
 };

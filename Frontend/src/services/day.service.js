@@ -39,3 +39,16 @@ export const deleteDay = async (idDay) => {
     .catch((error) => error);
 };
 
+//! ---------- GET ALL DAY ---------- //
+export const getAllDays= async ()=>{
+    return APIGym.get("/day//getAll")
+    .then((res) => res)
+    .catch((error) => error);
+}
+
+//! ---------- GET BY ID DAY ---------- //
+export const getDayId= async (id)=>{
+    return APIGym.get(`/day/getById/${id}`)
+    .then((res) => res)
+    .catch((error) => error);
+}

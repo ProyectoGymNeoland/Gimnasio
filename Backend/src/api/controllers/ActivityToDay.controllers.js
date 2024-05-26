@@ -52,7 +52,7 @@ const getAllActivitiesToDay = async (req, res) => {
 const getActivityToDayById = async (req, res) => {
   const { id } = req.params;
   try {
-    const activityToDay = await ActivityToDay.findById(id);
+    const activityToDay = await ActivityToDay.findById(id).populate("activityId monitorId");
     if (!activityToDay) {
       return res.status(404).json({ error: "Actividad del día no encontrada" });
     }
