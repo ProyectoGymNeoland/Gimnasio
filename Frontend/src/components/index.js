@@ -20,12 +20,10 @@ export * from "./FigureWalls"
 export * from "./CreateDay.jsx"
 export * from "./CreateActivityToDay.jsx"
 export * from "./BtnDay.jsx"
-<<<<<<< HEAD
 export * from "./WallDetail"
 export * from "./WallDetailPage"
-=======
-export * from "./ToggleFavorite.jsx"
-export * from "./ButtonSuperAdminPanel.jsx"
+export * from "./ButtonSuperAdminPanel"
 
 
->>>>>>> 7dd9263adb6d3ad1feac5d9247214025131eefd4
+
+
