@@ -11,7 +11,7 @@ export const Footer = ()=>{
 
         <div className="container-footer">
             <div className="box-footer">
-                   <img className="foto" src="https://res.cloudinary.com/dpw6wsken/image/upload/v1716381816/3Logotipo_copy-removebg-preview_sduzvg.png" alt=""></img>
+                   <img className="foto" src="https://res.cloudinary.com/dpw6wsken/image/upload/v1716381816/userProyect04FT/Logotipos/3Logotipo_copy-removebg-preview_sduzvg.png" alt=""></img>
                     <p className="terms">  Este es nuestro proyecto de fin de bootcamp. Hemos realizado una aplicación de un gimnasio con diferentes secciones y un acercamiento a lo que podría ser una red social. Donde la gente comparta sus experiencias en el gimnasio.</p>
             </div>
             <div className="box-footer" id="box-footer1">

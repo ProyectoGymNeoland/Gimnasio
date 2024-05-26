@@ -3,10 +3,10 @@ import './WallPreview.css';
 
 export const WallPreview = () => {
     const walls = [
-        { name: 'Spinning', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716117711/userProyect04FT/yph84l7hq7labooae4ix.jpg', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
-        { name: 'Zumba', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716117671/userProyect04FT/da1o53gqwk2gvbzwyfdv.jpg', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
-        { name: 'Pilates', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716071439/userProyect04FT/huyji6qdmfpdo5yaeusr.jpg', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
-        { name: 'Padel', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1714256638/userProyect04FT/kfavphqgwy583tv8bnpf.jpg', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
+        { name: 'Spinning', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716590090/userProyect04FT/Actividades%20y%20Monitores/35_tssbuj.webp', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
+        { name: 'Zumba', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716590055/userProyect04FT/Actividades%20y%20Monitores/41_pcgpqi.webp', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
+        { name: 'Pilates', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716589153/userProyect04FT/Actividades%20y%20Monitores/14_bwoqlf.webp', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
+        { name: 'Padel', image: 'https://res.cloudinary.com/dpw6wsken/image/upload/v1716590061/userProyect04FT/Actividades%20y%20Monitores/40_vjolyz.webp', description: 'Sample text. Click to select the text box. Click again or double click to start editing the text.' },
     ];
 
     return (
