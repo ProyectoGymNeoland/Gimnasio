@@ -141,21 +141,31 @@ export const UpdateActivity = () => {
           <input
             type="radio"
             name="status"
-            id="true"
+            id="activo"
             value="true"
             {...register('status')}
+            defaultChecked={activity.status === true}
+            className={`label-radio status ${activity.status ? 'active' : ''}`} // Agrega la clase 'active' si el estado es activo
           />
-          <label htmlFor="true" className="label-radio status">
+          <label
+            htmlFor="activo"
+            className={`label-radio status ${activity.status ? 'active' : ''}`}
+          >
             Activo
           </label>
           <input
             type="radio"
             name="status"
-            id="false"
+            id="inactivo"
             value="false"
             {...register('status')}
+            defaultChecked={activity.status === false}
+            className={`label-radio status ${!activity.status ? 'active' : ''}`} // Agrega la clase 'active' si el estado es inactivo
           />
-          <label htmlFor="false" className="label-radio status">
+          <label
+            htmlFor="inactivo"
+            className={`label-radio status ${!activity.status ? 'active' : ''}`}
+          >
             Desactivado
           </label>
         </div>

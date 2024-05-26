@@ -1,0 +1,12 @@
+.label-radio {
+  opacity: 0.7; /* Reduce la opacidad de los botones que no están seleccionados */
+}
+
+.label-radio.active {
+  font-weight: bold; /* Hace que el texto del botón seleccionado esté en negrita */
+  opacity: 1; /* Restaura la opacidad del botón seleccionado */
+}
+
+.label-radio:not(.active):hover {
+  opacity: 1; /* Aumenta la opacidad de los botones no seleccionados al pasar el ratón sobre ellos */
+}

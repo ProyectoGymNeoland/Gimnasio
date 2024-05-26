@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, UpdateActivity, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ActivityListSuperAdmin, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, UpdateActivity, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
@@ -8,6 +8,7 @@ import MessageComponent from '../pages/CreateMessage'
 import { Wall } from '../pages/Wall'
 import { CreateWallForm } from '../pages/CreateWallForm'
 import { Calendar } from '../pages/Calendar' 
+import { ProtectedSuperAdmin } from '../components/ProtectedRoute/ProtectedSuperAdmin'
 
 export const router = createBrowserRouter([
   {
@@ -119,9 +120,17 @@ export const router = createBrowserRouter([
         element: <Calendar />,
       },
       {
-        path: "/calendar/day/:idDay",
-        element:<BookingDay/>
+        path: '/calendar/day/:idDay',
+        element: <BookingDay />,
       },
-    ]
+      {
+        path: '/activitiesList',
+        element: (
+          <ProtectedSuperAdmin>
+            <ActivityListSuperAdmin />
+          </ProtectedSuperAdmin>
+        ),
+      },
+    ],
   },
 ]);

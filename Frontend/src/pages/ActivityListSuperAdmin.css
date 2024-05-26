@@ -1,0 +1,152 @@
+
+.list-container {
+margin-top: 100px;
+}
+
+.activity-list-super-admin {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.activity-list-super-admin table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 10px; /* Ajustar el espacio entre las celdas */
+  margin-bottom: 20px;
+  padding-left: 20px;
+}
+
+
+.activity-list-super-admin th,
+.activity-list-super-admin td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #8b1010; /* Línea horizontal en la parte inferior de las celdas */
+  border-right: 1px solid #ddd;
+}
+
+.activity-list-super-admin th:first-child,
+.activity-list-super-admin td:first-child {
+  border-left: 1px solid #ddd; /* Línea vertical a la izquierda de la primera columna */
+}
+.activity-list-super-admin th {
+  background-color: #f1f1f1;
+}
+
+.material-icons {
+  cursor: pointer;
+  margin-right: 10px;
+  color: white;
+}
+
+.material-icons:hover {
+  color: #007bff;
+}
+
+button {
+  margin-left: 10px;
+}
+
+.table-container {
+  max-width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.centered-column {
+  text-align: left;
+}
+
+.pagination-container {
+  max-width: 70%;
+  margin: 0 auto;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center; /* Centra los elementos horizontalmente */
+  align-items: center;
+  margin-bottom: 10px; /* Ajusta el margen inferior si es necesario */
+
+  & span {
+    color: white;
+    margin-left: 15px;
+  }
+}
+
+.pagination-container-buttons {
+  display: flex;
+  align-items: center;
+}
+
+.pagination-container-buttons button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 5px; /* Ajusta el margen entre los botones */
+}
+
+.pagination-container-buttons button:disabled {
+  background-color: #d3d3d3;
+  cursor: not-allowed;
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .pagination {
+    flex-direction: column; /* Cambia la dirección del flexbox a columna */
+    align-items: center; /* Centra los elementos verticalmente */
+    text-align: center; /* Centra el texto */
+  }
+
+  .pagination-buttons {
+    margin-bottom: 10px; /* Ajusta el margen inferior entre los botones */
+  }
+
+  .pagination-buttons button {
+    margin: 0 5px; /* Ajusta el margen entre los botones */
+  }
+
+  /* Estilos base para la tabla */
+.activity-list-super-admin table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.activity-list-super-admin th,
+.activity-list-super-admin td {
+  padding: 15px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Estilos para dispositivos móviles */
+@media screen and (max-width: 782px) {
+  /* Convertir la tabla en una tarjeta */
+  .activity-list-super-admin table {
+    display: block;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+
+  /* Ajustar estilos de las celdas en dispositivos móviles */
+  .activity-list-super-admin th,
+  .activity-list-super-admin td {
+    display: block;
+    padding: 10px;
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+}
+}
+
+thead {
+      border-bottom: 1px solid #ddd;
+
+}

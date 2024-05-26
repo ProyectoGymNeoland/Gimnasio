@@ -58,14 +58,16 @@ export const ActivitiesFeed = () => {
       />
       <div id="containerActivitiesFeed">
         {activities.length > 0 &&
-          activities.map((activity) => (
-            <Figure
-              activity={activity}
-              key={activity._id}
-              user={user} //pasamos el usuario como prop
-              setActivities={setActivities}
-            />
-          ))}
+          activities
+            .filter((activity) => activity.status === true) // filtra solo las actividades con estado true
+            .map((activity) => (
+              <Figure
+                activity={activity}
+                key={activity._id}
+                user={user} //pasamos el usuario como prop
+                setActivities={setActivities}
+              />
+            ))}
         {activities.length === 0 && 'No se han encontrado actividades'}
       </div>
     </div>

@@ -64,17 +64,21 @@ export const AuthContextProvider = ({ children }) => {
 //     };
 
     //! constante que memoriza los datos del contexto
-    const value = useMemo(() => ({
+    const value = useMemo(
+      () => ({
         user,
         setUser,
         login,
         logout,
         allUser,
         setAllUser,
-        bridgeData, 
+        bridgeData,
         deleteUser,
-        setDeleteUser
-    }), [user, allUser, deleteUser])
+        setDeleteUser,
+        isSuperAdmin: user?.rol === 'superadmin',
+      }),
+      [user, allUser, deleteUser],
+    );
 
     //! esta funcion devuelve el contexto para usar en main
     return <AuthContext.Provider value={value}> { children } </AuthContext.Provider>
