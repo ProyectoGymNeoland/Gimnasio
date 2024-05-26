@@ -28,7 +28,7 @@ export const FigureWalls = ({wall}) => {
   
   return (
     <figure>
-      <Link to={""}>
+      <Link to={`/wall/${wall._id}`}>
         {wall.image && <img src={wall.image} alt={wall.name} width="200" />}
         <figcaption>
           <h2>{wall.name}</h2>

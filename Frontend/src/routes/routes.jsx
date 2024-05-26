@@ -2,13 +2,14 @@ import { createBrowserRouter } from 'react-router-dom'
 import { ActivitiesFeed, ActivityDetailPage, ActivityListSuperAdmin, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, UpdateActivity, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
-import { Protected, ProtectedCheckChildren } from '../components'
+import { Protected, ProtectedCheckChildren, WallDetailPage } from '../components'
 import { NavUser } from '../components/NavUser'
 import MessageComponent from '../pages/CreateMessage'
 import { Wall } from '../pages/Wall'
 import { CreateWallForm } from '../pages/CreateWallForm'
 import { Calendar } from '../pages/Calendar' 
 import { ProtectedSuperAdmin } from '../components/ProtectedRoute/ProtectedSuperAdmin'
+import WallDetail from '../components/WallDetail'
 
 export const router = createBrowserRouter([
   {
@@ -110,6 +111,10 @@ export const router = createBrowserRouter([
       {
         path: '/wall',
         element: <Wall />,
+      },
+      {
+        path: '/wall/:wallId',
+        element: <WallDetailPage />,
       },
       {
         path: '/createWallForm',

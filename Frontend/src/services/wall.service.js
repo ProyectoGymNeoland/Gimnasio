@@ -74,3 +74,11 @@ export const deleteWallByExpiration = async () => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+//! ------------- GET BY ID  --------------- //
+
+export const getWallById = async (wallId) => {
+  return APIGym.get(`/wall/walls/${wallId}`)
+    .then((res) => res)
+    .catch((error) => error);
+};

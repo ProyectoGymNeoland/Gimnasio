@@ -62,6 +62,7 @@ const getByUser = async (req, res, next) => {
   }
 };
 
+
 //! -----------------------------------------------------------------------------
 //? ---------------------------------findByType----------------------------------
 //! -----------------------------------------------------------------------------
@@ -189,9 +190,30 @@ const getAllWalls = async (req, res) => {
   }
 };
 
+//! ------------------------------------------------------------------------
+//? ------------------------------GET BY ID---------------------------------
+//! ------------------------------------------------------------------------
+
+const getWallById = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const wall = await Wall.findById(id);
+    if (wall) {
+      return res.status(200).json(wall);
+    } else {
+      return res
+        .status(404)
+        .json({ error: "No se ha encontrado el muro" });
+    }
+  } catch (error) {
+    return res.status(404).json(error.message);
+  }
+};
+
 module.exports = {
   createWall,
   getByUser,
+  getWallById,
   getByType,
   getByDay,
   buscarActivitiesEnWall,

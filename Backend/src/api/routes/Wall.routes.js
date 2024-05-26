@@ -10,6 +10,7 @@ const {
   deleteWall,
   deleteWallByExpiration,
   getAllWalls,
+  getWallById,
 } = require("../controllers/Wall.controllers");
 const { isAuthAdmin } = require("../../middleware/auth.middleware");
 const { upload } = require("../../middleware/files.middleware");
@@ -25,5 +26,7 @@ WallRoutes.get("/findByDay", getByDay);
 WallRoutes.get("/getall", getAllWalls);
 WallRoutes.delete("/walls/:id", deleteWall);
 WallRoutes.delete("/paredesVencidas", deleteWallByExpiration);
+WallRoutes.get('/walls/:id', getWallById);
+
 
 module.exports = WallRoutes;
