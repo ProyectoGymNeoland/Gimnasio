@@ -51,6 +51,10 @@ app.use("/api/v1/wall/", WallRoutes);
 const ContactRoutes =require("./src/api/routes/Contact.routes");
 app.use("/api/v1/contact/", ContactRoutes);
 
+const ReviewsRoutes = require("./src/api/routes/Reviews.routes");
+app.use("/api/v1/reviews/", ReviewsRoutes);
+
+
 //! --------------- generamos un error de cuando no see encuentre la ruta
 app.use("*", (req, res, next) => {
   const error = new Error("Route not found");
