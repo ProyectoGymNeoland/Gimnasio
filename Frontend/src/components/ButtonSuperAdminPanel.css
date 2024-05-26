@@ -1,0 +1,31 @@
+.card-button {
+  background-color: white;
+  color: #333333;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 10px;
+  min-width: 180wp;
+  height: auto;
+  transition: background-color 0.3s ease;
+  overflow: hidden; /* Para asegurar que el contenido no desborde */
+
+  & hover {
+    background-color: #f0f0f0;
+  }
+}
+
+/* Ajustar el tamaño del texto si es necesario */
+.card-button span {
+  font-size: 14px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
