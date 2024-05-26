@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ActivityListSuperAdmin, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, UpdateActivity, UpdateUser } from '../pages'
+import { ActivitiesFeed, ActivityDetailPage, ActivityListSuperAdmin, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, SuperAdminPanel, UpdateActivity, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
 import { Protected, ProtectedCheckChildren } from '../components'
@@ -74,17 +74,17 @@ export const router = createBrowserRouter([
       {
         path: '/activities/create',
         element: (
-          <Protected>
+          <ProtectedSuperAdmin>
             <CrearActivity />
-          </Protected>
+          </ProtectedSuperAdmin>
         ),
       },
       {
         path: '/activities/update/:id',
         element: (
-          <Protected>
+          <ProtectedSuperAdmin>
             <UpdateActivity />
-          </Protected>
+          </ProtectedSuperAdmin>
         ),
       },
       {
@@ -128,6 +128,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedSuperAdmin>
             <ActivityListSuperAdmin />
+          </ProtectedSuperAdmin>
+        ),
+      },
+      {
+        path: '/superadmin',
+        element: (
+          <ProtectedSuperAdmin>
+            <SuperAdminPanel />
           </ProtectedSuperAdmin>
         ),
       },

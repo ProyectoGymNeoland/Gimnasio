@@ -1,6 +1,7 @@
 export * from './Uploadfile'
 export * from "./ProtectedRoute/Protected"
 export * from "./ProtectedRoute/ProtectedCheckChildren"
+export * from "./ProtectedRoute/ProtectedSuperAdmin.jsx"
 export * from "./FigureActivity"
 export * from "./ActivityDetail"
 export * from "./NavUser"
@@ -19,3 +20,7 @@ export * from "./FigureWalls"
 export * from "./CreateDay.jsx"
 export * from "./CreateActivityToDay.jsx"
 export * from "./BtnDay.jsx"
+export * from "./ToggleFavorite.jsx"
+export * from "./ButtonSuperAdminPanel.jsx"
+
+
