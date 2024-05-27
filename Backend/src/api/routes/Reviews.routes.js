@@ -9,6 +9,6 @@ const {
 const ReviewRoutes = express.Router();
 
 ReviewRoutes.post("/:activityId", [isAuth], createReview);
-ReviewRoutes.get("/activity/:activityId", [isAuth], getReviewsByActivity);
+ReviewRoutes.get("/activity/:activityId", getReviewsByActivity);
 
 module.exports = ReviewRoutes;
