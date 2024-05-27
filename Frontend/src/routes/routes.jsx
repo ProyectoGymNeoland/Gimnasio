@@ -2,7 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import { ActivitiesFeed, ActivityDetailPage, ActivityListSuperAdmin, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, SuperAdminPanel, UpdateActivity, UpdateUser } from '../pages'
 import App from '../App'
 import { ForgotPassword } from '../pages/ForgotPassword'
-import { Protected, ProtectedCheckChildren, WallDetailPage } from '../components'
+import { ChatDetail, ChatInput, Protected, ProtectedCheckChildren, WallDetailPage } from '../components'
 import { NavUser } from '../components/NavUser'
 import MessageComponent from '../pages/CreateMessage'
 import { Wall } from '../pages/Wall'
@@ -98,7 +98,26 @@ export const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        element: <NavUser />,
+        element: (
+          <Protected>
+            <Profile />
+          </Protected>
+        ),
+        children: [
+        
+          {
+            path: 'chat',
+            element: <ChatInput />,
+          },
+          {
+            path: 'chat/detail/:chatId',
+            element: <ChatDetail />,
+          },
+          {
+            path: 'activities',
+            element: <ActivitiesFeed />,
+          },
+        ],
       },
       {
         path: '/createMessage',

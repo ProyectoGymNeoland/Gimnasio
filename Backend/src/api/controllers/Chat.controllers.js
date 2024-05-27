@@ -1,10 +1,11 @@
 const Chat = require("../models/Chat.model");
+const Message = require("../models/Message.model");
 const User = require("../models/User.model");
-const { isAuthAdmin } = require("../../middleware/auth.middleware");
+const { isAuthAdmin, isAuth } = require("../../middleware/auth.middleware");
 
-// Controlador para buscar chats por ID de usuario
 const getChatsByUserId = async (req, res) => {
-  const { userId } = req.params; // Suponiendo que estás pasando el ID de usuario como parámetro en la URL
+  const { userId } = req.params;
+
   try {
     // Buscar chats donde el usuario sea userOne o userTwo
     const chats = await Chat.find({
@@ -13,12 +14,18 @@ const getChatsByUserId = async (req, res) => {
       .populate("messages")
       .populate("userOne")
       .populate("userTwo");
+
+    // Si no se encontraron chats para el usuario, retornar un mensaje informativo
+    if (chats.length === 0) {
+      return res.status(404).json({ message: "No se encontraron chats para el usuario." });
+    }
+
     res.json(chats);
   } catch (error) {
+    console.error('Error al obtener chats:', error);
     res.status(500).json({ message: error.message });
   }
 };
-
 //! -----------------------------------------------------------------------------
 //? ---------------------------------deleteChat----------------------------------
 //! -----------------------------------------------------------------------------
@@ -39,8 +46,32 @@ const deleteChat = async (req, res) => {
     res.status(500).json({ error: "Hubo un error al eliminar el chat." });
   }
 };
+//! -----------------------------------------------------------------------------
+//? ---------------------------------Gat Chat By Id----------------------------------
+//! -----------------------------------------------------------------------------
+const getChatById = async (req, res) => {
+  const { chatId } = req.params;
+
+  try {
+    const chat = await Chat.findById(chatId)
+      .populate('userOne', 'name')
+      .populate('userTwo', 'name')
+      .populate('messages.sender', 'name');
+
+    if (!chat) {
+      return res.status(404).json({ message: 'Chat no encontrado' });
+    }
+
+    res.status(200).json(chat);
+  } catch (error) {
+    console.error('Error al obtener el chat por ID:', error);
+    res.status(500).json({ message: 'Error al obtener el chat' });
+  }
+};
 
 module.exports = {
   getChatsByUserId,
   deleteChat,
+  getChatById
 };
+

@@ -22,3 +22,8 @@
   border: solid 2px #49c1a371;
   overflow-y: auto; /* Añadir scroll si el contenido es muy grande */
 }
+
+.nav-user {
+  display: flex;
+  flex-direction: column;
+}

@@ -25,14 +25,16 @@ export const deleteMessageByUser = async (idUser) => {
 };
 
 
- //! ---------- FIND MESSAGE ---------- //
-
- export const findMessageById = async (idUser) => {
-  return APIGym.get(`/message/findById/${idUser}`)
-    .then((res) => res)
-    .catch((error) => error);
+//! ---------- FIND MESSAGE BY ID ---------- //
+export const findMessageById = async (messageId) => {
+  try {
+      const response = await APIGym.get(`/message/${messageId}`);
+      return response.data;
+  } catch (error) {
+      console.error('Error al encontrar el mensaje por ID:', error);
+      throw error;
+  }
 };
-
 //! ---------- LIKE MESSAGE WALL---------- //
 
 export const likeMessageWall = async (idUser, formData) => {
@@ -44,4 +46,5 @@ export const likeMessageWall = async (idUser, formData) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
 

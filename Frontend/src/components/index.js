@@ -15,7 +15,6 @@ export * from "./WallPreview"
 export * from "./TestimonialsHomeCard.jsx"
 export * from "./GymServices"
 export * from "./Footer.jsx"
-export * from "./ChatComponent"
 export * from "./FigureWalls"
 export * from "./CreateDay.jsx"
 export * from "./CreateActivityToDay.jsx"
@@ -24,6 +23,8 @@ export * from "./WallDetail"
 export * from "./WallDetailPage"
 export * from "./ButtonSuperAdminPanel"
 export * from "./RatingStars.jsx"
+export * from "./ChatDetail"
+export * from "./ChatInput"
 
 
 
