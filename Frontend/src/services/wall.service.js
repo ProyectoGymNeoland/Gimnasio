@@ -82,3 +82,11 @@ export const getWallById = async (wallId) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+//! ------------- GET BY NAME  --------------- //
+
+export const getWallByName = async (name) => {
+  return APIGym.get(`/wall/${name}`)
+    .then((res) => res)
+    .catch((error) => error);
+};

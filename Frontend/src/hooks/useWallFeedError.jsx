@@ -4,7 +4,7 @@ import Swal from 'sweetalert2';
 export const useWallsFeedError = (res, setRes, setData) => {
   console.log('HJJ', res);
   if (res?.status == 200) {
-    console.log("Entro")
+    console.log(res.data.walls)
     setData(res.data.walls);
     setRes(() => ({}));
   }

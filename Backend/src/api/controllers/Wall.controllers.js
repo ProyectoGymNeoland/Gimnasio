@@ -210,6 +210,25 @@ const getWallById = async (req, res, next) => {
   }
 };
 
+//! ------------------------------------------------------------------------
+//? ------------------------------GET BY NAME---------------------------------
+//! ------------------------------------------------------------------------
+
+const getWallByName = async (req, res) => {
+  try {
+    const wallName = req.params.name;
+    const wall = await Wall.findOne({ name: wallName }).populate('owner').populate('likes').populate('activity').populate('comments').populate('days');
+    
+    if (!wall) {
+      return res.status(404).json({ message: 'Wall not found' });
+    }
+
+    res.status(200).json(wall);
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+};
+
 module.exports = {
   createWall,
   getByUser,
@@ -220,4 +239,5 @@ module.exports = {
   deleteWall,
   deleteWallByExpiration,
   getAllWalls,
+  getWallByName,
 };
