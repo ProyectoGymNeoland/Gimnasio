@@ -1,11 +1,12 @@
 import { updateToken } from '../utils';
-import { APIGym } from './gym.config';
+import { extraConfig } from './gym.config';
 
 //! ---------- GET CHAT BY USER ID ---------- //
 
 export const getChatsByUserId = async (userId) => {
   try {
-    const response = await APIGym.get(`/chat/${userId}`, {
+    const APIGeneral = extraConfig();
+    const response = await APIGeneral.get(`/chat/${userId}`, {
       headers: {
         Authorization: `Bearer ${updateToken()}`,
       },
@@ -21,7 +22,8 @@ export const getChatsByUserId = async (userId) => {
 
 
 export const deleteChat = async (chatId) => {
-  return APIGym.delete(`/chat/${chatId}`, {
+  const APIGeneral = extraConfig();
+  return APIGeneral.delete(`/chat/${chatId}`, {
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },
@@ -34,7 +36,8 @@ export const deleteChat = async (chatId) => {
 
     export const getChatById = async (chatId) => {
       try {
-        const response = await APIGym.get(`/chat/detail/${chatId}`, {
+        const APIGeneral = extraConfig();
+        const response = await APIGeneral.get(`/chat/detail/${chatId}`, {
           headers: {
             Authorization: `Bearer ${updateToken()}`,
           },
