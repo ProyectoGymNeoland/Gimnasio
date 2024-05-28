@@ -18,10 +18,8 @@ export const WallFeed = () => {
   useEffect(() => {
     (async () => {
       setRes(await getAllWalls());
-    })();
-  },[ (async () => {
       setWallDelete(await deleteWallByExpiration());
-    })()]);
+    })() },[]);
 
   useEffect(() => {
     useWallsFeedError(res, setRes, setActivities);
