@@ -27,6 +27,7 @@ export const WallFeed = () => {
 
   useEffect(()=>{
     console.log(wallDelete)
+    wallDelete.status == 200 && setActivities(wallDelete.data.update)
   },[wallDelete])
 
   const handleSearch = async (term) => {

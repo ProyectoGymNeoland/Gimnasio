@@ -160,6 +160,7 @@ const deleteWallByExpiration = async (req, res) => {
     );
     res.status(200).json({
       message: `${paredesVencidas.length} paredes vencidas eliminadas.`,
+      update: await Wall.find()
     });
   } catch (error) {
     console.error("Error al eliminar las paredes vencidas:", error);
