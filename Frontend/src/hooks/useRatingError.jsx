@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
 import Swal from 'sweetalert2';
 
 export const useRatingError = (res, setRating, setRes) => {
   if (res?.status === 200) {
-    setRating(res.data.avg);
+    setRating(res.data);
     setRes({});
   }
 

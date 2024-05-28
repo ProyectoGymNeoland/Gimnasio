@@ -290,7 +290,21 @@ const deleteMessagesByUser = async (req, res, next) => {
     }
   };
   
+//! ----------------------------GET MESSAGE BY ID----------------------------
+const getMessageById = async (req, res, next) => {
+  try {
+    const { messageId } = req.params;
+    const message = await Message.findById(messageId);
+    
+    if (!message) {
+      return res.status(404).json({ error: 'Mensaje no encontrado' });
+    }
 
+    return res.status(200).json( message );
+  } catch (error) {
+    return res.status(500).json({ error: 'Error interno del servidor', message: error.message });
+  }
+};
 //! -----------------------------------------------------------------------------
 //? ----------------------------TOGGLE LIKE MESSAGE -----------------------------
 //! -----------------------------------------------------------------------------
@@ -365,5 +379,6 @@ module.exports = {
   deleteMessagesByUser,
   createMessage, 
   getById, 
-  toggleLikeWall
+  toggleLikeWall,
+  getMessageById
 };

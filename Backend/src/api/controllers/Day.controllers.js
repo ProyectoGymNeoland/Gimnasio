@@ -1,5 +1,7 @@
+const Activities = require("../models/Activities.model");
 const ActivityToDay = require("../models/ActivityToDay.model");
 const Day = require("../models/Day.model");
+const User = require("../models/User.model");
 
 const createDay = async (req, res, next) => {
   try {
@@ -189,7 +191,55 @@ const deleteDay = async (req, res, next) => {
 
 const getAllDay = async (req,res,next)=>{
   try {
-    const days = await Day.find().populate("one two three four five six seven eight")
+    const days = await Day.find().populate({
+    path: "one",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "two",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "three",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "four",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "five",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "six",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "seven",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "eight",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  })
    if (getAllDay.length === 0) {
       return res.status(404).json("dias no encontrados");
     } else return res.status(200).json({ data: days });
@@ -202,7 +252,55 @@ const getAllDay = async (req,res,next)=>{
 const getByIdDay = async (req,res,next)=>{
   const { id } = req.params;
   try {
-    const day = await Day.findById(id).populate("one two three four five six seven eight");
+    const day = await Day.findById(id).populate({
+    path: "one",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "two",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "three",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "four",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "five",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "six",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "seven",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  }).populate({
+    path: "eight",
+    populate: [
+      { path: "monitorId", model: User },
+      { path: "activityId", model: Activities  },
+    ],
+  });
     if (!day) {
       return res.status(404).json({ error: "Día no encontrado" });
     }
@@ -212,7 +310,6 @@ const getByIdDay = async (req,res,next)=>{
   }
 }
 
-
 module.exports = {
   createDay,
   updateDay,
@@ -220,3 +317,4 @@ module.exports = {
   getAllDay,
   getByIdDay,
 };
+

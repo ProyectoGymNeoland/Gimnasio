@@ -230,6 +230,34 @@ const getWallByName = async (req, res) => {
   }
 };
 
+
+
+//!-----------------------------------------------------------------------------
+//? --------------------------- UPDATE WALL ------------------------------------
+//! ---------------------------------------------------------------------------
+
+const updateWall = async (req, res) => {
+  const { id } = req.params;
+  const updateData = req.body;
+
+  try {
+    // Encuentra y actualiza el documento del muro por su ID
+    const updatedWall = await Wall.findByIdAndUpdate(id, updateData, { new: true });
+
+    if (!updatedWall) {
+      return res.status(404).json({ message: 'Muro no encontrado' });
+    }
+
+    // Devuelve la respuesta con el muro actualizado
+    return res.status(200).json({ message: 'Muro actualizado exitosamente', muro: updatedWall });
+  } catch (error) {
+    // Maneja cualquier error
+    console.error('Error al actualizar el muro:', error);
+    return res.status(500).json({ error: error.message });
+  }
+};
+
+
 module.exports = {
   createWall,
   getByUser,
@@ -241,4 +269,5 @@ module.exports = {
   deleteWallByExpiration,
   getAllWalls,
   getWallByName,
+  updateWall,
 };

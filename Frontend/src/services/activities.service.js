@@ -1,10 +1,11 @@
 import { updateToken } from '../utils';
-import { APIGym } from './gym.config';
+import { extraConfig } from './gym.config';
 
 //! ---------- CREATE ACTIVITY ---------- //
 
 export const createActivityService = async (formData) => {
-  return APIGym.post('/activities/create', formData, {
+  const APIGeneral = extraConfig();
+  return APIGeneral.post('/activities/create', formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${updateToken()}`,
@@ -17,7 +18,8 @@ export const createActivityService = async (formData) => {
 //! ---------- TOGGLE CAMBIAR STATUS ACTIVITY ---------- //
 
 export const toggleStatus = async (idActivity) => {
-  return APIGym.patch(`/activities/toggleStatus/${idActivity}`, {
+  const APIGeneral = extraConfig();
+  return APIGeneral.patch(`/activities/toggleStatus/${idActivity}`, {
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },
@@ -29,7 +31,8 @@ export const toggleStatus = async (idActivity) => {
 //! ------------- GET ALL  --------------- //
 
 export const getAllActivities = async () => {
-  return APIGym.get('/activities/getAll')
+  const APIGeneral = extraConfig();
+  return APIGeneral.get('/activities/getAll')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -37,7 +40,8 @@ export const getAllActivities = async () => {
 //! ------------- GET BY ID  --------------- //
 
 export const getById = async (idActivity) => {
-  return APIGym.get(`/activities/${idActivity}`)
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/activities/${idActivity}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -45,7 +49,8 @@ export const getById = async (idActivity) => {
 //! ------------- GET BY NAME  --------------- //
 
 export const getByName = async (name) => {
-  return APIGym.get(`/activities/name/${name}`)
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/activities/name/${name}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -53,7 +58,8 @@ export const getByName = async (name) => {
 //! ------------- GET BY TYPE  --------------- //
 
 export const getByType = async (type) => {
-  return APIGym.get(`/activities/type/${type}`)
+   const APIGeneral = extraConfig();
+  return APIGeneral.get(`/activities/type/${type}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -62,7 +68,8 @@ export const getByType = async (type) => {
 //! ---------- UPDATE ACTIVITY ----------- //
 
 export const updateActivity = async (idActivity, formData) => {
-  return APIGym.put(`/activities/${idActivity}`, formData, {
+  const APIGeneral = extraConfig();
+  return APIGeneral.put(`/activities/${idActivity}`, formData, {
     headers: {
       'Content-Type': 'multipart/form-data',
       Authorization: `Bearer ${updateToken()}`,
@@ -75,7 +82,8 @@ export const updateActivity = async (idActivity, formData) => {
 //! ---------- TOGGLE LIKE ACTIVITY ----------- //
 
 export const toggleLikeActivity = async (idActivity) => {
-  return APIGym.patch(`/activities/like/${idActivity}`, {
+  const APIGeneral = extraConfig();
+  return APIGeneral.patch(`/activities/like/${idActivity}`, {
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },
@@ -86,8 +94,9 @@ export const toggleLikeActivity = async (idActivity) => {
 
 //! -------- DELETE ACTIVITY ----- //
 
-export const deleteActivity = async (idActivity) => {
-  return APIGym.delete(`/activities/${idActivity}`, {
+export const deleteActivity = async(idActivity) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.delete(`/activities/${idActivity}`, {
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },

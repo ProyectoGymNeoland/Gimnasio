@@ -10,7 +10,6 @@ const ActivityToDaySchema = new Schema(
       required: false,
     },
     activityId: { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
-    avaibleSpots: { type: Number }, //PLAZAS DISPONIBLES
     monitorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
   },

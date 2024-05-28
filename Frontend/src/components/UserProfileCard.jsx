@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { deleteUser } from '../services/user.service';
 import './UserProfileCard.css';
 import Swal from 'sweetalert2';
-import { Link } from 'react-router-dom';
+import { Link , useLocation } from 'react-router-dom';
+import { ChatInput } from './ChatInput';
 import { useAuth } from '../context/authContext';
 
 export const UserProfileCard = ({ user }) => {
@@ -32,9 +33,12 @@ export const UserProfileCard = ({ user }) => {
       }
     });
   };
+  const showChatInput = location.pathname === '/profile/chat'|| location.pathname.startsWith('/profile/chat/detail/');
 
   return (
     <div className="user-profile">
+     {!showChatInput && (
+      <>
       <img src={user.image} alt={user?.name} />
       <h1>{user.name}</h1>
       <p>Edad: {user.age}</p>
@@ -58,6 +62,9 @@ export const UserProfileCard = ({ user }) => {
           </button>
         </Link>
       </div>
+      </>
+            )}
+            {showChatInput && <ChatInput />} 
     </div>
   );
 };

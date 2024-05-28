@@ -6,9 +6,9 @@ import Swal from 'sweetalert2';
 import { useEffect, useState } from 'react';
 import { useToggleLikeActivity } from '../hooks/useToggleLikeActivity';
 import { ToggleFavorite } from './ToggleFavorite';
-import { getReviewsByActivityId } from '../services/review.service';
 import { RatingStars } from './RatingStars';
-import { useRatingError } from '../hooks';
+import { getReviewsByActivityId } from '../services/review.service';
+import { useRatingError } from '../hooks/useRatingError';
 
 const Figure = ({ activity, user, setActivities }) => {
   const { login } = useAuth();
@@ -54,7 +54,13 @@ const Figure = ({ activity, user, setActivities }) => {
         {activity.image && <img src={activity.image} alt={activity.name} width="200" />}
         <figcaption>
           <h2>{activity.name}</h2>
-          <RatingStars rating={rating} />
+          <RatingStars
+            rating={rating.avg}
+            count={rating.data?.length || 0}
+            showCount={true}
+            showLinkReviews={false}
+            showReviews={''}
+          />
           <p>{activity.type}</p>
         </figcaption>
       </Link>

@@ -15,6 +15,7 @@ export const useToggleLikeActivity = (res, setRes, login, user, setActivities) =
       name: res.data.user.name,
       age: res.data.user.age,
       gender: res.data.user.gender,
+      rol: res.data.user.rol,
       activitiesFav: res.data.user.activitiesFav,
     };
     const stringUser = JSON.stringify(dataCustom);

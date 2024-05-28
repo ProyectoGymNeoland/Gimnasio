@@ -1,10 +1,11 @@
 import { updateToken } from '../utils';
-import { APIGym } from './gym.config';
+import { extraConfig } from './gym.config';
 
 //! ---------- CREATE WALL ---------- //
 
 export const createWall = async (formData) => {
-  return APIGym.post('/wall/createWall', formData, {
+  const APIGeneral = extraConfig();
+  return APIGeneral.post('/wall/createWall', formData, {
     headers: { 'Content-Type': 'multipart/form-data', 
     Authorization: `Bearer ${updateToken()}`, },
   })
@@ -16,7 +17,8 @@ export const createWall = async (formData) => {
     //! ---------- GET BY USER ID ---------- //
 
 export const getWallByUser = async (userId) => {
-  return APIGym.get(`/wall/getByUser/${userId}`)
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/wall/getByUser/${userId}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -25,7 +27,8 @@ export const getWallByUser = async (userId) => {
 //! ---------- GET BY ACTIVITY ---------- //
 
 export const getWallByActivity = async (wallId) => {
-  return APIGym.get(`/wall/findByActivitie/${wallId}/activities`)
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/wall/findByActivitie/${wallId}/activities`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -33,7 +36,8 @@ export const getWallByActivity = async (wallId) => {
 //! ---------- GET BY TYPE ---------- //
 
 export const getWallByType = async (type) => {
-  return APIWall.get(`/wall/findByType/${type}`)
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/wall/findByType/${type}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -42,7 +46,8 @@ export const getWallByType = async (type) => {
 //! ---------- GET BY DAY ---------- //
 
 export const getWallByDay = async (day) => {
-  return APIGym.get(`/wall/findByDay/${day}`)
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/wall/findByDay/${day}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -51,7 +56,8 @@ export const getWallByDay = async (day) => {
 //! ---------- DELETE WALL ---------- //
 
 export const deleteWall = async (id) => {
-  return APIGym.delete(`/wall/${id}`,{
+  const APIGeneral = extraConfig();
+  return APIGeneral.delete(`/wall/${id}`,{
     headers: {Authorization: `Bearer ${updateToken()}`},
 })
     .then((res) => res)
@@ -61,7 +67,8 @@ export const deleteWall = async (id) => {
 //! ---------- GET ALL WALLS ---------- //
 
 export const getAllWalls = async () => {
-  return APIGym.get('/wall/getall')
+  const APIGeneral = extraConfig();
+  return APIGeneral.get('/wall/getall')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -78,7 +85,7 @@ export const deleteWallByExpiration = async () => {
 //! ------------- GET BY ID  --------------- //
 
 export const getWallById = async (wallId) => {
-  return APIGym.get(`/wall/walls/${wallId}`)
+  return APIGeneral.get(`/wall/walls/${wallId}`)
     .then((res) => res)
     .catch((error) => error);
 };
@@ -86,7 +93,7 @@ export const getWallById = async (wallId) => {
 //! ------------- GET BY NAME  --------------- //
 
 export const getWallByName = async (name) => {
-  return APIGym.get(`/wall/${name}`)
+  return APIGeneral.get(`/wall/${name}`)
     .then((res) => res)
     .catch((error) => error);
 };

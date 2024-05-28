@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useGetActivityDay } from "./useGetActivityDay";
 
-
 export const useSelectFrame = (register)=>{
     const [selectedType,setSelectedType]=useState("");
     const {activitiesDay,loading}=useGetActivityDay();
     const handleType= (event)=>{
         setSelectedType(event.target.value);
     }
+
+    
 
     const renderHabil=()=>{
         return(
@@ -26,8 +27,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -46,8 +47,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -66,8 +67,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -86,8 +87,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -106,8 +107,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -126,8 +127,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -146,8 +147,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -166,8 +167,8 @@ export const useSelectFrame = (register)=>{
                         ) : (activitiesDay?.length !=0 &&
                         activitiesDay.map((activityDay) => (
                         
-                         <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         <option key={activityDay?._id} value={activityDay?._id}>
+                         {` ${activityDay?.activityId?.name} - ${activityDay?.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -179,7 +180,7 @@ export const useSelectFrame = (register)=>{
     const renderFinde=() => {
         return(
         <>
-        <label htmlFor="actividad" className="custom-placeholder">9:00-9:45 :</label>
+        <label htmlFor="actividad" className="custom-placeholder">10:00-10:45 :</label>
         {console.log("Entro en finde")}
                         <select
                         id="one"
@@ -194,13 +195,13 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
                         )}
                         </select>
-                        <label htmlFor="actividad" className="custom-placeholder">10:00-10:45 :</label>
+                        <label htmlFor="actividad" className="custom-placeholder">11:00-11:45 :</label>
                         <select
                         id="two"
                         name="two"
@@ -214,13 +215,13 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
                         )}
                         </select>
-                        <label htmlFor="actividad" className="custom-placeholder">11:00-11:45 :</label>
+                        <label htmlFor="actividad" className="custom-placeholder">12:00-12:45 :</label>
                         <select
                         id="three"
                         name="three"
@@ -234,7 +235,7 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -261,7 +262,7 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -281,7 +282,7 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -301,7 +302,7 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -321,13 +322,13 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
                         )}
                         </select>
-                        <label htmlFor="actividad" className="custom-placeholder">17:00-17:45 :</label>
+                        <label htmlFor="actividad" className="custom-placeholder">13:00-13:45 :</label>
                         <select
                         id="five"
                         name="five"
@@ -341,7 +342,7 @@ export const useSelectFrame = (register)=>{
                         activitiesDay.map((activityDay) => (
                         
                          <option key={activityDay._id} value={activityDay._id}>
-                         {` ${activityDay.activityId.name} - ${activityDay.monitorId.name}`}
+                         {` ${activityDay.activityId?.name} - ${activityDay.monitorId?.name}`}
                          </option>
                         
                         ))
@@ -352,6 +353,3 @@ export const useSelectFrame = (register)=>{
     }
     return {selectedType,handleType,renderHabil,renderFestivo,renderFinde}
 }
-
-
-
