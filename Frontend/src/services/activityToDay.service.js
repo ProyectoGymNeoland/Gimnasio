@@ -30,8 +30,8 @@ export const getActivityToDayActivityToDay= async (id)=>{
 }
 //!------------------------ BOOKING ----------------------------!
 
-export const bookingActivityToDay= async (formData,id)=>{
-    return APIGym.patch(`/activityToDay/booking/${id}`,formData,{
+export const bookingActivityToDay= async (id)=>{
+    return APIGym.patch(`/activityToDay/booking/${id}`,{
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },

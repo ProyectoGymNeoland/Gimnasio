@@ -20,7 +20,6 @@ const createActivityToDay = async (req, res, next) => {
 
 const customBody={
       activityId,
-      avaibleSpots:idActivity.spots,
       monitorId,
       bookings,
       room,
@@ -80,7 +79,6 @@ const toggleBooking = async (req, res, next) => {
         try {
           await ActivityToDay.findByIdAndUpdate(idActivityToDay, {
             $pull: { bookings: _id },
-            $inc: { avaibleSpots: 1 },
           });
 
           return res.status(200).json({
@@ -110,7 +108,6 @@ const toggleBooking = async (req, res, next) => {
         try {
           await ActivityToDay.findByIdAndUpdate(idActivityToDay, {
             $push: { bookings: _id },
-            $inc: { avaibleSpots: -1 },
           });
 
           return res.status(200).json({
@@ -261,3 +258,4 @@ module.exports = {
   deleteActivityToDay,
   updateActivityToDay,
 };
+
