@@ -77,7 +77,8 @@ export const getAllWalls = async () => {
 //! ---------- DELETE WALL BY EXPIRATION ---------- //
 
 export const deleteWallByExpiration = async () => {
-  return APIWall.delete('/wall/paredesVencidas')
+  const APIGeneral = extraConfig();
+  return APIGeneral.delete('/wall/paredesVencidas')
     .then((res) => res)
     .catch((error) => error);
 };
@@ -85,6 +86,7 @@ export const deleteWallByExpiration = async () => {
 //! ------------- GET BY ID  --------------- //
 
 export const getWallById = async (wallId) => {
+  const APIGeneral = extraConfig();
   return APIGeneral.get(`/wall/walls/${wallId}`)
     .then((res) => res)
     .catch((error) => error);
@@ -93,6 +95,7 @@ export const getWallById = async (wallId) => {
 //! ------------- GET BY NAME  --------------- //
 
 export const getWallByName = async (name) => {
+  const APIGeneral = extraConfig();
   return APIGeneral.get(`/wall/${name}`)
     .then((res) => res)
     .catch((error) => error);
