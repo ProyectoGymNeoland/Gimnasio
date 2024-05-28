@@ -1,0 +1,18 @@
+
+.boton-formulario{
+    display: inline-block;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    width: 100px;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+    background-color: orange;
+    border: 1px solid wheat;
+    border-radius: 10px;
+}
+
+.boton-formulario:hover {
+    transform: scale(0.95);
+    box-shadow: 5px 10px 10px rgba(5, 16, 177, 0.932);
+    border: 1px solid wheat;
+}

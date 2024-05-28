@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
-import { getAllWalls, getWallByName } from '../services/wall.service';
+import { deleteWallByExpiration, getAllWalls, getWallByName } from '../services/wall.service';
 import './ActivitiesFeed.css';
 import './WallFeed.css';
 import { Input } from '../components/Input';
@@ -13,16 +13,23 @@ export const WallFeed = () => {
   const [activities, setActivities] = useState([]);
   const [res, setRes] = useState(null);
   const [inputFilter, setInputFilter] = useState(null)
+  const [wallDelete, setWallDelete] = useState([]);
  
   useEffect(() => {
     (async () => {
       setRes(await getAllWalls());
     })();
-  }, []);
+  },[ (async () => {
+      setWallDelete(await deleteWallByExpiration());
+    })()]);
 
   useEffect(() => {
     useWallsFeedError(res, setRes, setActivities);
   }, [res]);
+
+  useEffect(()=>{
+    console.log(wallDelete)
+  },[wallDelete])
 
   const handleSearch = async (term) => {
    const filterData = activities.filter((item)=> item.name.toLowerCase().includes(term.toLowerCase()) )

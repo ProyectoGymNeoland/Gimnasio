@@ -152,6 +152,7 @@ const deleteWallByExpiration = async (req, res) => {
     const paredesVencidas = await Wall.find({
       expirationDate: { $lt: currentDate },
     });
+    console.log(paredesVencidas)
     await Promise.all(
       paredesVencidas.map(async (pared) => {
         await Wall.deleteOne({ _id: pared._id });
