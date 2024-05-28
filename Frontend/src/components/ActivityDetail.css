@@ -1,8 +1,7 @@
 .activity-detail {
-  max-width: 600px; 
+  max-width: 600px; /* Reduce el ancho máximo */
   margin: 0 auto;
-  margin-top: 80px; /* APAÑO PARA QUE NO SE META DENTRO DEL HEADER */
-  padding: 15px; 
+  padding: 15px; /* Reduce el padding */
   border-radius: 10px;
   background-color: #f9f9f9;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -12,14 +11,9 @@
 
 .activity-detail h1 {
   font-size: 1.5em; /* Reduce el tamaño de la fuente */
-  margin-bottom: 15px; 
+  margin-bottom: 15px; /* Reduce el margen inferior */
   text-align: center;
 }
-
-.activity-detail h3 {
-   color: #F2BB16;
-}
-
 
 .activity-detail p {
   margin: 8px 0; /* Reduce los márgenes */
@@ -53,7 +47,7 @@
 
 .activity-detail h3 {
   font-size: 1.2em; /* Reduce el tamaño de la fuente */
-  margin-top: 20px;
+  margin-top: 20px; /* Reduce el margen superior */
   text-align: center;
 }
 
@@ -70,3 +64,4 @@
   font-size: 1.5em;
   color: #ff0000;
 }
+

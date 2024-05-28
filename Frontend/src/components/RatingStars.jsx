@@ -1,6 +1,12 @@
 import './RatingStars.css';
 
-export const RatingStars = ({ rating }) => {
+export const RatingStars = ({
+  rating,
+  count,
+  showCount,
+  showLinkReviews,
+  showReviews,
+}) => {
   const filledStars = Math.round(rating);
   const emptyStars = 5 - filledStars;
   const arrayFilled = Array.from({ length: filledStars }, (_, index) => index + 1);
@@ -9,17 +15,21 @@ export const RatingStars = ({ rating }) => {
   return (
     <div className="rating-stars">
       {arrayFilled.map((index) => (
-        <span key={index} className="star filled">
-          ★
+        <span key={index} className="material-symbols-outlined star filled">
+          star
         </span>
       ))}
       {arrayEmpty.map((index) => (
-        <span key={index} className="star empty">
-          ☆
+        <span key={index} className="material-symbols-outlined star empty">
+          star
         </span>
       ))}
+      {showCount && <span>({count})</span>}
+      {showLinkReviews && (
+        <span>
+          <a onClick={showReviews}>Ver reviews</a>
+        </span>
+      )}
     </div>
   );
 };
-
-

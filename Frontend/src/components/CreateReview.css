@@ -1,0 +1,20 @@
+.create-review-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.create-review-form label {
+  font-weight: bold;
+}
+
+.create-review-form textarea {
+  resize: none;
+  height: 100px;
+}
+
+.create-review-form button {
+  align-self: flex-start;
+  padding: 5px 10px;
+}
