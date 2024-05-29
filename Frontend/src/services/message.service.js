@@ -4,18 +4,19 @@ import { updateToken } from "../utils";
 
 //! ---------- CREATE MESSAGE ---------- //
 
-export const createMessage = async (idRecipient, formData) => {
+export const createMessage = async (idRecipient, content) => {
   const APIGeneral = extraConfig();
-    return APIGeneral.post(`/message/${idRecipient}` , formData, {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${updateToken()}`,
+  return APIGeneral.post(`/message/${idRecipient}`,
+      { type: 'private',  content },
+      {
+          headers: {
+              'Authorization': `Bearer ${updateToken()}`,
+              'Content-Type': 'application/json'
+          }
       }
-    })
-      .then((res) => res)
-      .catch((error) => error);
-  };
-  
+  ).then((res) => res)
+  .catch((error) => error)
+};
 
   //! ---------- DELETE MESSAGE ---------- //
 

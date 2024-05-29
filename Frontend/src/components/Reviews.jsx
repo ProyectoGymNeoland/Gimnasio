@@ -1,7 +1,24 @@
 import { RatingStars } from './RatingStars';
+import React, { useState } from 'react';
+import {MessageModal} from './MessageModal';
 import './Reviews.css';
 
 export const Reviews = ({ reviews }) => {
+  
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [recipient, setRecipient] = useState('');
+
+
+  const openModal = (owner) => {
+    setRecipient(owner);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setRecipient('');
+  };
+
   return (
     <div className="reviews-container">
       {reviews.map((review, index) => (
@@ -11,7 +28,7 @@ export const Reviews = ({ reviews }) => {
             <div className="review-header">
               <div className="review-owner">
                 <span className="texto">{review.owner.name}</span>
-                <a className="review-chat-link" onClick={console.log('Ir al chat')}>
+                <a className="review-chat-link" onClick={() => openModal(review.owner)}>
                   {' '}
                   Chat
                 </a>
@@ -32,6 +49,12 @@ export const Reviews = ({ reviews }) => {
           </div>
         </div>
       ))}
+      {isModalOpen && (
+        <MessageModal
+          recipient={recipient}
+          onClose={closeModal}
+        />
+      )}
     </div>
   );
 };
