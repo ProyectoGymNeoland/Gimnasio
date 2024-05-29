@@ -106,16 +106,16 @@ export const getAllUser = async () => {
 //! ---------- GET BY ID USER ---------- //
 
 export const getByIdUser = async (idUser) => {
-  try {
-    const APIGeneral = extraConfig();
-    const response = await APIGeneral.get(`/users/findById/${idUser}`);
-    return response.data; // Devuelve solo los datos relevantes de la respuesta
-  } catch (error) {
-    console.error('Error al obtener el usuario por ID:', error);
-    throw error; // Lanza el error para que pueda ser manejado en el código que llama a esta función
-  }
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/users/findById/${idUser}`)
+    .then((response) => {
+      return response.data; // Devuelve solo los datos relevantes de la respuesta
+    })
+    .catch((error) => {
+      console.error('Error al obtener el usuario por ID:', error);
+      throw error; // Lanza el error para que pueda ser manejado en el código que llama a esta función
+    });
 };
-
 //! ---------- GET BY NAME USER ---------- //
 
 export const getByNameUser = async (name) => {

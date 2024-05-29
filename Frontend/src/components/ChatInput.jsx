@@ -1,9 +1,9 @@
-// ChatInput.jsx
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/authContext';
-import { getChatsByUserId } from "../services/chat.service";
+import { getChatsByUserId, deleteChat } from "../services/chat.service";
 import { useNavigate } from 'react-router-dom';
 import './ChatInput.css';
+import { FaTrash } from 'react-icons/fa';
 
 export const ChatInput = () => {
     const { user } = useAuth();
@@ -44,15 +44,27 @@ export const ChatInput = () => {
         navigate(`/profile/chat/detail/${chatId}`);
     };
 
+    const handleDeleteChat = async (chatId) => {
+        try {
+            await deleteChat(chatId);
+            setChats(chats.filter(chat => chat._id !== chatId));
+        } catch (error) {
+            console.error("Error al eliminar el chat:", error);
+        }
+    };
+
     return (
         <div>
             <h3>Chats Activos</h3>
             <ul>
                 {chats.map((chat) => (
-                    <li key={chat._id} onClick={() => handleChatClick(chat._id)}>
-                        <div>{chat.userTwoInfo}</div>
-                        <div>{chat.lastMessageContent}</div>
-                        <div>{chat.lastMessageDate}</div>
+                    <li key={chat._id}>
+                        <FaTrash className="trash-icon" onClick={() => handleDeleteChat(chat._id)} />
+                        <div onClick={() => handleChatClick(chat._id)}>
+                            <div>{chat.userTwoInfo}</div>
+                            <div>{chat.lastMessageContent}</div>
+                            <div>{chat.lastMessageDate}</div>
+                        </div>
                     </li>
                 ))}
             </ul>
