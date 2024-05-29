@@ -52,7 +52,7 @@ export const UserProfileCard = ({ user }) => {
       <button onClick={handleDelete}>Eliminar Perfil</button>
       <div>
         <button onClick={logout} className="logout-button">
-          <span class="material-symbols-outlined">logout</span>
+          <span className="material-symbols-outlined">logout</span>
         </button>
       </div>
       <div className="superadmin-profile">

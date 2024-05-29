@@ -27,5 +27,6 @@ export * from './ChatDetail';
 export * from './ChatInput';
 export * from './CreateReview.jsx';
 export * from './Reviews.jsx';
-export * from "./CardReserva.jsx";
-export * from "./DayDetails.jsx";
+export * from './CardReserva.jsx';
+export * from './DayDetails.jsx';
+export * from './UserReviews.jsx';

@@ -1,0 +1,36 @@
+.user-reviews {
+  width: 100%;
+  max-width: 900px;
+  max-height:100%;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  height: 60vh; /* Altura fija para el componente */
+  overflow-y: auto; /* Scroll interno para contenido desbordante */
+}
+
+.user-reviews h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.review-item {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.review-item h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.review-item p {
+  font-size: 16px;
+  line-height: 1.5;
+}

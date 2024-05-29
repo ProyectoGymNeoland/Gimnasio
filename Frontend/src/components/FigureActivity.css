@@ -7,8 +7,6 @@ figure{
         transition: transform 0.3s ease-in-out;
     }
 
-    
-
     & p h2 {
         text-align: center;
     }
