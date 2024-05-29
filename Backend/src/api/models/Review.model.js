@@ -8,9 +8,9 @@ const ReviewSchema = new Schema(
       ref: "User",
       required: true,
     },
-    activity: {
+    activities: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Activity",
+      ref: "Activities",
       required: true,
     },
     rating: {

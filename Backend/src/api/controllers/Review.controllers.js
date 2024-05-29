@@ -9,7 +9,7 @@ const createReview = async (req, res) => {
 
     const review = new Review({
       owner: ownerId,
-      activity: activityId,
+      activities: activityId,
       rating,
       content,
     });
@@ -36,7 +36,7 @@ const getReviewsByActivity = async (req, res) => {
   try {
     const { activityId } = req.params;
 
-    const reviews = await Review.find({ activity: activityId }).populate(
+    const reviews = await Review.find({ activities: activityId }).populate(
       "owner",
       "name"
     );
@@ -59,7 +59,23 @@ const getReviewsByActivity = async (req, res) => {
   }
 };
 
+//! ------------------------------------------------------------------------
+//? ---------------------------GET REVIEW BY USER---------------------------
+//! ------------------------------------------------------------------------
+
+const getReviewsByUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    const reviews = await Review.find({ owner: userId }).populate("activities");
+    res.status(200).json(reviews);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createReview,
   getReviewsByActivity,
+  getReviewsByUser,
 };
