@@ -28,7 +28,7 @@ export const ChatInput = () => {
                             const lastMessage = chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : null;
                             return {
                                 ...chat,
-                                userTwoInfo: chat.userTwo.name,
+                                userTwoInfo: chat?.userTwo?.name,
                                 lastMessageContent: lastMessage ? lastMessage.content : "No hay mensajes",
                                 lastMessageDate: lastMessage ? new Date(lastMessage.createdAt).toLocaleDateString() : null,
                             };
