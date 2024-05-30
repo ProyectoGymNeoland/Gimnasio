@@ -24,6 +24,7 @@ import {
   ChatInput,
   Protected,
   ProtectedCheckChildren,
+  UserActivitiesFav,
   UserReviews,
   WallDetailPage,
 } from '../components';
@@ -143,6 +144,10 @@ export const router = createBrowserRouter([
           {
             path: 'reviews',
             element: <UserReviews />,
+          },
+          {
+            path: 'activitiesFav',
+            element: <UserActivitiesFav />,
           },
         ],
       },
