@@ -8,7 +8,7 @@ import { useLoginError } from '../hooks/useLoginError';
 
 export const Login = () => {
   //! estados
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [res, setRes] = useState({});
   const [send, setSend] = useState(false);
   const [loginOk, setLoginOk] = useState(false);
@@ -34,7 +34,7 @@ export const Login = () => {
 
   //! 3) estados de navegacion
   if (loginOk) {
-    if (res.data.user.check == false) {
+    if (res.data.user.check === false) {
       return <Navigate to="/verifyCode" />;
     } else {
       return <Navigate to="/profile" />;
@@ -54,11 +54,18 @@ export const Login = () => {
               id="email"
               name="email"
               autoComplete="false"
-              {...register('email', { required: true })}
+              {...register('email', { 
+                required: 'Email is required', 
+                pattern: {
+                  value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+                  message: 'Invalid email address'
+                } 
+              })}
             />
-            <label htmlFor="custom-input" className="custom-placeholder">
+            <label htmlFor="email" className="custom-placeholder">
               email
             </label>
+            {errors.email && <p className="error-message">{errors.email.message}</p>}
 
             <div className="password_container form-group">
               <input
@@ -67,11 +74,18 @@ export const Login = () => {
                 id="password"
                 name="password"
                 autoComplete="false"
-                {...register('password', { required: true })}
+                {...register('password', { 
+                  required: 'Password is required',
+                  minLength: {
+                    value: 6,
+                    message: 'Password must be at least 6 characters'
+                  }
+                })}
               />
-              <label htmlFor="custom-input" className="custom-placeholder">
+              <label htmlFor="password" className="custom-placeholder">
                 password
               </label>
+              {errors.password && <p className="error-message">{errors.password.message}</p>}
             </div>
           </div>
 
