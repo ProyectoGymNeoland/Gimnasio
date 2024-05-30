@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/authContext";
 import { Link } from "react-router-dom";
-
+import "./FigureWall.css"
 
 export const FigureWalls = ({wall}) => {
    const { login, user } = useAuth();
@@ -27,7 +27,7 @@ export const FigureWalls = ({wall}) => {
 
   
   return (
-    <figure>
+    <figure className="figure-container">
       <Link to={`/wall/${wall._id}`}>
         {wall.image && <img src={wall.image} alt={wall.name} width="200" />}
         <figcaption>
@@ -36,7 +36,7 @@ export const FigureWalls = ({wall}) => {
         </figcaption>
       </Link>
       {console.log(wall)}
-      {user && ( // Muestra el botón solo si el usuario está autenticado
+      {/* {user && ( // Muestra el botón solo si el usuario está autenticado
         <button onClick={handleLike}>
           <span
             className={
@@ -53,7 +53,7 @@ export const FigureWalls = ({wall}) => {
         <button onClick={handleLikeAnonymous}>
           <span className="material-symbols-outlined">favorite</span>
         </button>
-      )}
+      )} */}
     </figure>
   );
 }

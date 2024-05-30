@@ -48,14 +48,12 @@ export const WallFeed = () => {
             <FigureWalls
             wall={wall}
             key={wall._id}
-            
             />
           ))) : activities.length > 0 &&
           activities.map((wall) => (
             <FigureWalls
             wall={wall}
             key={wall._id}
-            
             />
           ))}
         {activities.length === 0 && 'No se han encontrado actividades'}
