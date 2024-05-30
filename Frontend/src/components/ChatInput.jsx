@@ -4,7 +4,11 @@ import { getChatsByUserId, deleteChat } from "../services/chat.service";
 import { useNavigate } from 'react-router-dom';
 import './ChatInput.css';
 import { FaTrash } from 'react-icons/fa';
+<<<<<<< HEAD
 import { useGetChatError } from "../hooks" // Asegúrate de importar el hook de manejo de errores
+=======
+import {useGetChatError} from '../hooks/useGetChatError'; // Asegúrate de importar el hook de manejo de errores
+>>>>>>> b4409633f6e90f0119e447b058f8c37d83b79139
 
 export const ChatInput = () => {
     const { user } = useAuth();
@@ -28,7 +32,7 @@ export const ChatInput = () => {
                             const lastMessage = chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : null;
                             return {
                                 ...chat,
-                                userTwoInfo: chat.userTwo.name,
+                                userTwoInfo: chat?.userTwo?.name,
                                 lastMessageContent: lastMessage ? lastMessage.content : "No hay mensajes",
                                 lastMessageDate: lastMessage ? new Date(lastMessage.createdAt).toLocaleDateString() : null,
                             };

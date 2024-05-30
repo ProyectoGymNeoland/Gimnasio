@@ -30,3 +30,4 @@ export * from './Reviews.jsx';
 export * from './CardReserva.jsx';
 export * from './DayDetails.jsx';
 export * from './UserReviews.jsx';
+export * from "./UserActivitiesFav.jsx"

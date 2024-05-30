@@ -23,6 +23,17 @@
   overflow-y: auto; /* Añadir scroll si el contenido es muy grande */
 }
 
+.user-nav button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+
+
 .nav-user {
   display: flex;
   flex-direction: column;

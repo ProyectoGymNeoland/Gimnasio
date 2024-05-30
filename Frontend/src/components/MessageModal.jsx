@@ -3,56 +3,6 @@ import { useAuth } from '../context/authContext';
 import { createMessage } from '../services/message.service'; 
 import "./MessageModal.css"
 
-// export const MessageModal = ({ recipient, onClose }) => {
-//     const { user } = useAuth();
-//     const [content, setContent] = useState('');
-//     const [error, setError] = useState(null);
-
-//     const handleCreateMessage = async (event) => {
-//         event.preventDefault();
-
-//         if (!user) {
-//             setError('User not found. Please login.');
-//             return;
-//         }
-
-//         try {
-//             const response = await createMessage(recipient._id, content);
-//             console.log('Message created:', response);
-//             if (response.status === 200) {
-//                 setError(null); // Clear any previous error
-//                 onClose(); // Close the modal only if the message was created successfully
-//             } else {
-//                 setError('Failed to send message.');
-//             }
-//         } catch (err) {
-//             console.error('Error creating message:', err); // Log the full error for debugging
-//             if (err.response && err.response.data && err.response.data.error) {
-//                 setError(err.response.data.error);
-//             } else {
-//                 setError('Failed to send message.');
-//             }
-//         }
-//     };
-
-//     return (
-//         <div className="modal">
-//             <div className="modal-content">
-//                 <h2>Envía un mensaje a {recipient.name}</h2>
-//                 <form onSubmit={handleCreateMessage}>
-//                     <textarea
-//                         value={content}
-//                         onChange={(e) => setContent(e.target.value)}
-//                         required
-//                     />
-//                     <button type="submit">Enviar</button>
-//                 </form>
-//                 {error && <p className="error-message">{error}</p>}
-//                 <button onClick={onClose}>Cerrar</button>
-//             </div>
-//         </div>
-//     );
-// };
 export const MessageModal = ({ recipient, onClose }) => {
     const { user } = useAuth();
     const [content, setContent] = useState('');
