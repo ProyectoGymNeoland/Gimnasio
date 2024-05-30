@@ -26,6 +26,11 @@ const {
 const setError = require("../../helpers/handle-error");
 const { generateToken } = require("../../utils/token");
 const randomPassword = require("../../utils/randomPassword");
+const Activities = require("../models/Activities.model");
+const ActivityToDay = require("../models/ActivityToDay.model");
+const Chat = require("../models/Chat.model");
+const Message = require("../models/Message.model");
+const Wall = require("../models/Wall.model");
 
 //------------------->CRUD es el acrónimo de "Crear, Leer, Actualizar y Borrar"
 /**+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -924,29 +929,38 @@ const changeRol = async (req, res, next) => {
 //? ---------------------------------DELETE--------------------------------------
 //! -----------------------------------------------------------------------------
 
-const deleteUser = async (req, res, next) => {
-  const userId = req.params.userId;
+const deleteUser = async (req, res) => {
   try {
-    await Message.deleteMany({ owner: userId });
-    await Message.deleteMany({ recipientUser: userId });
-    await Chat.updateMany(
-      { $or: [{ userOne: userId }, { userTwo: userId }] },
-      { $pull: { messages: { recipientUser: userId } } }
+    const userId = req.params.id; // Asume que el ID del usuario viene como parámetro en la URL
+
+    // Encuentra el usuario por su ID
+    const user = await User.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+
+    // Eliminar documentos relacionados
+    await ActivityToDay.deleteMany({ _id: { $in: user.reservas } });
+    await Activities.deleteMany({ _id: { $in: user.activitiesFav } });
+    await User.updateMany(
+      { _id: { $in: user.monitoresFav } },
+      { $pull: { monitoresFav: userId } }
     );
-    await Chat.deleteMany({ userOne: userId });
-    await Chat.deleteMany({ userTwo: userId });
+    await Wall.updateMany(
+      { _id: { $in: user.wallLikes } },
+      { $pull: { wallLikes: userId } }
+    );
+    await Chat.deleteMany({ _id: { $in: user.chats } });
+    await Message.deleteMany({ _id: { $in: user.commentsPublicByOther } });
+    await Message.deleteMany({ _id: { $in: user.postedMessages } });
+
+    // Finalmente, elimina el usuario
     await User.findByIdAndDelete(userId);
-    await Activities.updateMany({ like: userId }, { $pull: { like: userId } });
-    res.status(200).json({
-      success: true,
-      message: "Mensajes del usuario eliminados correctamente.",
-    });
+
+    res.status(200).json({ message: "User and associated data deleted successfully" });
   } catch (error) {
-    console.error("Error al eliminar sus mensajes:", error);
-    res.status(500).json({
-      success: false,
-      message: "Ocurrió un error al eliminar sus mensajes.",
-    });
+    res.status(500).json({ message: "Error deleting user", error });
   }
 };
 
