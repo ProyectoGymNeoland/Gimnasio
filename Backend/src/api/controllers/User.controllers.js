@@ -761,7 +761,7 @@ const update = async (req, res, next) => {
       ///----------------> para todo lo diferente de la imagen ----------------------------------
       updateKeys.forEach((item) => {
         /** vamos a comprobar que la info actualizada sea igual que lo que me mando por el body... */
-        if (updateUser[item] === req.body[item]) {
+        if (updateUser[item] == req.body[item]) {
           /** aparte vamos a comprobar que esta info sea diferente a lo que ya teniamos en mongo subido antes */
           if (updateUser[item] != req.user[item]) {
             // si es diferente a lo que ya teniamos lanzamos el nombre de la clave y su valor como true en un objeto
