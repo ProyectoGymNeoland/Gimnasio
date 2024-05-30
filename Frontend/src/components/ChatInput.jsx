@@ -1,15 +1,21 @@
-// ChatInput.jsx
 import React, { useEffect, useState } from 'react';
 import { useAuth } from '../context/authContext';
-import { getChatsByUserId } from "../services/chat.service";
+import { getChatsByUserId, deleteChat } from "../services/chat.service";
 import { useNavigate } from 'react-router-dom';
 import './ChatInput.css';
+import { FaTrash } from 'react-icons/fa';
+import useGetChatError from '../hooks/useGetChatError'; // Asegúrate de importar el hook de manejo de errores
 
 export const ChatInput = () => {
     const { user } = useAuth();
     const userId = user ? user._id : null;
     const [chats, setChats] = useState([]);
+    const [res, setRes] = useState(null); // Estado para almacenar la respuesta del servidor
+    const [userNotFound, setUserNotFound] = useState(false); // Estado para manejar el caso de usuario no encontrado
     const navigate = useNavigate();
+
+    // Usar el hook de manejo de errores
+    useGetChatError(res, setRes, setUserNotFound);
 
     useEffect(() => {
         if (userId) {
@@ -33,6 +39,7 @@ export const ChatInput = () => {
                     }
                 } catch (error) {
                     console.error("Error al obtener los chats:", error);
+                    setRes(error.response); // Almacenar la respuesta de error en el estado
                 }
             };
 
@@ -44,18 +51,32 @@ export const ChatInput = () => {
         navigate(`/profile/chat/detail/${chatId}`);
     };
 
+    const handleDeleteChat = async (chatId) => {
+        try {
+            await deleteChat(chatId);
+            setChats(chats.filter(chat => chat._id !== chatId));
+        } catch (error) {
+            console.error("Error al eliminar el chat:", error);
+            setRes(error.response); // Almacenar la respuesta de error en el estado
+        }
+    };
+
     return (
         <div>
             <h3>Chats Activos</h3>
             <ul>
                 {chats.map((chat) => (
-                    <li key={chat._id} onClick={() => handleChatClick(chat._id)}>
-                        <div>{chat.userTwoInfo}</div>
-                        <div>{chat.lastMessageContent}</div>
-                        <div>{chat.lastMessageDate}</div>
+                    <li key={chat._id}>
+                        <FaTrash className="trash-icon" onClick={() => handleDeleteChat(chat._id)} />
+                        <div onClick={() => handleChatClick(chat._id)}>
+                            <div>{chat.userTwoInfo}</div>
+                            <div>{chat.lastMessageContent}</div>
+                            <div>{chat.lastMessageDate}</div>
+                        </div>
                     </li>
                 ))}
             </ul>
+            {userNotFound && <p>Usuario no encontrado</p>} {/* Mostrar mensaje si el usuario no se encuentra */}
         </div>
     );
 };

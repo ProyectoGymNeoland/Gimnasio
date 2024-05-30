@@ -1,15 +1,39 @@
-import { createBrowserRouter } from 'react-router-dom'
-import { ActivitiesFeed, ActivityDetailPage, ActivityListSuperAdmin, BookingDay, ChangePassword, CheckCode, Contact, CrearActivity, Dashboard, Home, Login, Profile, Register, SuperAdminPanel, UpdateActivity, UpdateUser } from '../pages'
-import App from '../App'
-import { ForgotPassword } from '../pages/ForgotPassword'
-import { ChatDetail, ChatInput, Protected, ProtectedCheckChildren, WallDetailPage } from '../components'
-import { NavUser } from '../components/NavUser'
-import MessageComponent from '../pages/CreateMessage'
-import { Wall } from '../pages/Wall'
-import { CreateWallForm } from '../pages/CreateWallForm'
-import { Calendar } from '../pages/Calendar' 
-import { ProtectedSuperAdmin } from '../components/ProtectedRoute/ProtectedSuperAdmin'
-import WallDetail from '../components/WallDetail'
+import { createBrowserRouter } from 'react-router-dom';
+import {
+  ActivitiesFeed,
+  ActivityDetailPage,
+  ActivityListSuperAdmin,
+  BookingDay,
+  ChangePassword,
+  CheckCode,
+  Contact,
+  CrearActivity,
+  Dashboard,
+  Home,
+  Login,
+  Profile,
+  Register,
+  SuperAdminPanel,
+  UpdateActivity,
+  UpdateUser,
+} from '../pages';
+import App from '../App';
+import { ForgotPassword } from '../pages/ForgotPassword';
+import {
+  ChatDetail,
+  ChatInput,
+  Protected,
+  ProtectedCheckChildren,
+  UserReviews,
+  WallDetailPage,
+} from '../components';
+import { NavUser } from '../components/NavUser';
+import MessageComponent from '../pages/CreateMessage';
+import { Wall } from '../pages/Wall';
+import { CreateWallForm } from '../pages/CreateWallForm';
+import { Calendar } from '../pages/Calendar';
+import { ProtectedSuperAdmin } from '../components/ProtectedRoute/ProtectedSuperAdmin';
+import WallDetail from '../components/WallDetail';
 
 export const router = createBrowserRouter([
   {
@@ -104,7 +128,6 @@ export const router = createBrowserRouter([
           </Protected>
         ),
         children: [
-        
           {
             path: 'chat',
             element: <ChatInput />,
@@ -116,6 +139,10 @@ export const router = createBrowserRouter([
           {
             path: 'activities',
             element: <ActivitiesFeed />,
+          },
+          {
+            path: 'reviews',
+            element: <UserReviews />,
           },
         ],
       },

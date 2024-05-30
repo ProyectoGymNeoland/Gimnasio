@@ -26,3 +26,10 @@ a:hover {
 h3 {
     margin-bottom: 20px;
 }
+
+.trash-icon {
+    cursor: pointer;
+    margin-right: 10px;
+    color: hwb(59 4% 3%);
+    font-size: 1.7em;
+}

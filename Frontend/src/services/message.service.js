@@ -30,15 +30,18 @@ export const deleteMessageByUser = async (idUser) => {
 
 //! ---------- FIND MESSAGE BY ID ---------- //
 export const findMessageById = async (messageId) => {
-  try {
-      const APIGeneral = extraConfig();
-      const response = await APIGeneral.get(`/message/${messageId}`);
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/message/${messageId}`)
+    .then((response) => {
       return response.data;
-  } catch (error) {
+    })
+    .catch((error) => {
       console.error('Error al encontrar el mensaje por ID:', error);
       throw error;
-  }
+    });
 };
+
+
 //! ---------- LIKE MESSAGE WALL---------- //
 
 export const likeMessageWall = async (idUser, formData) => {
