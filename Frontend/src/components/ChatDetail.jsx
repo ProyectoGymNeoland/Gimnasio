@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { getChatById } from "../services/chat.service";
 import { findMessageById } from "../services/message.service";
-import {useGetChatError} from '../hooks/useGetChatError';
+import { createMessage } from "../services/message.service"; // Importar la función createMessage
+import { useGetChatError } from '../hooks/useGetChatError';
 import { userMessageError } from '../hooks/userMessageError';
 import { useParams } from 'react-router-dom';
 import './ChatDetail.css';
@@ -44,8 +45,22 @@ export const ChatDetail = () => {
     }, [chatId]);
 
     const handleSendMessage = async () => {
-        // Aquí irá la lógica para enviar un nuevo mensaje
-        // Posteriormente se actualizarán los mensajes
+        if (!newMessage.trim()) return;
+
+        try {
+            const response = await createMessage(chat.userTwo._id, newMessage);
+            if (response.status === 200) {
+                const { message } = response.data;
+                setMessages((prevMessages) => [...prevMessages, message]);
+                setNewMessage("");
+                setRes(response); // Establecer la respuesta en el estado
+            } else {
+                throw new Error('Error al enviar el mensaje');
+            }
+        } catch (err) {
+            setError('Error al enviar el mensaje');
+            setRes(err.response); // Almacenar la respuesta de error en el estado
+        }
     };
 
     if (loading) return <div>Cargando...</div>;
