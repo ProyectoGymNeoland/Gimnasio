@@ -28,3 +28,4 @@ export * from './useDayFrame.jsx';
 export * from './useErrorBooking.jsx';
 export * from './useGetDayError.jsx';
 export * from './useUserReviewsError.jsx';
+export * from "./useGetChatError"
