@@ -1,7 +1,9 @@
+import React, { useEffect, useState } from 'react';
 import { getChatById } from "../services/chat.service";
 import { findMessageById } from "../services/message.service";
-import useGetChatError from '../hooks/useGetChatError';
+import {useGetChatError} from '../hooks/useGetChatError';
 import { userMessageError } from '../hooks/userMessageError';
+import { useParams } from 'react-router-dom';
 import './ChatDetail.css';
 
 export const ChatDetail = () => {

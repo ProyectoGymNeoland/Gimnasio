@@ -4,7 +4,7 @@ import { getChatsByUserId, deleteChat } from "../services/chat.service";
 import { useNavigate } from 'react-router-dom';
 import './ChatInput.css';
 import { FaTrash } from 'react-icons/fa';
-import useGetChatError from '../hooks/useGetChatError'; // Asegúrate de importar el hook de manejo de errores
+import {useGetChatError} from '../hooks/useGetChatError'; // Asegúrate de importar el hook de manejo de errores
 
 export const ChatInput = () => {
     const { user } = useAuth();
