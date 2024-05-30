@@ -97,7 +97,7 @@ const registerLargo = async (req, res, next) => {
             });
           });
         } else {
-          if (req?.file) deleteImgCloudinary(catchImg);// añadimos esta línea para borrar la imagen si no se completa el register
+          if (req?.file) deleteImgCloudinary(catchImg); // añadimos esta línea para borrar la imagen si no se completa el register
           return res.status(404).json("error save user");
         }
       } catch (error) {
@@ -160,7 +160,7 @@ const registerUtil = async (req, res, next) => {
           }, 2500);
         }
       } catch (error) {
-       if (req.file) deleteImgCloudinary(catchImg);// añadimos esta línea para borrar la imagen si no se completa el register
+        if (req.file) deleteImgCloudinary(catchImg); // añadimos esta línea para borrar la imagen si no se completa el register
 
         return res.status(404).json(error.message);
       }
@@ -449,7 +449,7 @@ const login = async (req, res, next) => {
 
   try {
     const { email, password } = req.body;
-    const userDB = await User.findOne({ email });
+    const userDB = await User.findOne({ email }).populate("activitiesFav");
 
     if (userDB) {
       // compara dos contraseñar una sin encryptar y otra que si lo esta
