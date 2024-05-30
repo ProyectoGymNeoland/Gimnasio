@@ -1,8 +1,9 @@
 import { getChatById } from "../services/chat.service";
 import { findMessageById } from "../services/message.service";
-import useGetChatError from '../hooks/useGetChatError';
-import { userMessageError } from '../hooks/userMessageError';
+import { useGetChatError } from "../hooks"
 import './ChatDetail.css';
+import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const ChatDetail = () => {
     const { chatId } = useParams();
