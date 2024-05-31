@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import "./About.css"
 
 
@@ -9,7 +10,9 @@ export const About = () => {
       
       <div className="contenedor">
             <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1716626252/ajtcg3vozalj69g3wefh.webp"></img>
-    
+            <h3 className='register-button'>Si aún no estás registrado: <Link to="/register"> ¡REGISTRATE desde AQUI!
+            </Link>
+            </h3>
       </div>
       <div className='about-info'>
         
