@@ -1,12 +1,17 @@
 /* src/components/ActivitiesHomeCard.css */
 .activities-home-card-container {
+  
+  background-color: #4d9ee6;
   padding: 20px;
   text-align: center;
-  margin-top: 25px;
+  margin-top: 0px;
   max-width: 1200px;
   margin-left: 350px;
 }
 
+h3 {
+  font-size: 24px !important;
+}
 .activities-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */

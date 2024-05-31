@@ -75,6 +75,7 @@ export const CrearActivity = () => {
 
   return (
     <>
+    <div className="global-container">
       <div className="form-wrap">
         <h1>Crear actividad Energy Center</h1>
         <p>Registra una nueva actividad deportiva</p>
@@ -175,6 +176,7 @@ export const CrearActivity = () => {
             </button>
           </div>
         </form>
+      </div>
       </div>
     </>
   );

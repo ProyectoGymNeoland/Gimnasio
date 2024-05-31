@@ -1,11 +1,11 @@
 import { ContactUs } from "../components"
-
+import './Login.css'; 
 
 
 export const Contact=()=>{
     return(
         <>
-        <h1>ESTA ES LA PAGINA DE CONTACT</h1>
+        
         <ContactUs/>
 
         </>

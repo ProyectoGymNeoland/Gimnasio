@@ -1,5 +1,5 @@
 .wall-preview-container {
-    background-color: #f49e00;
+    background-color: white;
     padding: 20px;
     text-align: center;
 }
@@ -17,11 +17,11 @@
 .wall-card {
     color:black;
     background-color: white;
-    border: 1px solid #ddd;
+    border: 2px solid #f49e00;
     border-radius: 8px;
     width: 22%;
     margin: 10px;
-    padding: 10px;
+    padding: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     text-align: center;
     box-sizing: border-box;

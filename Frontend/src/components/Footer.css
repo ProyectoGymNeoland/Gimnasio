@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
 
-
-*{
+*
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -16,9 +16,12 @@
 footer {
     width: 100vw;
     padding: 15px 0;
-    background-color: orange;
+    background-color: #ffffff;
 }
 
+p {
+     color: #091622 !important;
+}
 .container-footer {
     display: flex;
     flex-wrap: wrap;
@@ -30,22 +33,23 @@ footer {
 .box-footer {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
     padding: 10px;
     font-size: 15px;
     height: 200px;
+    
 }
 
 .foto {
     width: 125px;
     height: 75px;
     object-fit: cover;
+    
 }
 
-.link-footer, .text-footer{
-    color: #7a7a7a;
+.link-footer, .text-footer {
+    color: #091622 ;
     font-weight: 600;
-    margin: 10px 0px 0px;
+    margin-top: 10px;
 }
 
 .terms {
@@ -60,7 +64,6 @@ footer {
     color: #333333;
     font-weight: 700;
     font-size: 20px;
-    align-self: flex-start;
 }
 
 .link-footer:hover {

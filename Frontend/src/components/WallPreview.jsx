@@ -11,7 +11,7 @@ export const WallPreview = () => {
 
     return (
         <div className="wall-preview-container">
-            <h2>MUROS</h2>
+            
             <div className="walls-grid">
                 {walls.map((wall, index) => (
                     <div key={index} className="wall-card">

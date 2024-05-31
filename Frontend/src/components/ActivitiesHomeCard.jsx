@@ -33,7 +33,7 @@ export const ActivitiesHomeCard = () => {
 
   return (
     <div className="activities-home-card-container">
-      <h2>Nuestras Actividades</h2>
+      <h3>Nuestras Actividades</h3>
       <div className="activities-gallery">
         {activities.length > 0 &&
           activities.slice(0, 6).map((activity) => (

@@ -37,7 +37,7 @@ export const WallFeed = () => {
 //!añadir clase a div principal y actualizar css
   return (
     <div className="activities-feed">
-      <h1>Wall Feed</h1>
+      
         <Input
         setValueInput={handleSearch}
         id={'searchWall'}

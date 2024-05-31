@@ -50,7 +50,7 @@ export const ActivitiesFeed = () => {
 
   return (
     <div className="activities-feed">
-      <h1>Activities Feed</h1>
+      
       <Input
         setValueInput={handleSearch}
         value={searchTerm}

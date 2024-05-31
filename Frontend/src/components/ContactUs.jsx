@@ -27,12 +27,12 @@ import { useCreateContactError } from "../hooks";
     <>
     <div className="form-wrap">
       <h1>Contact Us</h1>
-      <p>Comentanos con cualquier duda que te surja.</p>
+      <h5>Comentanos con cualquier duda que te surja.</h5>
       <form onSubmit={handleSubmit(formSubmit)}>  
         <div className="email_container form-group"> 
         {/*CORREO*/}
         <label htmlFor="custom-input" className="custom-placeholder">email</label>
-        <input type="email" id="email" name="email" {...register("email", { required: true })}/>
+        <input type="Correo elctrónico" id="Correo elctrónico" name="Correo elctrónico" {...register("Correo elctrónico", { required: true })}/>
         </div>
      
         <div className="name_container form-group">

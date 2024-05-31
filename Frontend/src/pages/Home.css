@@ -1,7 +1,7 @@
-/* Main.css */
+
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
+
 }
 
 .nav-container {
@@ -15,10 +15,6 @@ body {
     margin-top: 150px;
 }
 
-.main-content {
-    min-height: 100vh;
-    margin: auto;
-}
 
 .footer-container {
     margin-top: 20px;
