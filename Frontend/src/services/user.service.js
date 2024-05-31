@@ -195,7 +195,23 @@ export const getByNameUser = async (name) => {
       .then((res) => res)
       .catch((error) => error);
   };
-
+  export const checkUsername = async (username) => {
+    const APIGeneral = extraConfig();
+    return APIGeneral.post('/users/checkUsername', { name: username })
+    .then((res) => res.data)
+    .catch((error) => {
+      if (error.response && error.response.status === 409) {
+        Swal.fire({
+          title: 'Exte usuario ya existe',
+          text: 'Por favor, elige un nombre diferente.',
+          icon: 'error',
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+      throw error.response;
+    });
+};
 //! ---------- GET BY GENDER USER ---------- //
 
 export const getByGenderUser = async (gender, name) => {

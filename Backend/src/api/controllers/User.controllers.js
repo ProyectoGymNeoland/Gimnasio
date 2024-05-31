@@ -851,11 +851,23 @@ const getAll = async (req, res, next) => {
 
 const byName = async (req, res, next) => {
   try {
-    const getNameUser = await User.findOne({ name: req.params.name });
-    if (getNameUser) {
-      return res.status(200).json(getNameUser);
-    } else {
-      return res.status(404).json("usuario no encontrado");
+    const username = req.method === 'POST' ? req.body.name : req.params.name;
+    const getUser = await User.findOne({ name: username });
+
+    if (req.method === 'POST') {
+      // Maneja la verificación del nombre de usuario
+      if (getUser) {
+        return res.status(409).json({ message: 'Username already exists' });
+      } else {
+        return res.status(200).json({ message: 'Username is available' });
+      }
+    } else if (req.method === 'GET') {
+      // Maneja la búsqueda del usuario
+      if (getUser) {
+        return res.status(200).json(getUser);
+      } else {
+        return res.status(404).json('User not found');
+      }
     }
   } catch (error) {
     return next(error);
