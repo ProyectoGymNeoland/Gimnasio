@@ -11,7 +11,9 @@ const ActivityToDaySchema = new Schema(
     },
     activityId: { type: mongoose.Schema.Types.ObjectId, ref: "Activities" },
     monitorId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    day:  { type: mongoose.Schema.Types.ObjectId, ref: "Day" },
     bookings: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+
   },
   {
     timestamps: true,

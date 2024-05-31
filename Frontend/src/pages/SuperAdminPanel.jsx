@@ -20,8 +20,8 @@ return (
         <ButtonSuperAdminPanel to="/createWallForm">Crear Muro</ButtonSuperAdminPanel>
       </div>
       <div>
-        <ButtonSuperAdminPanel to="/createWallForm">Crear Actividad Calendario</ButtonSuperAdminPanel>
+        <ButtonSuperAdminPanel to="/createNewDay">Crear horarios y clases</ButtonSuperAdminPanel>
       </div>
     </div>
   </div>
-);};
+)};

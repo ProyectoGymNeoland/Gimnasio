@@ -9,7 +9,9 @@ import { useGetAllDaysError } from "../hooks/useGetAllDaysError";
 export const Calendar = () => {
     const [days, setDays] = useState([]);
     const [res, setRes] = useState({});
+    const [filteredDays, setFilteredDays] = useState([]);
     const { user } = useAuth();
+
     // Si el usuario no está logueado, redirige a la página de inicio de sesión
     if (!user) {
       return <Navigate to="/login" />;
@@ -22,28 +24,33 @@ export const Calendar = () => {
     }, []);
 
     useEffect(() => {
-    useGetAllDaysError(res, setRes, setDays);
+      useGetAllDaysError(res, setRes, setDays);
     }, [res])
 
-    useEffect(() => {
-        console.log("que es res y como lo coge",res);
-    }, [days,res]);
+    useEffect(()=>{
+      const today = new Date().toISOString();
+      const filter = days.filter(day=>{
+        const compareDate = day.dates >= today;
+        return compareDate;
+      })
+      setFilteredDays(filter)
+    },[days]);
+
     return(
         <>
         <h1>ESTA ES LA PAGINA DE CALENDARIO</h1>
-        {console.log("que es days",days)}
         
         <div id="containerDays">
-            {days.length>0 && days.map((day)=>(
+            {filteredDays.length>0 && filteredDays.map((day)=>{
+            return(
             <BtnDay
             key={day._id}
             day={day}
             className={day.day}
             />
-            )
-            )}
-            {days.length === 0 && 'No se han encontrado dias'}
-            
+            );
+            })}
+            {days.length === 0 && 'No se han encontrado dias'}   
         </div>
         
         </>

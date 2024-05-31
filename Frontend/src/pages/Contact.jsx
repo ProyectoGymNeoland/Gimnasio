@@ -1,4 +1,4 @@
-import { ContactUs, CreateActivityDay, CreateDay } from "../components"
+import { ContactUs } from "../components"
 
 
 
@@ -7,8 +7,7 @@ export const Contact=()=>{
         <>
         <h1>ESTA ES LA PAGINA DE CONTACT</h1>
         <ContactUs/>
-        <CreateActivityDay/>
-        <CreateDay/>
+
         </>
     )
 }

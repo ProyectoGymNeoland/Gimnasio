@@ -9,6 +9,8 @@ const {
   toggleBooking,
   updateActivityToDay,
   deleteActivityToDay,
+  getBookingsByUser,
+  createDayActivity,
 } = require("../controllers/ActivityToDay.controllers");
 
 ActivityToDayRoutes.post(
@@ -25,4 +27,6 @@ ActivityToDayRoutes.patch(
 );
 ActivityToDayRoutes.patch("/booking/:idActivityToDay", [isAuth], toggleBooking);
 ActivityToDayRoutes.delete("/:id", [isAuthSuper], deleteActivityToDay);
+ActivityToDayRoutes.get("/bookedActivities/:userId",getBookingsByUser);
+ActivityToDayRoutes.post("/createDayActivity",[isAuthSuper],createDayActivity);
 module.exports = ActivityToDayRoutes;

@@ -16,10 +16,8 @@ export * from './useToggleLikeActivity';
 export * from './useUpdateActivityError';
 export * from './useWallByNameError';
 export * from './useWallFeedError';
-export * from './useCreateActivityDayerror';
 export * from './useGetActivity';
 export * from './useGetMonitor';
-export * from './useCreateDayError';
 export * from './useSelectFrame';
 export * from './useGetAllDaysError';
 export * from './useRatingError';
@@ -28,4 +26,6 @@ export * from './useDayFrame.jsx';
 export * from './useErrorBooking.jsx';
 export * from './useGetDayError.jsx';
 export * from './useUserReviewsError.jsx';
-export * from "./useGetChatError"
+export * from "./useGetChatError";
+export * from "./useGetBookingError.jsx";
+export * from "./useCreateNewDayError.jsx";

@@ -4,10 +4,12 @@ import {
   ActivityDetailPage,
   ActivityListSuperAdmin,
   BookingDay,
+  BookingsFeed,
   ChangePassword,
   CheckCode,
   Contact,
   CrearActivity,
+  CreateNewDay,
   Dashboard,
   Home,
   Login,
@@ -149,6 +151,10 @@ export const router = createBrowserRouter([
             path: 'activitiesFav',
             element: <UserActivitiesFav />,
           },
+          {
+            path: 'books',
+            element: <BookingsFeed />,
+          },
         ],
       },
       {
@@ -192,6 +198,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedSuperAdmin>
             <SuperAdminPanel />
+          </ProtectedSuperAdmin>
+        ),
+      },
+      {
+        path: '/createNewDay',
+        element: (
+          <ProtectedSuperAdmin>
+            <CreateNewDay/>
           </ProtectedSuperAdmin>
         ),
       },

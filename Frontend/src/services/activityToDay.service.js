@@ -67,3 +67,26 @@ export const deleteActivityToDay= async (id)=>{
     .then((res) => res)
     .catch((error) => error);
 }
+
+//!------------------------ GETBOOKINGSBYUSERID ----------------------------!
+
+export const getAllBookings = async (id)=>{
+  const APIGeneral = extraConfig();
+  return APIGeneral.get(`/activityToDay/bookedActivities/${id}`)
+  .then((res) => res)
+  .catch((error) => error);
+
+}
+
+//!------------------------CREATEDAYACTIVITY---------------------------------!
+
+export const createUltimateDay = async(formData)=>{
+  const APIGeneral = extraConfig();
+  return APIGeneral.post("/activityToDay/createDayActivity", formData,{
+    headers: {
+      Authorization: `Bearer ${updateToken()}`,
+    },
+  })
+    .then((res) => res)
+    .catch((error) => error);
+}

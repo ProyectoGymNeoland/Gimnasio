@@ -4,6 +4,8 @@ const Day = require("../models/Day.model");
 const User = require("../models/User.model");
 
 const createDay = async (req, res, next) => {
+
+  /* Controlador desactualizado por mala relación dedatos (lo mismo que ocurre con el controlador de createActivityToDay). */
   try {
     const { day, dates, type, one, two, three, four, five, six, seven, eight} = req.body;
 

@@ -16,8 +16,6 @@ export * from './TestimonialsHomeCard.jsx';
 export * from './GymServices';
 export * from './Footer.jsx';
 export * from './FigureWalls';
-export * from './CreateDay.jsx';
-export * from './CreateActivityToDay.jsx';
 export * from './BtnDay.jsx';
 export * from './WallDetail';
 export * from './WallDetailPage';
@@ -30,4 +28,5 @@ export * from './Reviews.jsx';
 export * from './CardReserva.jsx';
 export * from './DayDetails.jsx';
 export * from './UserReviews.jsx';
-export * from "./UserActivitiesFav.jsx"
+export * from "./UserActivitiesFav.jsx";
+export * from "./FormActivity.jsx";

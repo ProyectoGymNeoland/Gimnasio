@@ -352,4 +352,6 @@ export const useSelectFrame = (register)=>{
         );
     }
     return {selectedType,handleType,renderHabil,renderFestivo,renderFinde}
+    
 }
+

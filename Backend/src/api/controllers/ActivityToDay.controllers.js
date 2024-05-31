@@ -4,6 +4,12 @@ const Day = require("../models/Day.model");
 const User = require("../models/User.model");
 
 const createActivityToDay = async (req, res, next) => {
+
+/*Antiguo controlador que servia para crear un nuevo modelo de activityToDay, se dejo de usar al darnos cuenta que era un controlador 
+con fallo en la funcionalidad que buscabamos, ya que al tu meter el activityToDay en las instancias de day y reservar para un día concreto
+te reservaba el resto de dias con ese activityToDay ya que lo guarda por id. Actualizado con el controlador de createDayActivity. */
+
+
   try {
     const { activityId, monitorId, bookings,room } = req.body;
     const idActivity = await Activities.findById(activityId)
@@ -250,6 +256,56 @@ const updateActivityToDay = async (req, res, next) => {
   }
 };
 
+const getBookingsByUser = async(req,res,next)=>{
+  const { userId } = req.params;
+  try {
+    const bookings = await ActivityToDay.find({bookings: userId}).populate("monitorId activityId day")
+    if (bookings.length === 0) {
+      return res.status(404).json({ message: "No tienes ninguna reserva." });
+    }
+    res.status(200).json(bookings)
+  } catch (error) {
+     return res.status(404).json(error.message);
+  }
+  
+}
+
+const createDayActivity = async(req,res,next)=>{
+  try {
+    const { day, dates, type, infoTramos } = req.body;
+
+    //! 1. Crear los activityToDay necesarios.
+    const tramos = {};
+    const activitiesToDay = [];
+    for (const key of Object.keys(infoTramos)){
+      const value = infoTramos[key];
+      const newTramo = new ActivityToDay(value);
+      tramos[key]= newTramo._id;
+      activitiesToDay.push(newTramo);
+    }
+
+    //! 2. Crear el day con esos activityToDay.
+    const newDay = new Day({
+      day,
+      dates,
+      type,
+      ...tramos
+    });
+
+    //! 3. Modificar los activityToDay con el ID del day creado y hacer los save de los activityToDay y del day.
+    for(const activityToDay of activitiesToDay){
+      activityToDay.day= newDay._id
+      await activityToDay.save();
+    }
+    const savedDay = await newDay.save();
+    const findDay = await Day.findById(savedDay._id).populate("one two three four five six seven eight");
+    res.status(findDay ? 200 : 404).json(findDay ? findDay : "Error el dia no ha sido creado");
+  } catch (error) {
+    next(error)
+  }
+
+}
+
 module.exports = {
   createActivityToDay,
   getAllActivitiesToDay,
@@ -257,5 +313,6 @@ module.exports = {
   toggleBooking,
   deleteActivityToDay,
   updateActivityToDay,
+  getBookingsByUser,
+  createDayActivity
 };
-

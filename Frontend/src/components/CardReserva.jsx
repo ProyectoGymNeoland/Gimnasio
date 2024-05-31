@@ -40,6 +40,7 @@ export const CardReserva = ({info}) => {
         <p>Monitor: {info?.monitorId?.name}</p>
         <p>Actividad: {info?.activityId?.name}</p>
         <p>Plazas disponibles: {bookingSpots}</p>
+        <p>Sala: {info?.room}</p>
         <button onClick={()=>handleBooking()} disabled={ableButton}>{bookingStatus?"Cancelar reserva":"Reservar"}</button>
     </figure>
   )

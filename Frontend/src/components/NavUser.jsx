@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import './NavUser.css';
 import { ChatDetail } from './ChatDetail';
-import { ActivitiesFeed } from '../pages';
+import { ActivitiesFeed, BookingsFeed } from '../pages';
 import { UserReviews } from './UserReviews';
 import { UserActivitiesFav } from './UserActivitiesFav';
 
@@ -25,7 +25,7 @@ export const NavUser = () => {
       case 'reviews':
         return <UserReviews />;
       case 'books':
-        return <div>Books Content</div>; // Puedes reemplazar esto con el componente correspondiente
+        return <BookingsFeed/>;
       case 'instructors':
         return <div>Instructors Content</div>;
       default:
@@ -51,7 +51,7 @@ export const NavUser = () => {
           id="nav-books"
           onClick={() => handleNavigate('/profile/books', 'books')}
         >
-          Books
+          Reservas
         </button>
         <button onClick={() => handleNavigate('/profile/activitiesFav', 'activities')}>
           Actividades favoritas
