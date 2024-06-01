@@ -1,55 +1,79 @@
-/* src/components/ActivitiesHomeCard.css */
 .activities-home-card-container {
-  
-  background-color: #4d9ee6;
   padding: 20px;
   text-align: center;
-  margin-top: 0px;
-  max-width: 1200px;
-  margin-left: 350px;
+  margin-top: 100px; /* Aumentar el margen superior */
+  max-width: 1600px; /* Aumentar el tamaño máximo del contenedor */
+  margin-left: auto; /* Centrar el contenedor horizontalmente */
+  margin-right: auto; /* Centrar el contenedor horizontalmente */
+  border-radius: 10px; /* Borde redondeado */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 h3 {
+
+  margin-bottom: 20px;
   font-size: 24px !important;
+  color: whitesmoke; /* Color de texto claro */
 }
+
 .activities-gallery {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas de igual tamaño */
-  grid-gap: 20px; /* Espacio entre las tarjetas */
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
+  gap: 20px; /* Espacio entre las tarjetas */
   margin-top: 10px;
 }
 
 .activity-card {
   cursor: pointer;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: none; /* Sin borde */
+  border-radius: 10px; /* Borde redondeado */
   overflow: hidden;
-  width: 100%; /* Ajusta según el ancho del contenedor grid */
+  flex: 1 1 calc(33.33% - 20px); /* Tres columnas en pantallas grandes */
+  max-width: calc(33.33% - 20px); /* Máximo ancho para mantener tres columnas */
   text-align: center;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s; /* Transición para transformación y sombra */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: #fff; /* Fondo blanco para contraste */
+  background-color: #ffffff; /* Fondo blanco para contraste */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
 }
 
 .activity-card:hover {
   transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
 }
 
 .activity-image {
   width: 100%;
-  height: 150px; /* Ajusta según sea necesario */
+  height: 200px; /* Aumentar la altura de la imagen */
   object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor manteniendo el aspecto */
+  border-top-left-radius: 10px; /* Bordes redondeados en la parte superior */
+  border-top-right-radius: 10px; /* Bordes redondeados en la parte superior */
 }
 
 .activity-name {
   padding: 10px;
-  font-size: 1.1em;
-  color: white; /* Texto negro */
-  background-color: black; /* Fondo blanco semitransparente */
+  font-size: 1.4em; /* Tamaño de fuente ligeramente mayor */
+  color: #ffffff; /* Texto blanco */
+  background-color: #343a40; /* Fondo oscuro */
   width: 100%;
   text-align: center;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .activity-card {
+    flex: 1 1 calc(50% - 20px); /* Dos columnas en tablets */
+    max-width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 768px) {
+  .activity-card {
+    flex: 1 1 100%; /* Una columna en móviles */
+    max-width: 100%;
+  }
 }

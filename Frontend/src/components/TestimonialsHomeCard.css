@@ -1,47 +1,50 @@
 .testimonial-home-card-container {
   padding: 20px;
   text-align: center;
-  margin-top: 35px;
-  max-width: 1200px;
-  margin-left: 350px;
   margin-top: 50px;
+  max-width: 1200px;
+  margin-left: auto; /* Centra el contenedor horizontalmente */
+  margin-right: auto; /* Centra el contenedor horizontalmente */
+
 }
 
 .testimonial-gallery {
-  display: flex; /* Utilizamos flexbox */
-  flex-wrap: wrap; /* Permitimos que las tarjetas se envuelvan a la siguiente línea si no caben todas en una sola línea */
-  justify-content: center; /* Centramos las tarjetas horizontalmente */
+  display: grid; /* Utilizamos grid layout */
+  grid-template-columns: repeat(3, 1fr); /* Distribuir los testimonios en tres columnas */
+  gap: 20px; /* Espacio entre las columnas */
+  justify-content: center; /* Centrar horizontalmente las columnas */
 }
 
 .testimonial-card {
-  margin-top: 85px;
-  text-align: just;
-  margin-bottom: 20px;
-  width: 25%;
-  margin-right: 0%;
+  margin-top: 20px;
+  text-align: center;
+  width: 100%; /* Ancho del 100% para adaptarse al diseño de grid */
 }
 
 .testimonial-card img {
   width: 100px; 
   height: 100px;
-  border-radius: 50%; /* Para hacerla circular */
+  border-radius: 50%;
   border: 4px solid #F49E00; 
   object-fit: cover;
 }
 
 .testimonial-box {
-  margin-top: 50px;
+  margin-top: 20px;
   color: white !important;
   font-weight: lighter;
   text-align: center;
   margin-bottom: 20px;
-
-  
 }
-
 
 h2 {
   margin-top: 50px;
   text-align: center !important;
-  
+}
+
+/* Estilos responsivos para dispositivos móviles */
+@media screen and (max-width: 768px) {
+  .testimonial-gallery {
+    grid-template-columns: repeat(1, 1fr); /* Cambiar a una sola columna en dispositivos móviles */
+  }
 }

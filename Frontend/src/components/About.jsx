@@ -9,7 +9,7 @@ export const About = () => {
     <div id="about" className='about-container' > 
       
       <div className="contenedor">
-            <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1716626252/ajtcg3vozalj69g3wefh.webp"></img>
+            <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1717276844/pexels-olly-866023_zfytfi.jpg"></img>
             <h3 className='register-button'>Si aún no estás registrado: <Link to="/register"> ¡REGISTRATE desde AQUI!
             </Link>
             </h3>

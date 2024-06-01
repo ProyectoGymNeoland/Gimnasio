@@ -3,7 +3,7 @@ import './TestimonialsHomeCard.css';
 export const TestimonialsHomeCard = () => {
   return (
     <div id="testimonios" className="testimonial-home-card-container">
-      <h2>Qué dicen nuestros alumnos...</h2>
+      <h3>Qué dicen nuestros alumnos...</h3>
       <div className="testimonial-gallery">
         <div className="testimonial-card">
           <img className="testimonial-image " src="meryl.jpeg" alt="Testimonial"></img>

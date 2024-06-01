@@ -6,7 +6,6 @@ import GymServices from "../components/GymServices";
 export const Home = () =>{
     return (
       <>
-     
             <About />
             <WallPreview />
             <GymServices />

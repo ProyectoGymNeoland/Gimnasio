@@ -1,112 +1,130 @@
 /* Estilos generales */
 body {
-    font-family: 'Freeman', sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
+  font-family: 'Freeman', sans-serif;
+  background-color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Estilos para la sección "About" */
+.about-container {
   
+  
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+.info-card {
+margin-left: 20px;
+  margin-right: 20px;
+}
+.card {
+  
+  background-color: #0D5FA6;
+}
+
+.aboutH1 {
+  font-size: 2.5rem;
+  color: #333333;
+  margin-bottom: 20px;
+}
+
+.contenedor {
+  width: 100%;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.right-aligned {
+  font-size: 1rem;
+  color: #555555;
+  text-align: center;
+}
+
+.info-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  flex: 1 1 250px;
+  
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 1.5rem;
+  color: #f49e00;
+  margin-bottom: 10px;
+}
+
+.card span {
+  font-size: 1rem;
+  color: whitesmoke
+  ;
+}
+
+.register-button {
+  position: absolute;
+  top: 120px;
+  left: 650px;
+  padding: 10px 20px;
+  background-color: #993c3c;
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Consulta de medios para dispositivos pequeños */
+@media screen and (max-width: 576px) {
   .container {
-    max-width: 1200px;
-    margin: 0 auto;
     padding: 20px;
-  }
-  
-  /* Estilos para la sección "About" */
-  .about-container {
-    background-color: #ffffff;
-    
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .aboutH1 {
-    font-size: 2.5rem;
-    color: #333333;
-    margin-bottom: 20px;
-  }
-  
-  .contenedor {
-    width: 100%;
-  }
-  
-  .image {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin-bottom: 20px;
   }
 
-  .right-aligned {
-    font-size: 1rem;
-    color: #555555;
-    text-align: center;
+  .about-container {
+    margin-top: 90px;
+    padding: 10px;
   }
-  
-  .info-card {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .card {
-    flex: 1 1 250px;
-    background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .card h3 {
-    font-size: 1.5rem;
-    color: wheat;
+
+  .image {
     margin-bottom: 10px;
   }
+  .info-card {
+   margin-top: 10px;
+}
+.card {
   
-  .card span {
-    font-size: 1rem;
-    color: whitesmoke
-    ;
-  }
+  padding: 10px;
+  margin-bottom: 0px;
+}
+.register-button {
   
-  /* Estilos para los botones */
-  .button {
-    
-    font-size: 1rem;
-    color: #ffffff;
-    
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-
-  /* Consulta de medios para dispositivos pequeños */
-  @media screen and (max-width: 576px) {
-    .container {
-      padding: 10px;
-    }
-  
-    .about-container {
-      padding: 20px;
-    }
-  
-    .image {
-      margin-bottom: 10px;
-    }
-  }
-  .register-button {
-    position: absolute;
-    top: 500px;
-    left: 300px;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
+  width: 400px;
+  margin: 10px auto;
+  margin-bottom: 30px;
+  position: relative; /* Restaura la posición relativa para el flujo normal en dispositivos móviles */
+  top: unset; /* Elimina la posición superior definida para dispositivos móviles */
+  left: unset; /* Elimina la posición izquierda definida para dispositivos móviles */
+  margin-top: 10px; /* Añade un margen superior para separar el botón de las cards en dispositivos móviles */
+  padding: 6px 6px; /* Reduzco el padding aún más para hacer el botón más pequeño en dispositivos móviles */
+  font-size: 12px; /* Reduzco el tamaño de la fuente aún más en dispositivos móviles */
+}
+}
