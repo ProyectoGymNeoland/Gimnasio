@@ -5,7 +5,7 @@ export const SuperAdminPanel = () => {
 return (
   <div className="superadmin-panel">
     <h1>SuperAdmin Panel</h1>
-    <div className="button-container">
+    <div className="AdminButton-container">
       <div>
         <ButtonSuperAdminPanel to="/activities/create">
           Crear Actividad

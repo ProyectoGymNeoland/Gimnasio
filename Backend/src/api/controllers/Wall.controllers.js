@@ -8,8 +8,9 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const dotenv = require("dotenv");
 dotenv.config();
 
+
 const createWall = async (req, res) => {
-  
+
   const { type, name, expirationDate, owner, likes, activity, comments, content, days } = req.body;
 
   try {
@@ -44,7 +45,6 @@ const createWall = async (req, res) => {
     return res.status(500).json({ error: error.message });
   }
 };
-
 //--------------------GET BY USER--------------------
 
 const getByUser = async (req, res, next) => {
