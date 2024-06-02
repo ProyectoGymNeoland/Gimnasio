@@ -69,9 +69,35 @@ const getChatById = async (req, res) => {
   }
 };
 
+const updateChat = async (req, res) => {
+  const { chatId } = req.params;
+  const { messageId } = req.body;
+
+  try {
+    // Encontrar el chat por su ID
+    const chat = await Chat.findById(chatId);
+
+    if (!chat) {
+      return res.status(404).json({ message: 'Chat no encontrado' });
+    }
+
+    // Agregar el nuevo mensaje a la lista de mensajes
+    chat.messages.push(messageId);
+
+    // Guardar el chat actualizado
+    await chat.save();
+ // Popula los mensajes para devolver el chat con los mensajes completos
+    await chat.populate('messages').execPopulate();
+    return res.status(200).json(chat);
+  } catch (error) {
+    return res.status(500).json({ message: 'Error al actualizar el chat', error });
+  }
+};
+
 module.exports = {
   getChatsByUserId,
   deleteChat,
-  getChatById
+  getChatById,
+  updateChat
 };
 
