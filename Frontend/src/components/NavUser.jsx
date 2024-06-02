@@ -56,13 +56,6 @@ export const NavUser = () => {
         <button onClick={() => handleNavigate('/profile/activitiesFav', 'activities')}>
           Actividades favoritas
         </button>
-        <button
-          className="btn"
-          id="nav-instructorsfav"
-          onClick={() => handleNavigate('/profile/instructors', 'instructors')}
-        >
-          Monitor@s favorit@s
-        </button>
       </nav>
       <div className="form-group user-info">
         {!isChatDetail && renderContent()}
