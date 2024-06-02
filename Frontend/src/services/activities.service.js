@@ -58,7 +58,7 @@ export const getByName = async (name) => {
 //! ------------- GET BY TYPE  --------------- //
 
 export const getByType = async (type) => {
-   const APIGeneral = extraConfig();
+  const APIGeneral = extraConfig();
   return APIGeneral.get(`/activities/type/${type}`)
     .then((res) => res)
     .catch((error) => error);
@@ -94,7 +94,7 @@ export const toggleLikeActivity = async (idActivity) => {
 
 //! -------- DELETE ACTIVITY ----- //
 
-export const deleteActivity = async(idActivity) => {
+export const deleteActivity = async (idActivity) => {
   const APIGeneral = extraConfig();
   return APIGeneral.delete(`/activities/${idActivity}`, {
     headers: {

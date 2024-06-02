@@ -23,5 +23,5 @@ export const ActivityDetailPage = () => {
     <div>
       <ActivityDetail activity={activity} />
     </div>
-    );
+  );
 };

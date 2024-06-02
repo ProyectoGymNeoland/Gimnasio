@@ -1,13 +1,11 @@
 import { RatingStars } from './RatingStars';
 import React, { useState } from 'react';
-import {MessageModal} from './MessageModal';
+import { MessageModal } from './MessageModal';
 import './Reviews.css';
 
 export const Reviews = ({ reviews }) => {
-  
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [recipient, setRecipient] = useState('');
-
 
   const openModal = (owner) => {
     setRecipient(owner);
