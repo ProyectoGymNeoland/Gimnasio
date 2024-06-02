@@ -104,7 +104,7 @@ export const CheckCode = () => {
         if(!localStorage.getItem('user')) {
             useAutoLogin(allUser, login)
         } else {
-            return <Navigate to="/dashboard"/>
+            return <Navigate to="/profile"/>
 }
     }
 
