@@ -851,22 +851,22 @@ const getAll = async (req, res, next) => {
 
 const byName = async (req, res, next) => {
   try {
-    const username = req.method === 'POST' ? req.body.name : req.params.name;
+    const username = req.method === "POST" ? req.body.name : req.params.name;
     const getUser = await User.findOne({ name: username });
 
-    if (req.method === 'POST') {
+    if (req.method === "POST") {
       // Maneja la verificación del nombre de usuario
       if (getUser) {
-        return res.status(409).json({ message: 'Username already exists' });
+        return res.status(409).json({ message: "Username already exists" });
       } else {
-        return res.status(200).json({ message: 'Username is available' });
+        return res.status(200).json({ message: "Username is available" });
       }
-    } else if (req.method === 'GET') {
+    } else if (req.method === "GET") {
       // Maneja la búsqueda del usuario
       if (getUser) {
         return res.status(200).json(getUser);
       } else {
-        return res.status(404).json('User not found');
+        return res.status(404).json("User not found");
       }
     }
   } catch (error) {
@@ -954,7 +954,10 @@ const deleteUser = async (req, res) => {
 
     // Eliminar documentos relacionados
     await ActivityToDay.deleteMany({ _id: { $in: user.reservas } });
-    await Activities.deleteMany({ _id: { $in: user.activitiesFav } });
+    await Activities.updateMany(
+      { _id: { $in: user.activitiesFav } },
+      { $pull: { like: userId } }
+    );
     await User.updateMany(
       { _id: { $in: user.monitoresFav } },
       { $pull: { monitoresFav: userId } }
@@ -970,7 +973,9 @@ const deleteUser = async (req, res) => {
     // Finalmente, elimina el usuario
     await User.findByIdAndDelete(userId);
 
-    res.status(200).json({ message: "User and associated data deleted successfully" });
+    res
+      .status(200)
+      .json({ message: "User and associated data deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: "Error deleting user", error });
   }
