@@ -54,3 +54,22 @@ export const getChatById = async (chatId) => {
     throw error;
   });
 };
+
+//! ---------- UPDATECHAT ---------- //
+export const updateChat = async (chatId, updatedChatData) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.put(`/chat/chats/${chatId}`, updatedChatData, {
+          headers: {
+              'Authorization': `Bearer ${updateToken()}`,
+              'Content-Type': 'application/json'
+          }
+      })
+      .then((response) => {
+        console.log('Detalles del chat:', response.data);
+        return response.data;
+      })
+      .catch((error) => {
+        console.error('Error al obtener los detalles del chat:', error);
+        throw error;
+      });
+    };
