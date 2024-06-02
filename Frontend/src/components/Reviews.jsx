@@ -25,11 +25,19 @@ export const Reviews = ({ reviews }) => {
           <div>
             <div className="review-header">
               <div className="review-owner">
-                <span className="texto">{review.owner.name}</span>
-                <a className="review-chat-link" onClick={() => openModal(review.owner)}>
-                  {' '}
-                  Chat
-                </a>
+                {review.owner && (
+                  <>
+                    <span className="texto">{review.owner.name}</span>
+                    <a
+                      className="review-chat-link"
+                      onClick={() => openModal(review.owner)}
+                    >
+                      {' '}
+                      Chat
+                    </a>
+                  </>
+                )}
+                {!review.owner && <span className="texto">Anónimo</span>}
               </div>
               <div className="review-rating">
                 <RatingStars
@@ -47,12 +55,7 @@ export const Reviews = ({ reviews }) => {
           </div>
         </div>
       ))}
-      {isModalOpen && (
-        <MessageModal
-          recipient={recipient}
-          onClose={closeModal}
-        />
-      )}
+      {isModalOpen && <MessageModal recipient={recipient} onClose={closeModal} />}
     </div>
   );
 };

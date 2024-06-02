@@ -112,6 +112,7 @@ const deleteReview = async (req, res, next) => {
         message: error.message,
       });
     }
+    return res.status(200).json();
   } catch (error) {
     return res.status(409).json({ error: error.message });
   }
