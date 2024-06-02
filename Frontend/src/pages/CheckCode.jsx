@@ -121,8 +121,8 @@ export const CheckCode = () => {
     return (
         <>
         <div className="form-wrap">
-            <h1>Verify your code 👌</h1>
-            <p>Write the code sent to your email</p>
+            <h1>Verifica tu código 👌</h1>
+            <p>Escribe el código que te hemos enviado a tu email</p>
             <form onSubmit={handleSubmit(formSubmit)}>
             <div className="user_container form-group">
                 <input
@@ -146,7 +146,7 @@ export const CheckCode = () => {
                 disabled={send}
                 style={{ background: send ? "#49c1a388" : "#49c1a2" }}
                 >
-                Verify Code
+                Verificar código
                 </button>
             </div>
             <div className="btn_container">
@@ -157,14 +157,14 @@ export const CheckCode = () => {
                 style={{ background: send ? "#49c1a388" : "#49c1a2" }}
                 onClick={() => handleReSend()}
                 >
-                Resend Code
+                Reenviar código
                 </button>
             </div>
 
             <p className="bottom-text">
                 <small>
-                If the code is not correct ❌, your user will be deleted from the
-                database and you will need to register again.{" "}
+                Si tu código es incorrecto ❌, tu usuario será borrado de la base de datos, y tendrás 
+                que registrarte de nuevo.{" "}
                 </small>
             </p>
             </form>

@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export const useReviewsError = (res, setRes, setShowCreateReview) => {
+export const useReviewsError = (res, setRes, setShowCreateReview, reloadReviews) => {
   if (res?.status === 201) {
     Swal.fire({
       icon: 'success',
@@ -9,6 +9,7 @@ export const useReviewsError = (res, setRes, setShowCreateReview) => {
       showConfirmButton: true,
     }).then(async () => {
       setShowCreateReview(false);
+      reloadReviews();
     });
     setRes({});
   }

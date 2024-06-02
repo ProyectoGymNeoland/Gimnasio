@@ -9,6 +9,7 @@ import { useGetChatError } from '../hooks'; // Asegúrate de importar el hook de
 export const ChatInput = () => {
   const { user } = useAuth();
   const userId = user ? user._id : null;
+  const username = user.name;
   const [chats, setChats] = useState([]);
   const [res, setRes] = useState(null); // Estado para almacenar la respuesta del servidor
   const [userNotFound, setUserNotFound] = useState(false); // Estado para manejar el caso de usuario no encontrado
@@ -17,6 +18,8 @@ export const ChatInput = () => {
   // Usar el hook de manejo de errores
   useGetChatError(res, setRes, setUserNotFound);
 
+
+     
   useEffect(() => {
     if (userId) {
       const fetchChats = async () => {
@@ -29,7 +32,7 @@ export const ChatInput = () => {
                 chat.messages.length > 0 ? chat.messages[chat.messages.length - 1] : null;
               return {
                 ...chat,
-                userTwoInfo: chat?.userTwo?.name,
+                userTwoInfo: getChatName(chat, username),
                 lastMessageContent: lastMessage ? lastMessage.content : 'No hay mensajes',
                 lastMessageDate: lastMessage
                   ? new Date(lastMessage.createdAt).toLocaleDateString()
@@ -49,6 +52,17 @@ export const ChatInput = () => {
       fetchChats();
     }
   }, [userId]);
+
+  const getChatName = (chat, name) =>{
+
+    if (chat.userTwo.name == name){ 
+      console.log("if", chat.userTwo.name, name, chat.userOne.name)
+      return chat.userOne.name 
+    } else{
+      console.log("else", chat.userTwo.name,name, chat.userOne.name)
+      return chat.userTwo.name
+    }
+}
 
   const handleChatClick = (chatId) => {
     navigate(`/profile/chat/detail/${chatId}`);

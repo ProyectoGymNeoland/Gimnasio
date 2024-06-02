@@ -1,6 +1,10 @@
 const Review = require("../models/Review.model");
 const Activities = require("../models/Activities.model");
 
+//! ------------------------------------------------------------------------
+//? -----------------------------CREATE REVIEW------------------------------
+//! ------------------------------------------------------------------------
+
 const createReview = async (req, res) => {
   try {
     const { activityId } = req.params;
@@ -31,6 +35,10 @@ const createReview = async (req, res) => {
     }
   }
 };
+
+//! ------------------------------------------------------------------------
+//? --------------------------GET REVIEW BY ACTIVITY------------------------
+//! ------------------------------------------------------------------------
 
 const getReviewsByActivity = async (req, res) => {
   try {
@@ -74,8 +82,45 @@ const getReviewsByUser = async (req, res) => {
   }
 };
 
+//! ------------------------------------------------------------------------
+//? ----------------------------DELETE REVIEW ------------------------------
+//! ------------------------------------------------------------------------
+/** Tenemos que borrar:
+ * la review
+ * quitarla de la actividad
+ */
+
+const deleteReview = async (req, res, next) => {
+  try {
+    await Review.syncIndexes();
+
+    const { id } = req.params;
+    const review = await Review.findByIdAndDelete(id);
+
+    if (!review) {
+      return res.status(404).json({ error: "Review no encontrada" });
+    }
+    if (await Review.findById(id)) {
+      // si me la encuentra es que no se ha borrado
+      return res.status(409).json({ error: "Review no borrada" });
+    }
+    try {
+      await Activities.updateMany({ reviews: id }, { $pull: { reviews: id } });
+    } catch (error) {
+      return res.status(409).json({
+        error: " Activities updateMany  --  reviews",
+        message: error.message,
+      });
+    }
+    return res.status(200).json();
+  } catch (error) {
+    return res.status(409).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createReview,
   getReviewsByActivity,
   getReviewsByUser,
+  deleteReview,
 };

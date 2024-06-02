@@ -172,7 +172,7 @@ export const Register = () => {
             </div>
             <div className="footerForm">
                 <p className="parrafoLogin">
-                    {/* Already have an account? <Link to="/login">Login Here</Link> */}
+                    ¿Ya tienes una cuenta? <Link to="/login">Haz Login aquí</Link>
                 </p>
             </div>
         </>

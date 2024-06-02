@@ -36,8 +36,15 @@ const ActivityDetail = ({ activity }) => {
     setShowReviews((activity) => !activity);
   };
 
+  const reloadReviews = () => {
+    (async () => {
+      setResRating(await getReviewsByActivityId(activity._id));
+    })();
+    setShowReviews(true);
+  };
+
   if (!activity) {
-    return <div>Crear página 404 VER CON PEDRO...</div>;
+    return <div>No existe actividad</div>;
   }
 
   return (
@@ -63,6 +70,7 @@ const ActivityDetail = ({ activity }) => {
             <CreateReview
               activityId={activity._id}
               setShowCreateReview={setShowCreateReview}
+              reloadReviews={reloadReviews}
             />
           )}
         </>

@@ -27,12 +27,24 @@ export const createReview = async (activityId, reviewData) => {
     .catch((error) => error);
 };
 
-
 //! ---------- GET REVIEW BY USER ---------- //
 
 export const getReviewsByUser = async (userId) => {
   const APIGeneral = extraConfig();
   return APIGeneral.get(`/reviews/${userId}`, {
+    headers: {
+      Authorization: `Bearer ${updateToken()}`,
+    },
+  })
+    .then((res) => res)
+    .catch((error) => error);
+};
+
+//! ------------- DELETE REVIEW -------------- //
+
+export const deleteReview = async (reviewId) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.delete(`/reviews/${reviewId}`, {
     headers: {
       Authorization: `Bearer ${updateToken()}`,
     },

@@ -1,14 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { getChatById } from "../services/chat.service";
+import { getChatById, updateChat } from "../services/chat.service";
 import { findMessageById } from "../services/message.service";
-
 import { useGetChatError } from "../hooks"
-
 import { createMessage } from "../services/message.service"; // Importar la función createMessage
-
 import { userMessageError } from '../hooks/userMessageError';
 import { useParams } from 'react-router-dom';
-
 import './ChatDetail.css';
 
 export const ChatDetail = () => {
@@ -50,20 +46,25 @@ export const ChatDetail = () => {
 
     const handleSendMessage = async () => {
         if (!newMessage.trim()) return;
-
+    
         try {
             const response = await createMessage(chat.userTwo._id, newMessage);
             if (response.status === 200) {
                 const { message } = response.data;
+    
+                // Actualizar el chat en la base de datos
+                await updateChat(chat._id, { messageId: message._id });
+    
+                // Añadir el mensaje al estado local
                 setMessages((prevMessages) => [...prevMessages, message]);
                 setNewMessage("");
-                setRes(response); // Establecer la respuesta en el estado
+                setRes(response);
             } else {
                 throw new Error('Error al enviar el mensaje');
             }
         } catch (err) {
             setError('Error al enviar el mensaje');
-            setRes(err.response); // Almacenar la respuesta de error en el estado
+            setRes(err.response);
         }
     };
 

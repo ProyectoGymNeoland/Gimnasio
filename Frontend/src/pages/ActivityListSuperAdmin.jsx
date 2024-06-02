@@ -71,16 +71,13 @@ export const ActivityListSuperAdmin = () => {
       },
       {
         Header: 'Acciones',
-        // Esta columna no tiene un `accessor` porque contiene botones de acción.
         Cell: ({ row }) => (
           <div className="action-buttons">
-            {/* Botón de editar que redirige a la página de edición */}
-            <button onClick={() => handleEdit(row.original)}>
+            <button >
               <Link to={`/activities/update/${row.original._id}`}>
                 <span className="material-symbols-outlined">edit</span>
               </Link>
             </button>
-            {/* Botón de borrar que muestra un modal de confirmación */}
             <button onClick={() => handleDelete(row.original)}>
               <span className="material-symbols-outlined">delete</span>
             </button>
@@ -112,13 +109,6 @@ export const ActivityListSuperAdmin = () => {
     usePagination,
   );
 
-  // Maneja la redirección a la página de edición de actividades.
-  const handleEdit = (activity) => {
-    // Aquí puedes redirigir a la página de edición con `activity._id`.
-    console.log('Editar actividad:', activity);
-  };
-
-  // Maneja la eliminación de una actividad.
   const handleDelete = (activity) => {
     Swal.fire({
       title: '¿Estás seguro?',
@@ -142,7 +132,6 @@ export const ActivityListSuperAdmin = () => {
     });
   };
 
-  // Muestra un mensaje de carga mientras los datos se están obteniendo.
   if (loading) {
     return <div>Cargando actividades...</div>;
   }
@@ -184,7 +173,7 @@ export const ActivityListSuperAdmin = () => {
         </table>
       </div>
 
-      {/* Controles de paginación */}
+      {/* Paginación */}
       <div className="pagination-container">
         <button onClick={() => gotoPage(0)} disabled={pageIndex === 0}>
           {'<<'}

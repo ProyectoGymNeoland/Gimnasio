@@ -1,14 +1,17 @@
 import './UserReviews.css';
 import React, { useEffect, useState } from 'react';
-import { getReviewsByUser } from '../services/review.service';
+import { deleteReview, getReviewsByUser } from '../services/review.service';
 import { useAuth } from '../context/authContext';
 import { RatingStars } from './RatingStars';
 import { useUserReviewsError } from '../hooks/useUserReviewsError';
+import Swal from 'sweetalert2';
+import { useDeleteReviewError } from '../hooks/useDeleteReviewError';
 
 export const UserReviews = () => {
   const { user } = useAuth();
   const [reviews, setReviews] = useState([]);
   const [res, setRes] = useState({});
+  const [resDeleteReview, setResDeleteReview] = useState({});
 
   useEffect(() => {
     (async () => {
@@ -21,6 +24,35 @@ export const UserReviews = () => {
   }, [res]); // cada vez que la res cambia, se ejecuta este useEffect.
 
   useEffect(() => {}, [reviews]);
+
+  useEffect(() => {
+    useDeleteReviewError(resDeleteReview, setResDeleteReview, reload);
+  }, [resDeleteReview]);
+
+  const reload = () => {
+    (async () => {
+      setRes(await getReviewsByUser(user._id));
+    })();
+  };
+
+  const handleDelete = (reviewId) => {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: '¡No podrás revertir esto!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d33',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Sí, borrar',
+      cancelButtonText: 'Cancelar',
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        (async () => {
+          setResDeleteReview(await deleteReview(reviewId));
+        })();
+      }
+    });
+  };
 
   return (
     <div className="user-reviews">
@@ -45,6 +77,11 @@ export const UserReviews = () => {
               showReviews={false}
             />
             <p>{review.content}</p>
+            <div className="delete-review">
+              <a onClick={() => handleDelete(review._id)}>
+                <span className="material-symbols-outlined">delete</span>
+              </a>
+            </div>
           </div>
         ))}
     </div>
