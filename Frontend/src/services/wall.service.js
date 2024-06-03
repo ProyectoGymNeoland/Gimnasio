@@ -100,3 +100,20 @@ export const getWallByName = async (name) => {
     .then((res) => res)
     .catch((error) => error);
 };
+
+//! ------------- CREATE PUBLIC MESSAGE  --------------- //
+
+export const createPublicMessage = async (wallId, messageData) => {
+  const APIGeneral = extraConfig();
+  return APIGeneral.post(`/wall/${wallId}/messages`, messageData, {
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${updateToken()}`,
+    },
+  })
+    .then((res) => res.data)
+    .catch((error) => {
+      console.error('Error creating public message:', error);
+      throw error;
+    });
+};

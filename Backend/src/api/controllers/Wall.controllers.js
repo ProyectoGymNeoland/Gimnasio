@@ -1,6 +1,8 @@
 //-------------------CREATE CONTROLLER---------------
 const Wall = require("../models/Wall.model");
 const Day = require("../models/Day.model");
+const Message = require('../models/Message.model');
+const User = require('../models/User.model');
 const { upload, deleteImgCloudinary, configCloudinary } = require("../../middleware/files.middleware");
 const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
@@ -259,6 +261,52 @@ const updateWall = async (req, res) => {
 };
 
 
+const createPublicMessage = async (req, res) => {
+  try {
+    const { content } = req.body;
+    const { wallId } = req.params;
+    const userId = req.user._id;
+
+    if (!content || !wallId) {
+      return res.status(400).json({ error: 'Content and wall ID are required' });
+    }
+
+    const wall = await Wall.findById(wallId);
+    if (!wall) {
+      return res.status(404).json({ error: 'Wall not found' });
+    }
+
+    const newMessage = new Message({
+      owner: userId,
+      content,
+      type: 'public',
+    });
+
+    const savedMessage = await newMessage.save();
+
+    await Wall.findByIdAndUpdate(wallId, { $push: { comments: savedMessage._id } });
+    await User.findByIdAndUpdate(userId, { $push: { postedMessages: savedMessage._id } });
+
+    const updatedWall = await Wall.findById(wallId).populate({
+      path: 'comments',
+      populate: {
+        path: 'owner',
+        select: 'username name', // Selecciona los campos que necesitas
+      },
+    });
+
+    return res.status(200).json({
+      wall: updatedWall,
+      message: savedMessage
+    });
+  } catch (error) {
+    console.error('Error in createPublicMessage controller:', error);
+    return res.status(500).json({ error: 'Internal Server Error' });
+  }
+}; 
+
+
+
 module.exports = {
   createWall,
   getByUser,
@@ -271,4 +319,5 @@ module.exports = {
   getAllWalls,
   getWallByName,
   updateWall,
+  createPublicMessage,
 };

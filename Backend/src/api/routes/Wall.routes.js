@@ -1,6 +1,7 @@
 const express = require("express");
 const WallRoutes = express.Router();
 
+
 const {
   getByUser,
   createWall,
@@ -13,10 +14,15 @@ const {
   getWallById,
   getWallByName,
   updateWall,
+  createPublicMessage,
+
 
 } = require("../controllers/Wall.controllers");
 const { isAuthAdmin } = require("../../middleware/auth.middleware");
 const { upload } = require("../../middleware/files.middleware");
+const {
+  isAuth,
+} = require("../../middleware/auth.middleware");
 
 // Ruta para crear una nueva entrada en el muro
 WallRoutes.post("/createWall", upload.single('image'), [isAuthAdmin], createWall);
@@ -32,6 +38,7 @@ WallRoutes.delete("/paredesVencidas", deleteWallByExpiration);
 WallRoutes.get('/walls/:id', getWallById);
 WallRoutes.get('/wall/:name', getWallByName);
 WallRoutes.patch('/walls/:id', updateWall);
+WallRoutes.post('/:wallId/messages', [isAuth], createPublicMessage);
 
 
 module.exports = WallRoutes;
