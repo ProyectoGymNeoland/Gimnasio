@@ -10,7 +10,7 @@ export const useActivityDetail = (res, setRes, setActivity) => {
     if (res?.response?.status == 404) {
       Swal.fire({
         icon: 'error',
-        title: 'Activity Not Found',
+        title: 'Actividad  Not Found',
         text: 'The requested activity could not be found.',
         showConfirmButton: false,
         timer: 1500,

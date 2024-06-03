@@ -8,7 +8,6 @@ import { useGetByNameError } from '../hooks';
 import { useAuth } from '../context/authContext';
 import Figure from '../components/FigureActivity';
 
-
 export const ActivitiesFeed = () => {
   const [activities, setActivities] = useState([]);
   const [res, setRes] = useState({});
@@ -50,13 +49,14 @@ export const ActivitiesFeed = () => {
 
   return (
     <div className="activities-feed">
-      
-      <Input
-        setValueInput={handleSearch}
-        value={searchTerm}
-        id={'searchActivity'}
-        placeholder={'Zumba, Yoga, ...'}
-      />
+      <div>
+        <Input
+          setValueInput={handleSearch}
+          value={searchTerm}
+          id={'searchActivity'}
+          placeholder={'Zumba, Yoga, ...'}
+        />
+      </div>
       <div id="containerActivitiesFeed">
         {activities.length > 0 &&
           activities
