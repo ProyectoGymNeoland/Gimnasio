@@ -76,14 +76,14 @@ export const router = createBrowserRouter([
         path: '/forgotPassword',
         element: <ForgotPassword />,
       },
-      // {
-      //   path: '/profile/',
-      //   element: (
-      //     <Protected>
-      //       <Profile />
-      //     </Protected>
-      //   ),
-      // },
+      {
+        path: '/profile/',
+        element: (
+          <Protected>
+            <Profile />
+          </Protected>
+        ),
+      },
       {
         path: '/update/update',
         element: (
