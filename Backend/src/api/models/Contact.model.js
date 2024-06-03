@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const validator = require("validator");
+const validateSpanishMobile = require("../../utils/validateMobile");
 
 const ContactSchema = new mongoose.Schema(
     {
@@ -15,9 +16,13 @@ const ContactSchema = new mongoose.Schema(
             trim: true,
          },
         telephone:{
-            type: Number,
+            type: String,
             required: true,
             trim: true,
+           validate: {
+                validator: validateSpanishMobile,
+                message: "Telephone number not valid",
+            },
         },
         content: {
             type: String,

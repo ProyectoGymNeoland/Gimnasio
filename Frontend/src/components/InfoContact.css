@@ -1,0 +1,33 @@
+.contact-info {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+
+
+.contact-info-header h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+  color: black;
+}
+
+.contact-info-header p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.contact-info-details p {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.contact-info-details p span {
+  font-weight: bold;
+  color: #666;
+  margin-right: 5px;
+}

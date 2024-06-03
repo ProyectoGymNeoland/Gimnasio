@@ -30,3 +30,4 @@ export * from './DayDetails.jsx';
 export * from './UserReviews.jsx';
 export * from "./UserActivitiesFav.jsx";
 export * from "./FormActivity.jsx";
+export * from "./InfoContact.jsx"

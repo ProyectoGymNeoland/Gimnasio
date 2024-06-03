@@ -1,0 +1,10 @@
+.contact-message-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.contact-message-container p {
+    font-size: 18px;
+    color: #666;
+}

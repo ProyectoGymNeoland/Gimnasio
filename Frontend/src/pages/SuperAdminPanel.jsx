@@ -21,6 +21,9 @@ export const SuperAdminPanel = () => {
             Crear horarios y clases
           </ButtonSuperAdminPanel>
         </div>
+        <div>
+        <ButtonSuperAdminPanel to="/allContacts">Ver dudas usuarios</ButtonSuperAdminPanel>
+      </div>
       </div>
     </div>
   );

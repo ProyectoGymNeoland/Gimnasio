@@ -273,7 +273,11 @@ const getBookingsByUser = async(req,res,next)=>{
 const createDayActivity = async(req,res,next)=>{
   try {
     const { day, dates, type, infoTramos } = req.body;
-
+    const currentDate = new Date().toISOString();
+    const selectedDate = new Date(dates).toISOString();
+    if (selectedDate < currentDate) {
+      return res.status(400).json({ message: "La fecha seleccionada es anterior a la fecha actual" });
+    }
     //! 1. Crear los activityToDay necesarios.
     const tramos = {};
     const activitiesToDay = [];

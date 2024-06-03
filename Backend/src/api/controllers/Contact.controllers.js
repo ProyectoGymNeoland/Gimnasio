@@ -8,13 +8,13 @@ const createContact = async (req,res,next)=>{
         const savedContact = await newContact.save();
 
         return res
-      .status(savedContact ? 200 : 404)
-      .json(savedContact? savedContact : "error al crear el mensaje de contacto");
+        .status(savedContact ? 200 : 404)
+        .json(savedContact? savedContact : "error al crear el mensaje de contacto");
     } catch (error) {
-       return res.status(404).json({
-      error: "error catch create contact",
-      message: error.message,
-    }); 
+      return res.status(400).json({
+      message: "error en el creado de la información",
+      error: error.message,
+    });
     }
 }
 
@@ -28,7 +28,7 @@ const deleteContact = async (req,res,next)=>{
             return res.status(404).json("Contact not found (is already deleted or does it really exist?) ");
         }
         
-        return res.status(200).json("Deleted successfully");
+        return res.status(200).json({action:"Deleted successfully",allContact: await Contact.find()});
         
     } catch (error) {
         return res.status(404).json(error.message);
@@ -40,7 +40,7 @@ const getContactsAll = async (req, res, next) => {
     const getAllContact = await Contact.find(); // esto devuelve un array
     if (getContactsAll.length === 0) {
       return res.status(404).json("no encontrados");
-    } else return res.status(200).json({ data: getAllContact });
+    } else return res.status(200).json(getAllContact);
   } catch (error) {
     return next(error);
   }

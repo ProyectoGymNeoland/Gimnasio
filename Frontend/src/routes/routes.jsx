@@ -8,6 +8,7 @@ import {
   ChangePassword,
   CheckCode,
   Contact,
+  ContactMessage,
   CrearActivity,
   CreateNewDay,
   Dashboard,
@@ -206,6 +207,14 @@ export const router = createBrowserRouter([
         element: (
           <ProtectedSuperAdmin>
             <CreateNewDay/>
+          </ProtectedSuperAdmin>
+        ),
+      },
+      {
+        path: '/allContacts',
+        element: (
+          <ProtectedSuperAdmin>
+            <ContactMessage/>
           </ProtectedSuperAdmin>
         ),
       },
