@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import { useCreateNewDayError } from '../hooks';
 import { FormActivity } from '../components';
 import { createUltimateDay } from '../services/activityToDay.service';
+import { Navigate } from 'react-router-dom';
 
 export const CreateNewDay = () => {
   const { register, handleSubmit } = useForm();
@@ -12,6 +13,7 @@ export const CreateNewDay = () => {
   const [ok, setOk] = useState(false);
   const [tramosOk, setTramosOk] = useState(null);
   const [dataTramo,setDataTramo] = useState({})
+  const [date, setDate] = useState(false);
   const typeOptions = ['Habil', 'Finde', 'Festivo'];
   const dayOptionns = [
     'Lunes',
@@ -57,17 +59,16 @@ export const CreateNewDay = () => {
   };
 
   useEffect(() => {
-   useCreateNewDayError(res, setRes, setOk);
+   useCreateNewDayError(res, setRes, setOk, setDate);
   }, [res]);
 
 
   useEffect(() => {
-    
-
     console.log("data tramo", dataTramo)
   }, [dataTramo]);
   if (ok) {
     console.log('Creado con exito');
+    return <Navigate to="/superadmin"/>
   }
   return (
     <>
@@ -75,19 +76,7 @@ export const CreateNewDay = () => {
         <h3>Crea un día con sus actividades</h3>
         <p>Formulario que crea las actividades calendarizadas</p>
         <form onSubmit={handleSubmit(formSubmit)}>
-          <div className="day_container form-group">
-            <label htmlFor="costum-input" className="costum-placeholder">
-              Dia de la semana:
-            </label>
-            <select id="type" name="type" {...register('day', { required: true })}>
-              <option value="">Seleccione una sala</option>
-              {dayOptionns.map((day) => (
-                <option key={day} value={day}>
-                  {day}
-                </option>
-              ))}
-            </select>
-          </div>
+
           <div className="dates_container form-group">
             <label htmlFor="costum-input" className="costum-placeholder">
               Fecha:
@@ -100,6 +89,21 @@ export const CreateNewDay = () => {
               autoComplete="dates"
               {...register('dates', { required: true })}
             />
+            {date && <span className="error-message">La fecha seleccionada es anterior a la fecha actual</span>}
+          </div>
+
+          <div className="day_container form-group">
+            <label htmlFor="costum-input" className="costum-placeholder">
+              Dia de la semana:
+            </label>
+            <select id="type" name="type" {...register('day', { required: true })}>
+              <option value="">Seleccione un día</option>
+              {dayOptionns.map((day) => (
+                <option key={day} value={day}>
+                  {day}
+                </option>
+              ))}
+            </select>
           </div>
 
           <div className="type_container form-group">
@@ -112,7 +116,7 @@ export const CreateNewDay = () => {
               onInput={handleType}
               {...register('type', { required: true })}
             >
-              <option value="">Seleccione una sala</option>
+              <option value="">Seleccione el tipo de día</option>
               {typeOptions.map((type) => (
                 <option key={type} value={type}>
                   {type}

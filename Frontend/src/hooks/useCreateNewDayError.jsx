@@ -1,6 +1,7 @@
 import Swal from "sweetalert2/dist/sweetalert2.all.js";
 
-export const useCreateNewDayError=(res,setRes,setOk)=>{
+export const useCreateNewDayError=(res,setRes,setOk,setDate)=>{
+
     if(res?.status == 200){
         setOk(()=> true)
   
@@ -14,6 +15,7 @@ export const useCreateNewDayError=(res,setRes,setOk)=>{
             });
          setRes({});
     }
+
     if (res?.response?.status == 404) {
         Swal.fire({
             icon: 'error',
@@ -21,6 +23,11 @@ export const useCreateNewDayError=(res,setRes,setOk)=>{
             showConfirmButton: false,
             timer: 1500,
         });
+        setRes({});
+    }
+
+    if (res?.response?.status == 400) {
+        setDate(true);
         setRes({});
     }
    

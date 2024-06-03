@@ -26,7 +26,7 @@ export const HeaderNav = () => {
         </div>
         <ul className={`nav-links ${isOpen ? 'open' : ''}`}>
           
-          <li><NavLink to="/" onClick={toggleMenu}>About</NavLink></li>
+          <li><NavLink to="/" onClick={toggleMenu}>Inicio</NavLink></li>
           <li><NavLink to="/wall" onClick={toggleMenu}>Muro</NavLink></li>
           <li><NavLink to="/contact" onClick={toggleMenu}>Contacto</NavLink></li>
           <li><NavLink to="/activities/feed" onClick={toggleMenu}>Actividades</NavLink></li>

@@ -30,3 +30,5 @@ export * from './useGetChatError';
 export * from './useGetBookingError.jsx';
 export * from './useCreateNewDayError.jsx';
 export * from './useDeleteReviewError.jsx';
+export * from "./useGetAllContactsError.jsx"
+export * from "./useDeleteContactError.jsx"

@@ -27,6 +27,22 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    opacity: 0; /* Comienza invisible */
+    transform: translateY(30px); /* Comienza desplazada hacia abajo */
+    animation: slideIn 0.5s forwards ease-in-out; /* Animación de deslizamiento */
+}
+
+.wall-card a:hover {
+    color: #ff6464; /* Cambia el color del enlace cuando el cursor está sobre él */
+  }
+  
+
+/* Definir la animación de deslizamiento y desvanecimiento */
+@keyframes slideIn {
+    to {
+        opacity: 1; /* Aparece completamente */
+        transform: translateY(0); /* Se desplaza a su posición final */
+    }
 }
 
 .wall-card img {
@@ -56,7 +72,7 @@
     font-size: 24px;
 }
 
-/* Responsive adjustments */
+/* Ajustes responsivos */
 @media (max-width: 1024px) {
     .wall-card {
         width: 45%; /* Ajusta a dos columnas en pantallas medianas */

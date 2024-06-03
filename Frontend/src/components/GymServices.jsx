@@ -49,7 +49,7 @@ const GymServices = () => {
   };
 
   return (
-    <div className="gym-services" style={{ backgroundImage: 'url(https://res.cloudinary.com/dpw6wsken/image/upload/v1716117750/userProyect04FT/fmfbtsi8dq2dfpctj2a4.jpg)', backgroundSize: 'cover' }}>
+    <div className="gym-services" style={{ backgroundImage: 'url(https://res.cloudinary.com/dpw6wsken/image/upload/v1717408068/pexels-willpicturethis-1954524_lon9hj_crkgyo.png)', backgroundSize: 'cover' }}>
       <div className="service-title">
         SERVICIOS DE ENERGY CENTER
       </div>

@@ -9,8 +9,8 @@ export const About = () => {
     <div id="about" className='about-container' > 
       
       <div className="contenedor">
-            <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1717276844/pexels-olly-866023_zfytfi.jpg"></img>
-            <h3 className='register-button'>Si aún no estás registrado: <Link to="/register"> ¡REGISTRATE desde AQUI!
+            <img className='image' src="https://res.cloudinary.com/dpw6wsken/image/upload/v1717410889/Superadmin_qmm2bm_6_nsyj94.png"></img>
+            <h3 className='register-button'>¡Tu mejor versión empieza ahora! entrenamiento, comunidad y bienestar:<br></br><Link to="/register"> ¡REGISTRATE desde AQUI!
             </Link>
             </h3>
       </div>
