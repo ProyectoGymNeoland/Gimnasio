@@ -260,7 +260,6 @@ const updateWall = async (req, res) => {
   }
 };
 
-
 const createPublicMessage = async (req, res) => {
   try {
     const { content } = req.body;
@@ -303,9 +302,7 @@ const createPublicMessage = async (req, res) => {
     console.error('Error in createPublicMessage controller:', error);
     return res.status(500).json({ error: 'Internal Server Error' });
   }
-}; 
-
-
+};
 
 module.exports = {
   createWall,
@@ -319,5 +316,5 @@ module.exports = {
   getAllWalls,
   getWallByName,
   updateWall,
-  createPublicMessage,
+  createPublicMessage
 };

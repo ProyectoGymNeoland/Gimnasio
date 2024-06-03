@@ -100,7 +100,6 @@ export const getWallByName = async (name) => {
     .then((res) => res)
     .catch((error) => error);
 };
-
 //! ------------- CREATE PUBLIC MESSAGE  --------------- //
 
 export const createPublicMessage = async (wallId, messageData) => {

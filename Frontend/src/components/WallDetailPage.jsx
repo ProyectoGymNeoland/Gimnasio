@@ -4,7 +4,6 @@ import WallDetail from '../components/WallDetail';
 import { useWallDetail } from '../hooks/useWallDetail';
 import { getWallById } from '../services/wall.service';
 
-
 export const WallDetailPage = () => {
   const { wallId } = useParams(); // Obtenemos el ID de la actividad de los parámetros de la URL
   const [activity, setActivity] = useState(null);
