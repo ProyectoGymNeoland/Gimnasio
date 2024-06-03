@@ -39,12 +39,15 @@ h3 {
   justify-content: space-between;
   background-color: #ffffff; /* Fondo blanco para contraste */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  border: 1px solid white; /* Borde de 3px del color #f49e00 */
 }
 
 .activity-card:hover {
   transform: scale(1.05);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada al hacer hover */
+  background-color: #ff6464; /* Cambia el color de fondo al hacer hover */
 }
+
 
 .activity-image {
   width: 100%;
@@ -57,11 +60,17 @@ h3 {
 .activity-name {
   padding: 10px;
   font-size: 1.4em; /* Tamaño de fuente ligeramente mayor */
-  color: #ffffff; /* Texto blanco */
+  color: #f49e00; /* Texto blanco */
   background-color: #343a40; /* Fondo oscuro */
   width: 100%;
   text-align: center;
+  
 }
+
+.activity-card:hover .activity-name {
+  color: #ff6464; /* Cambia el color del texto al hacer hover en la tarjeta */
+}
+
 
 /* Responsivo */
 @media (max-width: 1024px) {

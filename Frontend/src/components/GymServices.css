@@ -1,3 +1,4 @@
+/* Estilos para .gym-services */
 .gym-services {
   margin-top: 50px;
   width: 100%;
@@ -10,7 +11,23 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  height: auto; /* Ajusta la altura automáticamente */
+  height: 800px; /* Ajusta la altura automáticamente */
+  opacity: 0; /* Comienza invisible */
+  transform: translateY(30px); /* Comienza desplazada hacia abajo */
+  animation: slideInFade 1s forwards ease-in-out; /* Aplica la animación */
+  animation-delay: 0.5s; /* Añade un retraso a la animación si es necesario */
+}
+
+/* Definir la animación de deslizamiento y desvanecimiento */
+@keyframes slideInFade {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .service-title {
@@ -97,6 +114,7 @@
 
 /* Responsivo para móviles */
 @media (max-width: 768px) {
+ 
   .service-title {
     font-size: 1.5em; /* Ajusta el tamaño del título para dispositivos móviles */
     width: 90%; /* Ajusta el ancho del título para dispositivos móviles */
