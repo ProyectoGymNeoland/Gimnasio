@@ -8,7 +8,7 @@ export const ProtectedCheckChildren = ({ children }) => {
    * aqui me traigo el user para los usuarios que viene de login
    */
   if (allUser?.data?.user?.check == true || user?.check == true) {
-    return <Navigate to="/dashboard" />;
+    return <Navigate to="/profile" />;
   }
   if (user == null && allUser.data.confirmationCode === "") {
     return <Navigate to="/login" />;

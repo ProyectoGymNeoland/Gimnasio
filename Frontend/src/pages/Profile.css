@@ -23,18 +23,41 @@
 .iconDeleteUser {
   border-radius: 50%;
 } */
+/* Profile.css */
+
+/* Profile.css */
+/* Profile.css */
+
 .profile-container {
   display: flex;
-  flex-direction: row;
-  margin-top: 20vh;
+  justify-content: center;
+  align-items: center; /* Alineamos los paneles verticalmente */
+  margin-top: 50px;
 }
 
 .left-panel {
-  width: 30%;
+  flex: 1;
+  margin-right: 10px; /* Reducimos el margen para acercar los paneles */
 }
 
 .right-panel {
-  width: 70%;
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  margin-left: 10px; /* Reducimos el margen para acercar los paneles */
+}
+
+@media screen and (max-width: 768px) {
+  .profile-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+    margin: 0; /* Eliminamos el margen para que los paneles estén más cerca */
+  }
+
+  .left-panel {
+    margin-bottom: 20px; /* Añadimos un margen inferior para separar los paneles en dispositivos móviles */
+  }
 }

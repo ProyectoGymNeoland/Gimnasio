@@ -5,7 +5,6 @@ import { useErrorRegister } from "../hooks";
 import { useAuth } from "../context/authContext";
 import { Link, Navigate } from "react-router-dom";
 import { Uploadfile } from "../components";
-
 export const Register = () => {
     const [res, setRes] = useState({});
     const [send, setSend] = useState(false);

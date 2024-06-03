@@ -1,0 +1,67 @@
+/* Calendar.css */
+
+/* Estilos base para todos los tamaños de pantalla */
+.calendar-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-image: url('https://res.cloudinary.com/dpw6wsken/image/upload/v1717360683/Proyecto_nuevo_11_fkgatz.png');
+    background-size: cover;
+    background-position: center;
+    border: none; /* Eliminar el borde */
+  }
+  
+  .calendar-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .calendar-icon {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .calendar-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .daybutton {
+    margin: 10px;
+    width: 400px !important;
+    background-color: #F2BB16;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .daybutton:hover {
+    background-color: #993c3c;
+    color: white;
+  }
+  
+  .no-days-message {
+    font-size: 24px;
+    color: #555;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  /* Estilos específicos para dispositivos móviles */
+  @media only screen and (max-width: 768px) {
+    .calendar-page {
+        
+        background-image: none;
+    }
+  }
+  

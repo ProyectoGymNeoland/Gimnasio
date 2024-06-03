@@ -1,29 +1,34 @@
+/* UserProfileCard.css */
+
 .user-profile {
+  margin-top: 50px;
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 20px;
-  padding-top: 150px;/*apaño momentáneo. quitar!*/
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  position: relative; /* Añadimos posición relativa para el botón de logout */
 }
-
 
 .user-profile img {
   width: 150px;
   height: 150px;
   border-radius: 50%;
-  margin-bottom: 20px;
+  margin: 0 auto 20px; /* Centramos la imagen y añadimos un margen inferior */
+  filter: invert(100%); /* Invertimos los colores de la imagen para cambiarla a blanco */
 }
 
 .user-profile h1 {
-  font-size: 24px;
-  margin-bottom: 10px;
+  font-size: 18px;
+  margin-top: -20px;
+  margin-left: 55px; /* Añadimos un pequeño margen alrededor del título */
 }
 
 .user-profile p {
   font-size: 16px;
-  margin-bottom: 10px;
+  margin: 5px 0; /* Ajustamos el margen para los párrafos */
+  color: white;
 }
 
 .user-profile button {
@@ -32,7 +37,7 @@
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
-  margin-top: 10px;
+  margin: 10px 0;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -41,8 +46,35 @@
   background-color: #2980b9;
 }
 
-.superadmin-profile button{
+.superadmin-profile button {
   color: #FFA500;
-  
+  border: 1px solid #FFA500; /* Añadimos un borde para hacerlo más visible */
+  background-color: transparent; /* Hacemos el fondo transparente */
+  margin-top: 10px; /* Ajustamos el margen superior */
+}
 
+.superadmin-profile button:hover {
+  background-color: #FFA500;
+  color: #fff;
+}
+
+/* Media query para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .user-profile {
+    margin-top: 80px; /* Reducimos el margen superior */
+    margin-left: 80px;
+    width: 90%;
+    max-width: 300px; /* Limitamos el ancho máximo del perfil */
+  }
+
+  .user-profile h1 {
+    font-size: 20px; /* Aumentamos el tamaño del título */
+    margin-top: 0; /* Eliminamos el margen superior */
+  }
+
+  .user-profile img {
+    width: 100px; /* Reducimos el tamaño de la imagen */
+    height: 100px;
+    margin-bottom: 10px; /* Reducimos el margen inferior */
+  }
 }
