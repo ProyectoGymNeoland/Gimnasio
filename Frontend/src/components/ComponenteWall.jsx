@@ -27,7 +27,7 @@ export const ComponenteWall = () => {
   
   return (
     <div className='contenedor-wall'>
-      {(user?.rol == "superadmin" || user?.rol == "monitor" || user?.rol == "user") && (<ButtonCreateWall onCreateWall={handleCreateWall}></ButtonCreateWall>)}
+      {user?.rol == "monitor" && <ButtonCreateWall onCreateWall={handleCreateWall}></ButtonCreateWall>}
       {/* {walls.map((wall, index) => (
         <div
           key={index}
