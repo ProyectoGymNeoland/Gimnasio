@@ -11,7 +11,9 @@
     color:white; /* Color amarillo */
     text-transform: uppercase; /* Convertir texto a mayúsculas */
 }
-
+.wall-preview-container p {
+    color: white;
+}
 .walls-grid {
     display: flex;
     justify-content: space-around;
