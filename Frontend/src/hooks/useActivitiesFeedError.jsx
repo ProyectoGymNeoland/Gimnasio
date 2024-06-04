@@ -14,8 +14,8 @@ export const useActivitiesFeedError = (res, setRes, setData) => {
     return;//PENDIENTE REVISAR! EVE
     return Swal.fire({
       icon: 'info',
-      title: 'No Activities Found',
-      text: 'No activities were found.',
+      title: 'No se encontraron actividades',
+      text: 'Lo sentimos, no se encontraron actividades',
       showConfirmButton: false,
       timer: 3000,
     });
@@ -27,7 +27,7 @@ export const useActivitiesFeedError = (res, setRes, setData) => {
     return Swal.fire({
       icon: 'error',
       title: 'Error',
-      text: 'An error occurred while fetching activities.',
+      text: 'Ocurrió un error al obtener las actividades.',
       showConfirmButton: false,
       timer: 3000,
     });
@@ -39,7 +39,7 @@ export const useActivitiesFeedError = (res, setRes, setData) => {
     return Swal.fire({
       icon: 'error',
       title: 'Server Error',
-      text: 'An internal server error occurred. Please try again later.',
+      text: 'Se ha producido un error interno del servidor. Por favor, inténtalo de nuevo más tarde.',
       showConfirmButton: false,
       timer: 1500,
     });

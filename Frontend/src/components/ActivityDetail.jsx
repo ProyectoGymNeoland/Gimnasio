@@ -8,7 +8,7 @@ import { getReviewsByActivityId } from '../services/review.service';
 import { useRatingError } from '../hooks/useRatingError';
 import { Reviews } from './Reviews';
 
-const ActivityDetail = ({ activity }) => {
+const ActivityDetail = ({ activity, setActivity }) => {
   const { user } = useAuth();
   const [showCreateReview, setShowCreateReview] = useState(false);
   const [rating, setRating] = useState(0);
@@ -71,6 +71,7 @@ const ActivityDetail = ({ activity }) => {
               activityId={activity._id}
               setShowCreateReview={setShowCreateReview}
               reloadReviews={reloadReviews}
+              setActivity={setActivity}
             />
           )}
         </>

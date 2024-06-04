@@ -23,7 +23,7 @@ export const ActivityDetailPage = () => {
 
   return (
     <div>
-      <ActivityDetail activity={activity} />
+      <ActivityDetail activity={activity} setActivity={setActivity} />
       <a onClick={() => navigate(-1)}> Volver </a>
     </div>
   );

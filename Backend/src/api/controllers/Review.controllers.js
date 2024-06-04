@@ -25,7 +25,10 @@ const createReview = async (req, res) => {
       $push: { reviews: review._id },
     });
 
-    res.status(201).json(review);
+    res.status(201).json({
+      new: review,
+      activityId: await Activities.findById(activityId)
+    });
   } catch (error) {
     if (error.name === "ValidationError") {
       // Error de validación de datos

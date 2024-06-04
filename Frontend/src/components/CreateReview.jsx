@@ -4,7 +4,12 @@ import { createReview } from '../services/review.service';
 import { useReviewsError } from '../hooks';
 import { useForm } from 'react-hook-form';
 
-export const CreateReview = ({ activityId, setShowCreateReview, reloadReviews }) => {
+export const CreateReview = ({
+  activityId,
+  setShowCreateReview,
+  reloadReviews,
+  setActivity,
+}) => {
   const [reviewText, setReviewText] = useState('');
   const [res, setRes] = useState({});
 
@@ -21,7 +26,7 @@ export const CreateReview = ({ activityId, setShowCreateReview, reloadReviews })
   };
 
   useEffect(() => {
-    useReviewsError(res, setRes, setShowCreateReview, reloadReviews); //usamos un custom hook que maneja la respuesta, y actualiza las activitys
+    useReviewsError(res, setRes, setShowCreateReview, reloadReviews, setActivity); //usamos un custom hook que maneja la respuesta, y actualiza las activitys
   }, [res]); // cada vez que la res cambia, se ejecuta este useEffect.
 
   return (

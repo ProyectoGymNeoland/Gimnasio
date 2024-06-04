@@ -24,7 +24,7 @@ export const useGetByNameError = (res, setRes, setData) => {
     Swal.fire({
       icon: 'error',
       title: 'Error',
-      text: 'An error occurred while fetching activities.',
+      text: 'Se produjo un error al recuperar las actividades.',
       showConfirmButton: false,
       timer: 3000,
     });
