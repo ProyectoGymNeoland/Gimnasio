@@ -30,13 +30,18 @@ export const Calendar = () => {
     useGetAllDaysError(res, setRes, setDays);
   }, [res]);
 
-  useEffect(() => {
-    const today = new Date().toISOString();
+    useEffect(() => {
+    const today = new Date();
+    today.setHours(0,0,0,0);
+    const todayISO = today.toISOString();
     const filter = days.filter((day) => {
-      const compareDate = day.dates >= today;
-      return compareDate;
+      const dayDate = new Date(day.dates).toISOString();
+      return dayDate >= todayISO;
     });
-    setFilteredDays(filter);
+    const sortedFilteredDays = filter.sort((a, b) => {
+    return new Date(a.dates).getTime() - new Date(b.dates).getTime();
+  });
+    setFilteredDays(sortedFilteredDays);
   }, [days]);
 
   return (
