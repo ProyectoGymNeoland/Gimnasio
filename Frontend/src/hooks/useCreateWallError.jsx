@@ -18,8 +18,8 @@ export const useCreateWallError = (res, setRes, setOk) => {
     // status 400 : Bad Request
     if (res?.response?.status === 400) {
       Swal.fire({
-        title: 'Solicitud incorrecta',
-        text: res.response.data.error || 'Error en la solicitud',
+        title: 'Debes tener rol de monitor para crear un muro',
+        text: res.response.data.error || 'Debes tener rol de monitor para crear un muro',
         icon: 'error',
         showConfirmButton: false,
         timer: 1500,

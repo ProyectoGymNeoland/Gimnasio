@@ -16,3 +16,86 @@
     box-shadow: 5px 10px 10px rgba(5, 16, 177, 0.932);
     border: 1px solid wheat;
 }
+
+
+.activity-container{
+    display: flex;
+    justify-content: space-between;
+    height: 900px;
+    gap: 20px;
+}
+
+
+.container-chat{
+    width: 600px; /* Reduce el ancho máximo */
+    height: 780px;
+    margin-top: 100px;
+    margin-right: 300px;
+    padding: 15px; /* Reduce el padding */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.wall-detail{
+    width: 800px; /* Reduce el ancho máximo */
+    height: 780px;
+    margin-top: 100px;
+    margin-left: 300px;
+    padding: 10px; /* Reduce el padding */
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.wall-detail h1 {
+  font-size: 1.5em; /* Reduce el tamaño de la fuente */
+  margin-bottom: 15px; /* Reduce el margen inferior */
+  text-align: center;
+}
+
+.wall-detail p {
+  margin: 8px 0; /* Reduce los márgenes */
+}
+
+.wall-detail .spots,
+.wall-detail .type {
+  font-weight: bold;
+}
+
+.wall-detail .status {
+  margin: 8px 0; /* Reduce los márgenes */
+}
+
+.wall-detail .status .available {
+  color: green;
+  font-weight: bold;
+}
+
+.wall-detail .status .not-available {
+  color: red;
+  font-weight: bold;
+}
+
+.wall-detail img {
+  width: 600px;
+  height: 450px;
+  border-radius: 10px;
+  margin: 15px 0; /* Reduce el margen */
+}
+
+.wall-detail h3 {
+  font-size: 1.2em; /* Reduce el tamaño de la fuente */
+  margin-top: 20px; /* Reduce el margen superior */
+  text-align: center;
+  color: #F2BB16;
+}
+
+.wall-detail .description {
+  line-height: 1.4; /* Reduce la altura de línea */
+  text-align: justify;
+}

@@ -18,9 +18,9 @@ const WallDetail = ({ wall: initialWall, wallId }) => {
         try {
           console.log("wallId", wallId)
           const fetchedWall = await getWallById(wallId);
-          setWall(fetchedWall);
-          console.log("comments", fetchedWall.comments)
-          setMessages(fetchedWall.comments || []);
+          setWall(fetchedWall.data);
+          console.log("comments", fetchedWall.data.comments)
+          setMessages(fetchedWall.data.comments || []);
           console.log('Fetched Wall:', fetchedWall, messages);
         } catch (error) {
           console.error('Error fetching wall:', error);
@@ -57,21 +57,16 @@ const WallDetail = ({ wall: initialWall, wallId }) => {
   }
 
   return (
-    <div className="activity-detail">
+  <>
+    <div className="activity-container">
+    <div className='wall-detail'>
       <h1>{wall.name}</h1>
-      <p className="spots">Número de plazas: {wall.spots}</p>
       <p className="type">Tipo de actividad: {wall.type}</p>
-      <p className="type">
-        Status:
-        <span className={wall.status ? 'available' : 'not-available'}>
-          {wall.status ? 'Disponible' : 'No disponible'}
-        </span>
-      </p>
       <img src={wall.image} alt={wall.name} />
       <h3>Te contamos en qué consiste</h3>
       <p className="description">{wall.content}</p>
-      <button onClick={handleButtonClick}>Comentarios</button>
-      <button onClick={handleButtonClick}>Reservar</button>
+    </div>
+      <div className='container-chat'>
       <div className="chat-input">
         <input
           type="text"
@@ -93,7 +88,9 @@ const WallDetail = ({ wall: initialWall, wallId }) => {
           <p>No hay mensajes aún.</p>
         )}
       </div>
+      </div>
     </div>
+    </>
   );
 };
 

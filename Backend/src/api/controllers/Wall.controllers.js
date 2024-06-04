@@ -201,7 +201,13 @@ const getAllWalls = async (req, res) => {
 const getWallById = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const wall = await Wall.findById(id);
+    const wall = await Wall.findById(id).populate({
+      path: 'comments',
+      populate: {
+        path: 'owner',
+        select: 'username name', // Selecciona los campos que necesitas
+      },
+    });
     if (wall) {
       return res.status(200).json(wall);
     } else {
