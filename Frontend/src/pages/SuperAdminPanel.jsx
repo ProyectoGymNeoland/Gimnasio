@@ -11,6 +11,7 @@ export const SuperAdminPanel = () => {
           <ButtonSuperAdminPanel to="/activities/create">Crear Actividad</ButtonSuperAdminPanel>
           <ButtonSuperAdminPanel to="/activitiesList">Editar / Borrar Actividad</ButtonSuperAdminPanel>
           <ButtonSuperAdminPanel to="/createNewDay">Crear horarios y clases</ButtonSuperAdminPanel>
+          <ButtonSuperAdminPanel to="/allContacts">Ver dudas usuarios</ButtonSuperAdminPanel>
         </div>
       </div>
     </div>
