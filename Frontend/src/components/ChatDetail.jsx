@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { getChatById, updateChat } from "../services/chat.service";
+import { getChatById } from "../services/chat.service";
 import { findMessageById } from "../services/message.service";
 import { useGetChatError } from "../hooks"
+import { useAuth } from '../context/authContext';
 import { createMessage } from "../services/message.service"; // Importar la función createMessage
 import { userMessageError } from '../hooks/userMessageError';
 import { useParams } from 'react-router-dom';
@@ -10,6 +11,8 @@ import './ChatDetail.css';
 export const ChatDetail = () => {
     const { chatId } = useParams();
     const [chat, setChat] = useState(null);
+    const { user } = useAuth();
+    const userId = user ? user._id : null;
     const [messages, setMessages] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -20,7 +23,18 @@ export const ChatDetail = () => {
     useGetChatError(res, setRes, setUserNotFound);
     userMessageError(res, setRes, setUserNotFound);
 
-    useEffect(() => {
+    const getChatUser = (chat, id) =>{
+
+        if (chat.userTwo._id == id){ 
+          console.log("if", chat.userTwo._id, id, chat.userOne._id)
+          return chat.userOne._id 
+        } else{
+          console.log("else", chat.userTwo._id,id, chat.userOne._id)
+          return chat.userTwo._id
+        }
+    }
+
+     useEffect(() => {
         const fetchChat = async () => {
             try {
                 const chatData = await getChatById(chatId);
@@ -48,13 +62,10 @@ export const ChatDetail = () => {
         if (!newMessage.trim()) return;
     
         try {
-            const response = await createMessage(chat.userTwo._id, newMessage);
+            const response = await createMessage(getChatUser(chat, userId), newMessage);
             if (response.status === 200) {
                 const { message } = response.data;
-    
-                // Actualizar el chat en la base de datos
-                await updateChat(chat._id, { messageId: message._id });
-    
+
                 // Añadir el mensaje al estado local
                 setMessages((prevMessages) => [...prevMessages, message]);
                 setNewMessage("");
@@ -67,6 +78,7 @@ export const ChatDetail = () => {
             setRes(err.response);
         }
     };
+
 
     if (loading) return <div>Cargando...</div>;
     if (error) return <div>{error}</div>;
