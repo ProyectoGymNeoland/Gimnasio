@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { bookingActivityToDay } from "../services/activityToDay.service";
 import { useAuth } from "../context/authContext";
 import { useErrorBooking } from "../hooks";
-
+import './CardReserva.css';
 
 export const CardReserva = ({info}) => {
     const {user}=useAuth()
@@ -35,13 +35,13 @@ export const CardReserva = ({info}) => {
     }, [bookingSpots]);
     
   return (
-    <figure>
+    <figure className="reservation-card">
         <img src={info?.activityId?.image} alt={info?.activityId?.name} />
         <p>Monitor: {info?.monitorId?.name}</p>
         <p>Actividad: {info?.activityId?.name}</p>
         <p>Plazas disponibles: {bookingSpots}</p>
         <p>Sala: {info?.room}</p>
-        <button onClick={()=>handleBooking()} disabled={ableButton}>{bookingStatus?"Cancelar reserva":"Reservar"}</button>
+        <button onClick={() => handleBooking()} disabled={ableButton}style={{ backgroundColor: bookingStatus ? "#FF3333" : "#49c1a2" }}>{bookingStatus ? "Cancelar reserva" : "Reservar"}</button>
     </figure>
   )
 }

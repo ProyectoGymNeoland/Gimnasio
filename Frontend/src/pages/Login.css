@@ -1,11 +1,3 @@
-main 
-{
-    margin-top: 52px;
-
-}
-
-h1, h2 {
-    font-size: 28px !important;
-    text-align: left !important;
-    color: #F2BB16 !important;
+.form-wrap p {
+    color: white;
 }

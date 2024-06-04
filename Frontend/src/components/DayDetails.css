@@ -1,0 +1,53 @@
+/* Estilo para el contenedor principal */
+.booking-day-container {
+    max-width: 800px;
+    margin: 30px auto 0 auto; /* Margen superior para separar del borde superior */
+    padding: 20px;
+  }
+  
+  /* Estilo para el contenedor de placeholder */
+  .custom-placeholder-day {
+    
+    margin-top: 0px; /* Ajuste del margen superior */
+  }
+  
+  /* Estilo para el componente DayDetails */
+  .day-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  
+  /* Estilo para el encabezado */
+  h1 {
+    color:#F2BB16;
+    font-size: 2em;
+  }
+  
+  
+  /* Estilos responsivos */
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 1.5em;
+    }
+  
+    .frames_container {
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      padding: 15px; /* Ajuste del espacio interno */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 1.2em;
+    }
+  
+    .frames_container {
+      gap: 10px;
+      padding: 10px; /* Ajuste del espacio interno */
+    }
+  }
+  

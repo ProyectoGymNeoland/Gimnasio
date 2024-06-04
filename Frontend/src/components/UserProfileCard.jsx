@@ -6,10 +6,10 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChatInput } from './ChatInput';
 import { useAuth } from '../context/authContext';
 
+
 export const UserProfileCard = ({ user }) => {
   const { isSuperAdmin } = useAuth();
   const { logout } = useAuth();
-  const location = useLocation();
   const [showEditForm, setShowEditForm] = useState(false);
   const [showChangePasswordForm, setShowChangePasswordForm] = useState(false);
 
@@ -36,7 +36,9 @@ export const UserProfileCard = ({ user }) => {
       }
     });
   };
-  const showChatInput = location.pathname === '/profile/chat'|| location.pathname.startsWith('/profile/chat/detail/');
+  const showChatInput =
+    location.pathname === '/profile/chat' ||
+    location.pathname.startsWith('/profile/chat/detail/');
 
   return (
     <div className="user-profile">

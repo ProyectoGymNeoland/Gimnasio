@@ -76,23 +76,23 @@ export const CrearActivity = () => {
   return (
     <>
     <div className="global-container">
-      <div className="form-wrap">
+      <div className="form-wrap1">
         <h1>Crear actividad Energy Center</h1>
         <p>Registra una nueva actividad deportiva</p>
         <form onSubmit={handleSubmit(formSubmit)}>
           <div className="user_container form-group">
-            <label htmlFor="custom-input" className="custom-placeholder">
+            <label htmlFor="custom-input" className="custom-placeholder1">
               Nombre de la actividad
             </label>
             <input className="input_activity" type="text" id="name" name="name" autoComplete="false" {...register('name', { required: true })}/>
           </div>
 
-          <div className="spotscontainer form-group">
+          <div className="spotscontainer form-group1">
             <label htmlFor="custom-input" className="custom-placeholder">
               Número de plazas
             </label>
             <input
-              className="input_activity"
+              className="input_activity1"
               type="number"
               id="number"
               name="spots"

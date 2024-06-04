@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getDayId } from "../services/day.service";
 import { useGetDayError } from "../hooks";
 import { DayDetails } from "../components";
-
+/*import './BookingDay.css';*/
 
 export const BookingDay=()=>{
     const { idDay } = useParams(); 

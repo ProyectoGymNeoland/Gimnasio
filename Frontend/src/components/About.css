@@ -59,15 +59,16 @@ body {
 }
 
 .card h3 {
-  font-size: 1.5rem;
-  color: #f49e00;
-  margin-bottom: 10px;
+  font-size: 2em; /* Tamaño de fuente 2em */
+  color: #F2BB16; /* Color amarillo */
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
 }
 
 .card span {
   font-size: 1rem;
   color: whitesmoke;
 }
+
 
 .aboutH1 {
   font-size: 2.5rem;
@@ -95,8 +96,8 @@ body {
 .register-button {
  
   position: absolute;
-  top: 550px;
-  left: 1020px;
+  top: 540px;
+  left: 1050px;
   padding: 10px 20px;
   background-color: #0D5FA6;
   color: white;

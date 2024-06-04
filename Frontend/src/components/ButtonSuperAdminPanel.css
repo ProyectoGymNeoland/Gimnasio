@@ -1,31 +1,42 @@
+/* ButtonSuperAdminPanel.css */
+
+/* Estilo general para el enlace que envuelve el botón */
 .card-button {
-  background-color: white;
-  color: #333333;
-  border: 1px solid #cccccc;
-  border-radius: 8px;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  margin: 10px;
-  min-width: 180wp;
-  height: auto;
-  transition: background-color 0.3s ease;
-  overflow: hidden; /* Para asegurar que el contenido no desborde */
+  text-decoration: none; /* Eliminar subrayado del enlace */
+  display: inline-block; /* Asegura que el enlace y el botón se comporten como un bloque en línea */
+}
 
-  & hover {
-    background-color: #f0f0f0;
+/* Estilo para el botón personalizado */
+.custom-button {
+  background-color: #0D5FA6;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  margin: 5px 0; /* Añadir margen entre los botones */
+  cursor: pointer;
+  font-size: 16px; /* Tamaño de fuente */
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave para hover y active */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el botón */
+}
+
+/* Estilo para el estado hover del botón */
+.custom-button:hover {
+  background-color: #094b7d; /* Color de fondo al hacer hover */
+  transform: translateY(-2px); /* Efecto de elevación al hacer hover */
+}
+
+/* Estilo para el estado activo del botón */
+.custom-button:active {
+  background-color: #083a63; /* Color de fondo al hacer clic */
+  transform: translateY(0); /* Restablecer la elevación */
+}
+
+/* Estilo responsivo para dispositivos móviles */
+@media (max-width: 768px) {
+  .custom-button {
+    font-size: 14px; /* Tamaño de fuente más pequeño para móviles */
+    padding: 8px 16px; /* Reducir padding para móviles */
   }
-}
-
-/* Ajustar el tamaño del texto si es necesario */
-.card-button span {
-  font-size: 14px;
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
 }

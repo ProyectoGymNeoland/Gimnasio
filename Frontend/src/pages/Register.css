@@ -1,0 +1,43 @@
+/* Estilos generales */
+p.parrafoLogin {
+    margin-top: -60px;
+    margin-left: 180px;
+    color: #F2BB16;
+}
+
+.form-wrap p {
+    color: white;
+}
+
+/* Media queries para tabletas y móviles */
+@media (max-width: 1024px) {
+    p.parrafoLogin {
+        margin-top: -30px; /* Ajusta según sea necesario para tabletas */
+        margin-left: 80px; /* Ajusta según sea necesario para tabletas */
+    }
+}
+
+@media (max-width: 768px) {
+    p.parrafoLogin {
+        margin-top: -50px; /* Ajusta según sea necesario para tabletas pequeñas y grandes móviles */
+        margin-left: 40px; /* Ajusta según sea necesario para tabletas pequeñas y grandes móviles */
+        text-align: center; /* Centra el texto dentro del párrafo */
+    }
+
+    .form-wrap p {
+        text-align: center; /* Centra el texto dentro del párrafo */
+        margin-top: 20px; 
+        font-size: 16px; /* Ajusta el tamaño de la fuente para tabletas */
+    }
+}
+
+@media (max-width: 480px) {
+    p.parrafoLogin {
+        margin-top: 20px; /* Ajusta según sea necesario para móviles */
+        margin-left: 20px; /* Ajusta según sea necesario para móviles */
+    }
+
+    .form-wrap p {
+        font-size: 14px; /* Ajusta el tamaño de la fuente para móviles */
+    }
+}

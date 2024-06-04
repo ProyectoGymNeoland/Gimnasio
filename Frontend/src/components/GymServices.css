@@ -37,6 +37,10 @@
   font-weight: 800;
   text-align: center;
   width: 90%; /* Ajusta el ancho del título */
+  margin-bottom: 20px;
+    font-size: 2em; /* Tamaño de fuente 2em */
+    color:white; /* Color amarillo */
+    text-transform: uppercase; /* Convertir texto a mayúsculas */
 }
 
 .services-grid {

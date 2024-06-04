@@ -1,151 +1,160 @@
+/* Contenedor principal */
+.list-container3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+  
+}
 
-.list-container {
-  margin-top: 100px;
+h1 {
+  margin-bottom: 20px;
+  font-size: 2em;
+  color: #F2BB16;
+}
+
+/* Estilo de la tabla */
+.table-container {
+  width: 100%;
+  max-width: 1000px;
+  overflow-x: auto;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.activity-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.activity-table thead {
+  background-color: #007bff;
+  color: white;
+}
+
+.activity-table th,
+.activity-table td {
+  padding: 12px 15px;
+  text-align: left;
+}
+
+.activity-table td {
+  color: #03090f;
+}
+
+.activity-table th.centered-column,
+.activity-table td.centered-column {
+  text-align: center;
+}
+
+.activity-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.activity-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.action-buttons button:hover {
+  color: #0056b3;
+}
+
+/* Paginación */
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.pagination-container button:disabled {
+  background-color: azul;
+  cursor: not-allowed;
+}
+
+.pagination-container button:not(:disabled):hover {
+  background-color: #0056b3;
+}
+
+.pagination-container span {
+  margin: 0 10px;
+  font-size: 1em;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+  .activity-table th, .activity-table td {
+    padding: 8px 10px;
+    font-size: 14px;
   }
-  
-  .activity-list-super-admin {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .pagination-container button {
+    padding: 6px 10px;
+    font-size: 14px;
   }
-  
-  .activity-list-super-admin table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 10px; /* Ajustar el espacio entre las celdas */
-    margin-bottom: 20px;
-    padding-left: 20px;
+
+  h1 {
+    font-size: 1.5em;
   }
-  
-  
-  .activity-list-super-admin th,
-  .activity-list-super-admin td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #8b1010; /* Línea horizontal en la parte inferior de las celdas */
-    border-right: 1px solid #ddd;
+}
+
+@media (max-width: 480px) {
+  .list-container {
+    padding: 10px;
   }
-  
-  .activity-list-super-admin th:first-child,
-  .activity-list-super-admin td:first-child {
-    border-left: 1px solid #ddd; /* Línea vertical a la izquierda de la primera columna */
+
+  h1 {
+    font-size: 1.2em;
+    margin-bottom: 15px;
   }
-  .activity-list-super-admin th {
-    background-color: #f1f1f1;
+
+  .activity-table th, .activity-table td {
+    padding: 6px 8px;
+    font-size: 12px;
   }
-  
-  .material-icons {
-    cursor: pointer;
-    margin-right: 10px;
-    color: white;
+
+  .pagination-container button {
+    padding: 5px 8px;
+    font-size: 12px;
   }
-  
-  .material-icons:hover {
-    color: #007bff;
+
+  .pagination-container span {
+    font-size: 0.9em;
   }
-  
-  
-  
-  .table-container {
-    max-width: 60%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
+
+  .action-buttons {
+    gap: 5px;
   }
-  .centered-column {
-    text-align: left;
+
+  .action-buttons button {
+    font-size: 12px;
   }
-  
-  .pagination-container {
-    max-width: 70%;
-    margin: 0 auto;
-    margin-top: 40px;
-    display: flex;
-    justify-content: center; /* Centra los elementos horizontalmente */
-    align-items: center;
-    margin-bottom: 10px; /* Ajusta el margen inferior si es necesario */
-  
-    & span {
-      color: white;
-      margin-left: 15px;
-    }
-  }
-  
-  .pagination-container-buttons {
-    display: flex;
-    align-items: center;
-  }
-  
-  .pagination-container-buttons button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-    margin: 0 5px; /* Ajusta el margen entre los botones */
-  }
-  
-  .pagination-container-buttons button:disabled {
-    background-color: #d3d3d3;
-    cursor: not-allowed;
-  }
-  
-  /* Estilos para dispositivos móviles */
-  @media screen and (max-width: 768px) {
-    .pagination {
-      flex-direction: column; /* Cambia la dirección del flexbox a columna */
-      align-items: center; /* Centra los elementos verticalmente */
-      text-align: center; /* Centra el texto */
-    }
-  
-    .pagination-buttons {
-      margin-bottom: 10px; /* Ajusta el margen inferior entre los botones */
-    }
-  
-    .pagination-buttons button {
-      margin: 0 5px; /* Ajusta el margen entre los botones */
-    }
-  
-    /* Estilos base para la tabla */
-  .activity-list-super-admin table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-  }
-  
-  .activity-list-super-admin th,
-  .activity-list-super-admin td {
-    padding: 15px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  /* Estilos para dispositivos móviles */
-  @media screen and (max-width: 782px) {
-    /* Convertir la tabla en una tarjeta */
-    .activity-list-super-admin table {
-      display: block;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-    }
-  
-    /* Ajustar estilos de las celdas en dispositivos móviles */
-    .activity-list-super-admin th,
-    .activity-list-super-admin td {
-      display: block;
-      padding: 10px;
-      border: none;
-      border-bottom: 1px solid #ddd;
-    }
-  }
-  }
-  
-  thead {
-        border-bottom: 1px solid #ddd;
-  
-  }
-  
+}

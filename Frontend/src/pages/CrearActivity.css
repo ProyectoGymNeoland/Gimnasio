@@ -1,114 +1,124 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+/* CreateWallForm.css */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-h5 {
-    color: #e9d59b;
-    font-size: 18px;
-    
-}
-#imagen {
-    display: block;
-}
-
-a:hover {
-    color: #ff6464;
-}
-.global-container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-  }
+/* Form wrapper */
+.form-wrap1 {
+ 
   
-.form-wrap {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px; /* Limitar el ancho máximo para una mejor presentación */
+  margin: 90px auto; /* Añadir margen superior y centrar */
+  text-align: left;
+}
+.form-wrap1 h1 {
+ margin-left: 10px;
+  color: #F2BB16;
 
-    width: 50%;
-    transform: translate(48%, 0%);
-    margin: 5rem 0 2rem 0;
-    padding: 15px 25px 30px;
-    color: #fff;
-    border-radius: 5px;
-    
+}
+/* Form header */
+.form-wrap1 h3 {
+  color: white; /* Texto en blanco */
+  font-size: 2em;
+  margin-bottom: 10px;
+  
 }
 
-.form-wrap h1,
-.form-wrap p {
-    text-align: center;
+.form-wrap1 p {
+  color: white; /* Texto en blanco */
+  margin-bottom: 20px;
+  margin-left: 10px;
 }
 
-.form-wrap .form-group {
-    margin-top: 15px;
+/* Form fields */
+.form-group1 {
+  
+  margin-bottom: 20px;
+  text-align: left;
 }
 
-.form-wrap .form-group label {
-    color: #fff;
-    font-weight: normal;
+.custom-placeholder, .custom-placeholder1 {
+ 
+  margin-left: 10px;
+  color: white; /* Texto en blanco */
 }
 
-.form-wrap .form-group input {
-    width: 100%;
-    padding: 10px;
-    border: solid 2px #0D5FA6;
-    border-radius: 5px;
-    font-family: inherit;
-    font-size: inherit;
-    caret-color: #0D5FA6;
-    background: #0D5FA6;
-    color: #fff;
+.custom-placeholder1 {
+  display: block;
+  margin-bottom: 5px;
 }
 
-.sexo {
-    display: flex;
-    flex-wrap: no-wrap;
-    justify-content: space-between;
-    margin-bottom: 20px;
-    margin-top: 20px;
+.input_activity1, .input_activity {
+  margin-left: 10px;
+  color: white; /* Texto en blanco */
+  background-color: transparent; /* Fondo transparente */
 }
 
-.sexo .hombre {
-    border-radius: 3px 0 0 3px;
-    background: #0D5FA6;
-    color: white !important;
+.input_dates, select, .input_user, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  color: #0D5FA6; /* Texto en blanco */
+  background-color: transparent; /* Fondo transparente */
 }
 
-.sexo .mujer {
-    border-radius: 0 3px 3px 0;
-    background: #0D5FA6;
-    color: white !important;
+.select {
+  appearance: none;
+  background: transparent;
+  padding: 10px;
+  border: 1px solid #ccc;
+  
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  color: white; /* Texto en blanco */
 }
 
-.label-radio {
-    background: #0D5FA6;
-    color: #fff;
-    
-    padding: 10px;
-    text-align: center;
-    width: 49.5%;
-    margin-right: 5px;
+/* Button container */
+.btn_container {
+  text-align: center;
 }
 
-input[type="radio"]:checked+.label-radio {
-    background: #0D5FA6;
-    color: #fff !important;
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white; /* Texto en blanco */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border 0.3s ease;
 }
 
-.anchorCustom {
-    color: white;
+button:disabled {
+  
+  background-color: #49c1a388;
 }
 
-.custom-placeholder {
-    width: 100%;
-    display: flex;
-    justify-content: left;
-    margin-bottom: 10px;
-    text-transform: capitalize;
+button:hover {
+  background-color: #0056b3;
+  border: 2px solid #ff6464;
 }
 
-.button {
-    color:#F2BB16;
-    }
+/* Mobile styles */
+@media (max-width: 768px) {
+  .form-wrap1 {
+    padding: 20px;
+    box-sizing: border-box;
+  }
 
+  .form-wrap1 h3 {
+    font-size: 1.5em;
+  }
+
+  .input_dates, select, .input_user, textarea {
+    padding: 8px;
+  }
+
+  button {
+    padding: 8px 16px;
+  }
+}

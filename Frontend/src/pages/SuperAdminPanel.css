@@ -1,24 +1,71 @@
+/* SuperAdminPanel.css */
+
 .superadmin-panel {
-  position: relative;
-  width: 100%;
-  height: 100vh; 
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  min-height: 100vh;
   background-image: url('https://res.cloudinary.com/dpw6wsken/image/upload/v1717324031/Superadmin_qmm2bm.webp');
-  background-size: cover; 
-  background-position: center; 
-  background-repeat: no-repeat; 
+  background-size: cover; /* Ajustar la imagen para cubrir todo el contenedor */
+  background-position: center; /* Centrar la imagen */
+  background-repeat: no-repeat; /* No repetir la imagen */
+  padding: 10px; /* Añadir padding para espacios pequeños */
+  box-sizing: border-box; /* Asegurar que el padding se incluya en el tamaño total */
 }
 
-.AdminButton-container {
+.admin-panel-content {
+  background: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+  padding: 20px;
+  width: 30%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.admin-panel-content h1 {
+  color: black; /* Color naranja */
+  text-transform: uppercase; /* Convertir texto a mayúsculas */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+.admin-button-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  max-width: 600px; 
-  background: rgba(255, 255, 255, 0.8); 
-  border-radius: 10px; 
+  gap: 10px; /* Espacio entre los botones */
+}
+
+/* Media queries para pantallas más pequeñas */
+@media (max-width: 1024px) {
+  .admin-panel-content {
+    margin-top: 100px;
+    width: 50%; /* Ajustar el ancho para tabletas */
+  }
+
+  .admin-panel-content h1 {
+    font-size: 2em; /* Ajustar tamaño de fuente */
+  }
+}
+
+@media (max-width: 768px) {
+  .superadmin-panel {
+    background-image: none;
+    
+  }
+  .admin-panel-content {
+    width: 70%; /* Ajustar el ancho para móviles grandes */
+  }
+
+  .admin-panel-content h1 {
+    font-size: 2em; /* Ajustar tamaño de fuente */
+  }
+}
+
+@media (max-width: 576px) {
+  .admin-panel-content {
+    width: 90%; /* Ajustar el ancho para móviles pequeños */
+    padding: 10px; /* Reducir padding para móviles pequeños */
+  }
+
+  .admin-panel-content h1 {
+    font-size: 1.5em; /* Ajustar tamaño de fuente */
+  }
 }

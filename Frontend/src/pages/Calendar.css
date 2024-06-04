@@ -2,66 +2,137 @@
 
 /* Estilos base para todos los tamaños de pantalla */
 .calendar-page {
-    display: flex;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-image: url('https://res.cloudinary.com/dpw6wsken/image/upload/v1717408068/pexels-willpicturethis-1954524_lon9hj_crkgyo.png');
+  background-size: cover;
+  background-position: center;
+  border: none; /* Eliminar el borde */
+  padding: 20px; /* Añadir padding para espacios pequeños */
+  box-sizing: border-box; /* Asegurar que el padding se incluya en el tamaño total */
+}
+.calendar-title {
+  color: #F2BB16;
+  font-size: 30px;
+  margin-top: 0px;
+}
+.calendar-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.calendar-icon {
+  width: 40px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.calendar-container {
+ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.daybutton {
+  margin: 10px;
+  width: 400px !important;
+  background-color: rgba(13, 95, 166, 0.7); /* Azul con 70% de opacidad */
+  color: blanchedalmond;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease; /* Agregar transición para el cambio de color del borde */
+  text-align: center; /* Centrar el texto */
+  display: flex; /* Usar flexbox para centrar contenido */
+  justify-content: center; /* Centrar horizontalmente */
+  align-items: center; /* Centrar verticalmente */
+}
+
+.daybutton:hover {
+  background-color: rgba(13, 95, 166, 1); /* Cambiar a color azul sólido */
+  border: 3px solid #993c3c; /* Agregar borde de 3px sólido */
+  color: #F2BB16; /* Cambiar color del texto */
+}
+
+.daybutton h2 {
+  margin: 0; /* Eliminar el margen por defecto del h2 */
+  padding: 0; /* Eliminar el padding por defecto del h2 */
+}
+
+.no-days-message {
+  font-size: 24px;
+  color: #555;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Estilos específicos para pantallas pequeñas */
+@media only screen and (max-width: 1024px) {
+  .calendar-page {
+    padding: 15px; /* Reducir el padding para pantallas más pequeñas */
+  }
+
+  .daybutton {
+    width: 45% !important;
+    font-size: 16px;
+    padding: 12px 15px;
+  }
+
+  .no-days-message {
+    font-size: 20px;
+  }
+}
+
+/* Estilos específicos para dispositivos móviles */
+@media only screen and (max-width: 768px) {
+  .calendar-page {
+    margin-top: 15%;
+    background-image: none;
+    padding: 10px; /* Reducir el padding para móviles */
+  }
+
+  .calendar-header {
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height: 100vh;
-    background-image: url('https://res.cloudinary.com/dpw6wsken/image/upload/v1717360683/Proyecto_nuevo_11_fkgatz.png');
-    background-size: cover;
-    background-position: center;
-    border: none; /* Eliminar el borde */
-  }
-  
-  .calendar-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .calendar-icon {
-    width: 40px;
-    height: auto;
-    margin-right: 10px;
-  }
-  
-  .calendar-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .daybutton {
-    margin: 10px;
-    width: 400px !important;
-    background-color: #F2BB16;
-    color: #fff;
-    border: none;
-    padding: 15px 20px;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .daybutton:hover {
-    background-color: #993c3c;
-    color: white;
-  }
-  
-  .no-days-message {
-    font-size: 24px;
-    color: #555;
     text-align: center;
-    margin-top: 20px;
   }
-  
-  /* Estilos específicos para dispositivos móviles */
-  @media only screen and (max-width: 768px) {
-    .calendar-page {
-        
-        background-image: none;
-    }
+
+  .calendar-icon {
+    margin: 0 0 10px 0; /* Ajustar el margen para móviles */
   }
-  
+
+  .daybutton {
+    width: 80% !important;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .no-days-message {
+    font-size: 18px;
+  }
+}
+
+/* Estilos específicos para dispositivos muy pequeños */
+@media only screen and (max-width: 576px) {
+  .calendar-page {
+    padding: 5px; /* Reducir aún más el padding para dispositivos muy pequeños */
+  }
+
+  .daybutton {
+    width: 100% !important;
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .no-days-message {
+    font-size: 16px;
+  }
+}

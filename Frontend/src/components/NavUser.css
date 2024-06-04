@@ -1,15 +1,17 @@
 .user-nav {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  
+  
   width: 55vw;
   border-radius: 20px;
   gap: 0.5rem;
 
 } 
 
+
 .user-info{
   display: flex;
+  margin-left: -100px;
   align-items: center;
   justify-content: center;
   width: 55vw;
@@ -18,12 +20,13 @@
   border-radius: 5px;
   font-family: inherit;
   font-size: inherit;
-  caret-color: #2f7a67;
-  border: solid 2px #49c1a371;
+  caret-color: #F2BB16;
+  border: solid 2px #F2BB16;
   overflow-y: auto; /* Añadir scroll si el contenido es muy grande */
 }
 
 .user-nav button {
+  
   padding: 10px 20px;
   border: none;
   border-radius: 5px;

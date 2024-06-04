@@ -8,6 +8,7 @@ import { useGetByNameError } from '../hooks';
 import { useAuth } from '../context/authContext';
 import Figure from '../components/FigureActivity';
 
+
 export const ActivitiesFeed = () => {
   const [activities, setActivities] = useState([]);
   const [res, setRes] = useState({});
@@ -49,15 +50,14 @@ export const ActivitiesFeed = () => {
 
   return (
     <div className="activities-feed">
-      <div>
-        <Input
-          setValueInput={handleSearch}
-          value={searchTerm}
-          id={'searchActivity'}
-          placeholder={'Zumba, Yoga, ...'}
-        />
-      </div>
-      <div id="containerActivitiesFeed">
+      
+      <Input
+        setValueInput={handleSearch}
+        value={searchTerm}
+        id={'searchActivity'}
+        placeholder={'Zumba, Yoga, ...'}
+      />
+      <div id="containerActivitiesFeed1">
         {activities.length > 0 &&
           activities
             .filter((activity) => activity.status === true) // filtra solo las actividades con estado true

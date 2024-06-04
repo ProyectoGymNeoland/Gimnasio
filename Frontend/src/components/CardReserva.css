@@ -1,0 +1,77 @@
+/* Contenedor de la grilla */
+.grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Estilos generales para la tarjeta de reserva */
+.reservation-card {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semitransparente */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    padding: 15px; /* Ajuste del padding para un tamaño más pequeño */
+    max-width: 250px; /* Tamaño más pequeño */
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.reservation-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.reservation-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+p {
+    margin: 10px 0;
+    font-size: 0.9em; /* Tamaño de fuente reducido */
+    color: #333;
+    line-height: 1.5;
+}
+
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 16px; /* Tamaño de botón reducido */
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:not(:disabled):hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+/* Estilos responsivos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .reservation-card {
+        margin: 10px;
+        padding: 10px; /* Ajuste del padding para pantallas pequeñas */
+        max-width: 100%;
+    }
+
+    p {
+        font-size: 0.8em; /* Tamaño de fuente reducido para pantallas pequeñas */
+    }
+
+    button {
+        padding: 6px 12px; /* Tamaño de botón reducido para pantallas pequeñas */
+        font-size: 0.8em; /* Tamaño de fuente reducido para botones en pantallas pequeñas */
+    }
+}

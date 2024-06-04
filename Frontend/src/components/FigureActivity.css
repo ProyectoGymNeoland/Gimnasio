@@ -1,34 +1,34 @@
 figure{
-    & img {
-        width: 250px;
-        height: 300px;
-        object-fit: cover;
-        border-radius: 5px;
-        transition: transform 0.3s ease-in-out;
-    }
+  & img {
+      width: 250px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 5px;
+      transition: transform 0.3s ease-in-out;
+  }
 
-    & p h2 {
-        text-align: center;
-    }
+  & p h2 {
+      text-align: center;
+  }
 }
 
 .toggle-favorite {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  background: none;
-  border: none;
-  cursor: pointer;
+position: absolute;
+top: 10px;
+right: 10px;
+background: none;
+border: none;
+cursor: pointer;
 }
 
 .toggle-favorite .favorite-icon {
-  color: red;
-  font-size: 1.5em;
-  transition: transform 0.3s ease-in-out;
+color: red;
+font-size: 1.5em;
+transition: transform 0.3s ease-in-out;
 }
 
 .toggle-favorite .favorite-icon:hover {
-  transform: scale(1.2);
+transform: scale(1.2);
 }
 
 

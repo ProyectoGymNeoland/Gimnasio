@@ -1,0 +1,104 @@
+/* CrearActivity.css */
+
+/* Form wrapper */
+.form-wrap {
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Ajustar al ancho del contenedor padre */
+    margin: auto; /* Centrar el formulario en pantalla */
+    text-align: left;
+    
+  }
+  
+  /* Resto del CSS... */
+  
+  /* Form header */
+  .form-wrap h3 {
+    color: #F2BB16; /* Color del texto */
+    margin-top: 50px;
+    font-size: 2em; /* Tamaño de fuente */
+    margin-bottom: 10px; /* Espacio inferior */
+    
+  }
+  
+  .form-wrap p {
+    color: #555; /* Color del texto */
+    margin-bottom: 20px; /* Espacio inferior */
+  }
+  
+  /* Form fields */
+  .form-group {
+    margin-bottom: 20px; /* Espacio inferior */
+    text-align: left; /* Alinear texto a la izquierda */
+  }
+  
+  .costum-placeholder {
+    display: block;
+    margin-bottom: 5px;
+    color: #777; /* Color del texto */
+  }
+  
+  .input_dates,
+  select {
+    width: calc(100% - 20px); /* Ajustar el ancho del input */
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .select {
+    appearance: none; /* Eliminar estilo nativo de select */
+    background: transparent; /* Fondo transparente */
+    border: 1px solid #ccc; /* Borde */
+    padding: 10px; /* Espaciado interno */
+    border-radius: 4px; /* Borde redondeado */
+    width: 100%; /* Ancho completo */
+    box-sizing: border-box; /* Incluir padding en el tamaño total */
+  }
+  
+  .btn_container {
+    text-align: center; /* Alinear botón al centro */
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:disabled {
+    background-color: #49c1a388;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilos específicos para dispositivos móviles */
+  @media (max-width: 768px) {
+    .form-wrap {
+      padding: 20px; /* Espaciado interior */
+      box-sizing: border-box; /* Incluir padding en el tamaño total */
+    }
+  
+    .form-wrap h3 {
+      font-size: 1.5em; /* Tamaño de fuente reducido */
+    }
+  
+    .input_dates,
+    select {
+      padding: 8px; /* Espaciado interior reducido */
+    }
+  
+    button {
+      padding: 8px 16px; /* Espaciado interior reducido */
+    }
+  }
+  

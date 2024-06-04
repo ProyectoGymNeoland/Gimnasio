@@ -73,8 +73,7 @@ export const CreateNewDay = () => {
   return (
     <>
       <div className="form-wrap">
-        <h3>Crea un día con sus actividades</h3>
-        <p>Formulario que crea las actividades calendarizadas</p>
+        <h3>Crea una actividad calendarizada</h3>
         <form onSubmit={handleSubmit(formSubmit)}>
 
           <div className="dates_container form-group">

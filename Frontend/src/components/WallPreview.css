@@ -1,11 +1,15 @@
 .wall-preview-container {
     margin-top: 50px;
+    
     padding: 20px;
     text-align: center;
 }
 
 .wall-preview-container h3 {
     margin-bottom: 20px;
+    font-size: 2em; /* Tamaño de fuente 2em */
+    color:white; /* Color amarillo */
+    text-transform: uppercase; /* Convertir texto a mayúsculas */
 }
 
 .walls-grid {
@@ -15,7 +19,7 @@
 }
 
 .wall-card {
-    color: black;
+    color: white;
     border: 2px solid #f49e00;
     border-radius: 8px;
     width: 22%;

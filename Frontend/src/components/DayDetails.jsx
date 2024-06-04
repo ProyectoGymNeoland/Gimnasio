@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
 import { useDayFrame } from "../hooks";
-
+import './DayDetails.css';
 
 
 export const DayDetails = ({day})=>{

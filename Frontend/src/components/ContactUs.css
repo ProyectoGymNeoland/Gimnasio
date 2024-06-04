@@ -1,0 +1,134 @@
+.form-wrap {
+  width: 80%;
+  transform: translate(10%, 0%);
+  margin: 5rem 0 2rem 0;
+  padding: 15px 25px 30px;
+  color: #fff;
+  border-radius: 5px;
+
+  h1 {
+    margin-top: 20px;
+    text-transform: uppercase;
+    font-size: 2em;
+    text-align: left;
+    color: #F2BB16;
+  }
+
+  h5 {
+    font-size: 1em;
+    text-align: left;
+    color: #fff;
+  }
+
+  .form-group {
+    margin-top: 35px;
+    position: relative;
+
+    label.custom-placeholder {
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      font-size: 18px;
+      color: #007bff;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: inherit;
+      caret-color: #0D5FA6;
+      color: #0D5FA6;
+      
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+    
+    input:focus + .custom-placeholder,
+    textarea:focus + .custom-placeholder,
+    input.has-content + .custom-placeholder,
+    textarea.has-content + .custom-placeholder {
+      top: -20px;
+      left: 0;
+      font-size: 12px;
+      color: #49c1a2;
+      background: none;
+    }
+  }
+
+
+  textarea {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    color: #fff;
+  }
+
+  .buttonenviar {
+    text-align: right;
+    margin-top: -20px;
+
+    button {
+      font-family: 'Freeman', sans-serif;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #ffffff;
+      background-color: green;
+      border: 5px solid transparent;
+      border-radius: 8px;
+      padding: 0.6em 1.2em;
+      cursor: pointer;
+      transition: background-color 0.3s, border-color 0.25s;
+
+      &:hover:not(:disabled) {
+        border-color: #ff6464;
+      }
+    }
+  }
+
+  /* Media query for mobile devices */
+  @media (max-width: 576px) {
+    width: 90%; /* Cambia el ancho al 90% del contenedor */
+    transform: translate(5%, 0%); /* Mueve ligeramente el formulario */
+    margin: 3rem 0 2rem; /* Ajusta los márgenes */
+    padding: 15px; /* Ajusta el padding */
+    margin-top: 60px;
+
+    h1 {
+      
+      font-size: 1.5em; /* Ajusta el tamaño del texto */
+    }
+
+    h5 {
+      font-size: 1em; /* Ajusta el tamaño del texto */
+    }
+
+    .form-group {
+      margin-top: 25px;
+
+      label.custom-placeholder {
+        font-size: 1em; /* Ajusta el tamaño del texto */
+      }
+
+      input, textarea {
+        font-size: 1em; /* Ajusta el tamaño del texto */
+      }
+    }
+
+    textarea {
+      height: 150px; /* Reduce la altura para dispositivos móviles */
+    }
+
+    .buttonenviar {
+      button {
+        font-size: 0.8em; /* Ajusta el tamaño del texto */
+      }
+    }
+  }
+}

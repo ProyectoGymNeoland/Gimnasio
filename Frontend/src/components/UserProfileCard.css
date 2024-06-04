@@ -1,7 +1,9 @@
 /* UserProfileCard.css */
 
 .user-profile {
-  margin-top: 50px;
+  margin-top: 60px;
+  margin-left: 20px;
+  margin-bottom: 30px;
   width: 300px;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -20,13 +22,15 @@
 }
 
 .user-profile h1 {
-  font-size: 18px;
-  margin-top: -20px;
-  margin-left: 55px; /* Añadimos un pequeño margen alrededor del título */
+  color: #FFA500;
+  font-size: 2em;
+  margin-top: -10px;
+  margin-left: 0px; /* Añadimos un pequeño margen alrededor del título */
 }
 
 .user-profile p {
   font-size: 16px;
+ 
   margin: 5px 0; /* Ajustamos el margen para los párrafos */
   color: white;
 }
@@ -37,19 +41,20 @@
   border: none;
   border-radius: 4px;
   padding: 10px 20px;
-  margin: 10px 0;
+  margin: 5px; /* Añadir margen en todas las direcciones */
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
+
 .user-profile button:hover {
-  background-color: #2980b9;
+  background-color: #993c3c;
 }
 
 .superadmin-profile button {
-  color: #FFA500;
-  border: 1px solid #FFA500; /* Añadimos un borde para hacerlo más visible */
-  background-color: transparent; /* Hacemos el fondo transparente */
+  color: #03090f;
+  
+  background-color: #FFA500 !important; /* Hacemos el fondo transparente */
   margin-top: 10px; /* Ajustamos el margen superior */
 }
 

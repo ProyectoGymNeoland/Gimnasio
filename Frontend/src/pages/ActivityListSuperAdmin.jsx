@@ -137,7 +137,7 @@ export const ActivityListSuperAdmin = () => {
   }
 
   return (
-    <div className='list-container'>
+    <div className='list-container3'>
       <h1>Lista de Actividades</h1>
       <div className="table-container">
         <table {...getTableProps()} className="activity-table">
